@@ -1,0 +1,49 @@
+.header-border{
+	border: 0px;
+}
+
+.header-bg {
+	
+}
+
+.header-height {
+	margin-bottom: 0px;
+	background-color: #fff;
+}
+
+.hr-header {
+	margin-top: 0px;
+	border-top: 1.5px solid #ededed;
+}
+
+.nav-right > li {
+	padding: 0px 2px 0px 0px;
+  float: right;
+  margin-bottom: -1px;
+}
+
+.qa-list {
+	padding: 30px 10px 10px 30px;
+	list-style: none;
+}
+
+.qa-list li{
+	padding: 0px 0px 10px 0px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ededed;
+}
+
+.qa-img {
+	border: 5px solid #ededed;
+	width: 60px;
+	height: 60px;
+}
+
+.qa-margin-left {
+	margin-left: -8px;
+
+}
+
+.qa-info {
+	max-width: 500px;
+}
