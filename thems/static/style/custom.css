@@ -47,3 +47,34 @@
 .qa-info {
 	max-width: 500px;
 }
+
+.ask {
+	margin-bottom: 10px;
+}
+
+.head-img {
+	width: 140px;
+	height: 140px;
+}
+
+.follow {
+	margin-top: 30px;
+	padding-left: 0px;
+}
+
+.follow a {
+	border: 0px;
+	margin-bottom: 5px 
+}
+
+.fix-margin-top {
+	margin-top: 20px;
+}
+
+.mark-p {
+	line-height: 2.5;
+}
+
+.border-0 {
+	border: 0px;
+}
