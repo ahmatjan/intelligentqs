@@ -78,3 +78,29 @@
 .border-0 {
 	border: 0px;
 }
+
+.main-content {
+	min-height: 500px;
+}
+
+.a-float-left {
+	float: left;
+}
+
+.info-margin-left {
+	margin-left: 10px;
+}
+
+.info-img {
+	width: 180px;
+	height: 160px;
+}
+
+.info-link {
+	margin-top: 10px;
+	width: 100%;
+}
+
+.info {
+	min-height: 100px;
+}
