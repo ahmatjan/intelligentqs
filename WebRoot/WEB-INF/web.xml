@@ -24,10 +24,59 @@
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>AskQuestionServlet</servlet-name>
-    <servlet-class>cn.com.servlet.question.AskQuestionServlet</servlet-class>
+    <servlet-class>cn.com.servlets.question.AskQuestionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetAllTagsInfoServlet</servlet-name>
+    <servlet-class>cn.com.servlets.tags.GetAllTagsInfoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetHotAnswerServlet</servlet-name>
+    <servlet-class>cn.com.servlets.answer.GetHotAnswersInfoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetCountOfTagsServlet</servlet-name>
+    <servlet-class>cn.com.servlets.tags.GetCountOfTagsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddTagInfoServlet</servlet-name>
+    <servlet-class>cn.com.servlets.tags.AddTagInfoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddAnswerInfoServlet</servlet-name>
+    <servlet-class>cn.com.servlets.answer.AddAnswerInfoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DleteAnswerServlet</servlet-name>
+    <servlet-class>cn.com.servlets.answer.DleteAnswerServlet</servlet-class>
   </servlet>
 
 
+
+<servlet-mapping>
+    <servlet-name>GetAllTagsInfoServlet</servlet-name>
+    <url-pattern>/getAllTagsInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetHotAnswerServlet</servlet-name>
+    <url-pattern>/getHotAnswersInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetCountOfTagsServlet</servlet-name>
+    <url-pattern>/getCountOfTags</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddTagInfoServlet</servlet-name>
+    <url-pattern>/addTagInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddAnswerInfoServlet</servlet-name>
+    <url-pattern>/addAnswerInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DleteAnswerServlet</servlet-name>
+    <url-pattern>/deleteAnswer</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/loginServlet</url-pattern>

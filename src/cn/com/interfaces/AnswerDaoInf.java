@@ -9,11 +9,11 @@ import cn.com.beans.AnswerBean;
  */
 public interface AnswerDaoInf {
 	
-	//根据id得到标签信息
+	//根据id得到问题信息
     AnswerBean getAnswerByAnswerId(int answer_id);
     
     //根据标回答描述得到回答信息
-    List<AnswerBean> getAnswerByAnswerName(String answer_description);
+    List<AnswerBean> getAnswerByAnswerDescription(String answer_description);
     
     //新增回答信息
     boolean addAnswer(AnswerBean answerBean);
@@ -29,4 +29,6 @@ public interface AnswerDaoInf {
     
     //统计回答总数
     int getContOfAnswer();
+    //获得热门问题
+    List<AnswerBean> getHotAnswers();
 }

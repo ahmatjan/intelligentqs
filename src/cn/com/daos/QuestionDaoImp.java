@@ -2,14 +2,15 @@ package cn.com.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.com.beans.QuestionBean;
-import cn.com.beans.UserInfoBean;
 import cn.com.db.DBUtil;
 import cn.com.interfaces.QuestionDaoInf;
-import cn.com.interfaces.UserInfoDaoInf;
 
 /**
  * @author Friday
@@ -25,21 +26,103 @@ public class QuestionDaoImp implements QuestionDaoInf {
 
 	// 根据id得到问题信息
 	public QuestionBean getQuestionByQuestionId(int question_id) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		QuestionBean qb = new QuestionBean();
+		String sql = "select *from question  where question_id=?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, question_id);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				qb.setQuestion_id(rs.getInt("question_id"));
+				qb.setQuestion_title(rs.getString("question_title"));
+				qb.setQuestion_description(rs.getString("question_description"));
+				qb.setQuestion_time(rs.getString("question_time"));
+				qb.setQuestion_user_id(rs.getInt("question_user_id"));
+				qb.setQuestion_mark(rs.getInt("question_mark"));
+				qb.setQuestion_tags(rs.getString("question_tags"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
+		}
+		return qb;
 	}
 
 	// 根据标问题题目得到问题信息
 	public List<QuestionBean> getQuestionByQuestionName(String question_title) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		List<QuestionBean> list = null;
+		QuestionBean qb = null;
+		String sql = "select * from question where question_title like ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, "%" + question_title + "%");
+			rs = pst.executeQuery();
+			if (rs != null) {
+				list = new ArrayList<QuestionBean>();
+				while (rs.next()) {
+					qb = new QuestionBean();
+					qb.setQuestion_id(rs.getInt("question_id"));
+					qb.setQuestion_title(rs.getString("question_title"));
+					qb.setQuestion_description(rs
+							.getString("question_description"));
+					qb.setQuestion_time(rs.getString("question_time"));
+					qb.setQuestion_user_id(rs.getInt("question_user_id"));
+					qb.setQuestion_mark(rs.getInt("question_mark"));
+					qb.setQuestion_tags(rs.getString("question_tags"));
+					list.add(qb);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
+		}
+		return list;
 	}
 
 	// 根据标问题内容得到问题信息
 	public List<QuestionBean> getQuestionByQuestionDescription(
 			String question_description) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		List<QuestionBean> list = null;
+		QuestionBean qb = null;
+		String sql = "select * from question where question_description like ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, "%" + question_description + "%");
+			rs = pst.executeQuery();
+			if (rs != null) {
+				list = new ArrayList<QuestionBean>();
+				while (rs.next()) {
+					qb = new QuestionBean();
+					qb.setQuestion_id(rs.getInt("question_id"));
+					qb.setQuestion_title(rs.getString("question_title"));
+					qb.setQuestion_description(rs
+							.getString("question_description"));
+					qb.setQuestion_time(rs.getString("question_time"));
+					qb.setQuestion_user_id(rs.getInt("question_user_id"));
+					qb.setQuestion_mark(rs.getInt("question_mark"));
+					qb.setQuestion_tags(rs.getString("question_tags"));
+					list.add(qb);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
+		}
+		return list;
 	}
 
 	// 新增问题信息
@@ -48,11 +131,9 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		boolean bool = false;
 		Connection connection = db.getConn();
 		PreparedStatement pstm = null;
-
 		try {
 			String sql = "Insert into question (question_title,question_description,question_time,question_mark,question_user_id,question_tags) values(?,?,?,?,?,?)";
 			pstm = connection.prepareStatement(sql);
-
 			pstm.setString(1, questionBean.getQuestion_title());
 			pstm.setString(2, questionBean.getQuestion_description());
 			pstm.setString(3, questionBean.getQuestion_time());
@@ -63,33 +144,86 @@ public class QuestionDaoImp implements QuestionDaoInf {
 			if (len > 0) {
 				bool = true;
 			}
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			db.free(pstm, connection);
 		}
-
 		return bool;
 	}
 
 	// 删除问题信息
 	public boolean deleteQuestion(int question_id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean bool = false;
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		try {
+			String sql = "delete from question where question_id = ?";
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, question_id);
+			int len = pst.executeUpdate();
+			if (len > 0) {
+				bool = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(pst, conn);
+		}
+		return bool;
 	}
 
 	// 修改问题信息
 	public boolean updateQuestion(QuestionBean questionBean) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean bool = false;
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		try {
+			String sql = "update question set question_title = ?,question_description = ?,question_time = ?,question_mark = ?,question_user_id = ?,question_tags = ?";
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, questionBean.getQuestion_title());
+			pst.setString(2, questionBean.getQuestion_description());
+			pst.setString(3, questionBean.getQuestion_time());
+			pst.setInt(4, questionBean.getQuestion_mark());
+			pst.setInt(5, questionBean.getQuestion_user_id());
+			pst.setString(6, questionBean.getQuestion_tags());
+			int len = pst.executeUpdate();
+			if (len > 0) {
+				bool = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(pst, conn);
+		}
+		return bool;
 	}
 
 	// 统计问题总数
 	public int getContOfQuestion() {
-		// TODO Auto-generated method stub
-		return 0;
+		int count = 0;
+		Connection conn = db.getConn();
+		Statement st = null;
+		ResultSet rs = null;
+		String sql = "select * from question";
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			if (rs != null) {
+				while (rs.next()) {
+					count = count + 1;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, st, conn);
+		}
+		return count;
 	}
 
 }

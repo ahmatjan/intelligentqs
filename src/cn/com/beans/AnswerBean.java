@@ -17,7 +17,7 @@ public class AnswerBean {
 	//提问用户编号
 	private int answer_user_id;
 	//所属问题编号
-	private int question__id;
+	private int question_id;
 	//是否为最佳答案
 	private int answer_best;
 	
@@ -52,11 +52,11 @@ public class AnswerBean {
 	public void setAnswer_user_id(int answer_user_id) {
 		this.answer_user_id = answer_user_id;
 	}
-	public int getQuestion__id() {
-		return question__id;
+	public int getQuestion_id() {
+		return question_id;
 	}
 	public void setQuestion__id(int question__id) {
-		this.question__id = question__id;
+		this.question_id = question_id;
 	}
 	public int getAnswer_best() {
 		return answer_best;
