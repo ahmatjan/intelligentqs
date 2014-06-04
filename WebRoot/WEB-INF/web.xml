@@ -50,6 +50,22 @@
     <servlet-name>DleteAnswerServlet</servlet-name>
     <servlet-class>cn.com.servlets.answer.DleteAnswerServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>cn.com.servlets.index.IndexServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DisscussQuestionServlet</servlet-name>
+    <servlet-class>cn.com.servlets.index.DisscussQuestionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetHotQuestionsServlet</servlet-name>
+    <servlet-class>cn.com.servlets.question.GetHotQuestionsServlet</servlet-class>
+  </servlet>
+
+
+
+
 
 
 
@@ -85,7 +101,20 @@
     <servlet-name>AskQuestionServlet</servlet-name>
     <url-pattern>/askQuestionServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DisscussQuestionServlet</servlet-name>
+    <url-pattern>/disscussQuestion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetHotQuestionsServlet</servlet-name>
+    <url-pattern>/getHotQuestions</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
+    <welcome-file>index</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

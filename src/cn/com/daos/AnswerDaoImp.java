@@ -194,16 +194,17 @@ public class AnswerDaoImp implements AnswerDaoInf{
 		}
 		return bool;
 	}
-	//统计回答总数
-	public int getContOfAnswer() {
+	//统计某个问题回答总数
+	public int getContOfAnswer(int questionId) {
 		int tagsCount = 0;
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
 
-			String sql = "select count(*) totalCount from answer";
+			String sql = "select count(*) totalCount from answer where question_id = ?";
 			pst = conn.prepareStatement(sql);
+			pst.setInt(1, questionId);
 			rs = pst.executeQuery();
 			while(rs.next()){
 				tagsCount = rs.getInt("totalCount");
@@ -218,7 +219,7 @@ public class AnswerDaoImp implements AnswerDaoInf{
 		return tagsCount;
 	}
 	//获得热门问题
-	public List<AnswerBean> getHotAnswers() {
+	public List<AnswerBean> getHotAnswersByAnswerId(int answerId) {
 		List<AnswerBean> listAnswerBeans = new ArrayList<AnswerBean>();
 		AnswerBean answerBean = null;
 		Connection con = db.getConn();
@@ -247,5 +248,28 @@ public class AnswerDaoImp implements AnswerDaoInf{
 		}
 		return listAnswerBeans;
 	}
+	
+	//获得已解决的问题
+		public int getContOfsolution() {
+			int tagsCount = 0;
+			Connection conn = db.getConn();
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+			try {
 
+				String sql = "select count(*) totalCount from answer where answer_best = 1";
+				pst = conn.prepareStatement(sql);
+				rs = pst.executeQuery();
+				while(rs.next()){
+					tagsCount = rs.getInt("totalCount");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				db.free(pst, conn);
+
+			}
+			return tagsCount;
+		}
 }

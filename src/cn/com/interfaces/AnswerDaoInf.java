@@ -27,8 +27,8 @@ public interface AnswerDaoInf {
     //修改回答信息
     boolean updateAnswer(AnswerBean answerBean);
     
-    //统计回答总数
-    int getContOfAnswer();
+    //统计某个问题回答总数
+  	int getContOfAnswer(int questionId);
     //获得热门问题
-    List<AnswerBean> getHotAnswers();
+    List<AnswerBean> getHotAnswersByAnswerId(int answerId);
 }

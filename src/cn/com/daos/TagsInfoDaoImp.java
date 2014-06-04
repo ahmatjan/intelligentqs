@@ -203,7 +203,28 @@ public class TagsInfoDaoImp implements TagsInfoDaoInf{
 	
 	//获得热门标签
 	public List<TagsInfoBean> getHotTags() {
-		return null;
+		   List<TagsInfoBean> listTagBeans = new ArrayList<TagsInfoBean>();
+			TagsInfoBean tagBean = null;
+			Connection con = db.getConn();
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+			String sql= "select * from tags_info";
+			try {
+				pst = con.prepareStatement(sql);
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					tagBean = new TagsInfoBean();
+					tagBean.setTags_id(rs.getInt("tag_id"));
+					tagBean.setTags_name(rs.getString("tag_name"));
+					listTagBeans.add(tagBean);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				db.free(rs, pst, con);
+			}
+			return listTagBeans;
 	}
 
 }

@@ -37,7 +37,7 @@ public class GetHotAnswersInfoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		AnswerDaoImp answerDaoImp = new AnswerDaoImp();
-		List<AnswerBean> listAnswersInfo = answerDaoImp.getHotAnswers();
+		List<AnswerBean> listAnswersInfo = answerDaoImp.getHotAnswersByAnswerId(0);
 		request.setAttribute("hotAnswers", listAnswersInfo);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		//response.sendRedirect("index.jsp");
