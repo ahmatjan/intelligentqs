@@ -70,13 +70,13 @@
             <div class="col-lg-9">
                 <div class="bs-example bs-example-tabs">
                   <ul id="myTab" class="nav nav-tabs nav-right">
-                    <li class=""><a href="#hot" data-toggle="tab">Hot</a></li>
-                    <li class="active">
-                      <a href="#new" data-toggle="tab">New &nbsp;<span class="badge">42</span></a>
+                    <li href="#hot" class=""><a href="#" data-toggle="tab">Hot</a></li>
+                    <li href="#new" class="active">
+                      <a href="#" data-toggle="tab">New &nbsp;<span class="badge">42</span></a>
                     </li>
                   </ul>
                   <script type="text/javascript">
-                    $('#myTab a').click(function (e) {
+                    $('#myTab li').click(function (e) {
                       e.preventDefault()
                       $(this).tab('show')
                     })
