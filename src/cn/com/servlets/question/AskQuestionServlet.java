@@ -33,11 +33,10 @@ public class AskQuestionServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String question_title = request.getParameter("question_title");
-		String question_description = request
-				.getParameter("question_description");
+		String question_description = request.getParameter("question_description");
 		String question_tags = request.getParameter("question_tags");
 		HttpSession session = request.getSession();
-		int question_user_id = ((UserInfoBean)session.getAttribute("userBean")).getUser_id();
+		int question_user_id = 0;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//设置日期格式
 		String question_time = sdf.format(new Date());
 		int question_mark = 0;
@@ -50,7 +49,7 @@ public class AskQuestionServlet extends HttpServlet {
 		questionBean.setQuestion_mark(question_mark);
 		QuestionDaoImp questionDao = new QuestionDaoImp();
 		questionDao.addQuestion(questionBean);
-		request.getRequestDispatcher("main.jsp").forward(request, response);
+		request.getRequestDispatcher("index").forward(request, response);
 	}
 
 }

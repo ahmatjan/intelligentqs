@@ -275,13 +275,13 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		Connection conn = db.getConn();
 		Statement st = null;
 		ResultSet rs = null;
-		String sql = "select * from user_info";
+		String sql = "select count(*) totalUser from user_info";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			if (rs != null) {
 				while (rs.next()) {
-					count = count + 1;
+					count = rs.getInt("totalUser");
 				}
 			}
 		} catch (SQLException e) {

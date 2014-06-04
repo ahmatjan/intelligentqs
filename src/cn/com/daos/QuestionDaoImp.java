@@ -208,13 +208,13 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		Connection conn = db.getConn();
 		Statement st = null;
 		ResultSet rs = null;
-		String sql = "select * from question";
+		String sql = "select count(*) totalQuestion from question";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			if (rs != null) {
 				while (rs.next()) {
-					count = count + 1;
+					count = rs.getInt("totalQuestion");
 				}
 			}
 		} catch (SQLException e) {
@@ -224,6 +224,78 @@ public class QuestionDaoImp implements QuestionDaoInf {
 			db.free(rs, st, conn);
 		}
 		return count;
+	}
+	
+	//获得热门问题
+	public List<QuestionBean> getHotQuestions() {
+			Connection conn = db.getConn();
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+			List<QuestionBean> list = null;
+			QuestionBean qb = null;
+			String sql = "select * from question order by question_mark desc";
+			try {
+				pst = conn.prepareStatement(sql);
+				rs = pst.executeQuery();
+				if (rs != null) {
+					list = new ArrayList<QuestionBean>();
+					while (rs.next()) {
+						qb = new QuestionBean();
+						qb.setQuestion_id(rs.getInt("question_id"));
+						qb.setQuestion_title(rs.getString("question_title"));
+						qb.setQuestion_description(rs
+								.getString("question_description"));
+						qb.setQuestion_time(rs.getString("question_time"));
+						qb.setQuestion_user_id(rs.getInt("question_user_id"));
+						qb.setQuestion_mark(rs.getInt("question_mark"));
+						qb.setQuestion_tags(rs.getString("question_tags"));
+						list.add(qb);
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				db.free(rs, pst, conn);
+			}
+			return list;
+		}
+	
+	//获得所有问题
+	public List<QuestionBean> getAllQuestions(int row, int countPage) {
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		List<QuestionBean> list = null;
+		QuestionBean qb = null;
+		String sql = "select * from question order by question_id desc limit ?,? ";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, row);
+			pst.setInt(2, countPage);
+			rs = pst.executeQuery();
+			if (rs != null) {
+				list = new ArrayList<QuestionBean>();
+				while (rs.next()) {
+					qb = new QuestionBean();
+					qb.setQuestion_id(rs.getInt("question_id"));
+					qb.setQuestion_title(rs.getString("question_title"));
+					qb.setQuestion_description(rs
+							.getString("question_description"));
+					qb.setQuestion_time(rs.getString("question_time"));
+					qb.setQuestion_user_id(rs.getInt("question_user_id"));
+					qb.setQuestion_mark(rs.getInt("question_mark"));
+					qb.setQuestion_tags(rs.getString("question_tags"));
+					list.add(qb);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
+		}
+		return list;
 	}
 
 }

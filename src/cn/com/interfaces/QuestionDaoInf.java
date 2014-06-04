@@ -28,4 +28,10 @@ public interface QuestionDaoInf {
     
     //统计问题总数
     int getContOfQuestion();
+    
+    //获得热门问题
+    List<QuestionBean> getHotQuestions();
+    
+  //获得所有问题
+    List<QuestionBean> getAllQuestions(int row, int countPage);
 }
