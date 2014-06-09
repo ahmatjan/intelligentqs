@@ -33,7 +33,7 @@
                 <form class="navbar-form navbar-left" role="search">
                 <div class="input-group ">
                   <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"> Qa </button>
+                    <button class="btn btn-default" type="button"> Question </button>
                   </span>
                   <input type="text" class="form-control">
                 </div><!-- /input-group -->
@@ -68,66 +68,15 @@
 
     <!-- left-->
             <div class="col-lg-9">
-                <div class="row">
-            <!-- person-->
-                  <div class="col-md-7"> 
-                       <div class="row fix-margin-top">
-                        
-                          <div class="col-md-4">
-                            <img src="./static/image/git.png" alt="" class="info-img img-thumbnail">
-                          </div>
-                          
-                          <div class="col-md-8 ">
-                            <div class="info info-margin-left">
-                              <span class="glyphicon glyphicon-envelope info-link"> <a href="">bniuyc@gmail.com</a></span>
-                              <span class="glyphicon glyphicon-link info-link"> <a href="">http://jli.me</a></span>
-                            </div>
-                            <div class="fix-margin-top">
-                              <a type="button" class="btn btn-default a-float-left border-0">
-                                <span class="glyphicon glyphicon-star"></span> 关注 999
-                              </a>
-                              <a type="button" class="btn btn-default a-float-left border-0">
-                                <span class="glyphicon glyphicon-user"></span> 粉丝 999
-                              </a>
-                              <a type="button" class="btn btn-default a-float-left border-0">
-                                <span class="glyphicon glyphicon-bookmark"></span> 收藏 999
-                              </a>
-                            </div>
-                          </div>
-                       </div>
-                  </div>
-             <!-- person -->
-
-                 <!-- person-->
-                       <div class="col-md-5">
-                       <!-- person edit-->
-                        <div class="row fix-margin-top">
-                          <div class="col-md-12">
-                               <div class="panel panel-default">
-                                  <div class="panel-heading">
-                                    <a href="#" class="panel-title pull-right border-0">Edit</a>
-                                    <h3 class="panel-title">个人信息</h3>
-                                  </div>
-                                  <div class="panel-body">
-                                    随便写点什么
-                                  </div>
-                                </div>
-                          </div>
-                        </div>
-                        <!-- person edit-->                  
-                       </div>
-              <!-- person-->
-                </div>
-
-                <div class="bs-example bs-example-tabs fix-margin-top ">
+                <div class="bs-example bs-example-tabs">
                   <ul id="myTab" class="nav nav-tabs nav-right">
-                    <li class=""><a href="#hot" data-toggle="tab">我的回答</a></li>
-                    <li class="active">
-                      <a href="#new" data-toggle="tab">我的提问 &nbsp;<span class="badge">42</span></a>
+                    <li href="#hot" class=""><a href="#" data-toggle="tab">Hot</a></li>
+                    <li href="#new" class="active">
+                      <a href="#" data-toggle="tab">New &nbsp;<span class="badge">42</span></a>
                     </li>
                   </ul>
                   <script type="text/javascript">
-                    $('#myTab a').click(function (e) {
+                    $('#myTab li').click(function (e) {
                       e.preventDefault()
                       $(this).tab('show')
                     })
@@ -196,16 +145,125 @@
                             <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
                         </div>
                       </li>
+                      <!--  content list end-->
 
-                        <ul class="pagination">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                      </ul>
+                      <!--  content list -->
+                      <li class="row">
+                        <div class="col-md-2">
+                          <div class="btn btn-primary btn-lg active">
+                            <span class="glyphicon glyphicon-comment"></span> 15
+                            <br>
+                          </div>
+                        </div>
+
+                        <div class="col-md-8 qa-margin-left">
+                            <p><a href="">tell me why!!!!!!!!!!!!!!</a></p>
+                            <div class="qa-tags">
+                              <span class="glyphicon glyphicon-tags"> </span> 
+                              <a href="#"><span class="badge">linux</span></a>
+                              <a href="#"><span class="badge">java</span></a>
+                              &nbsp;&nbsp;
+                              <span class="glyphicon glyphicon-eye-open"> </span> 
+                              <span class="badge">690 K</span>
+                              &nbsp;&nbsp;
+                              <span class="glyphicon glyphicon-time"> </span> 
+                              <span class="badge">1 days ago</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                        </div>
+                      </li>
+                      <!--  content list end-->
+                      <!--  content list -->
+                      <li class="row">
+                        <div class="col-md-2">
+                          <div class="btn btn-primary btn-lg active">
+                            <span class="glyphicon glyphicon-comment"></span> 15
+                            <br>
+                          </div>
+                        </div>
+
+                        <div class="col-md-8 qa-margin-left">
+                            <p><a href="">tell me why!!!!!!!!!!!!!!</a></p>
+                            <div class="qa-tags">
+                              <span class="glyphicon glyphicon-tags"> </span> 
+                              <a href="#"><span class="badge">linux</span></a>
+                              <a href="#"><span class="badge">java</span></a>
+                              &nbsp;&nbsp;
+                              <span class="glyphicon glyphicon-eye-open"> </span> 
+                              <span class="badge">690 K</span>
+                              &nbsp;&nbsp;
+                              <span class="glyphicon glyphicon-time"> </span> 
+                              <span class="badge">1 days ago</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                        </div>
+                      </li>
+                      <!--  content list end-->
+
+                      <!--  content list -->
+                      <li class="row">
+                        <div class="col-md-2">
+                          <div class="btn btn-primary btn-lg active">
+                            <span class="glyphicon glyphicon-comment"></span> 15
+                            <br>
+                          </div>
+                        </div>
+
+                        <div class="col-md-8 qa-margin-left">
+                            <p><a href="">tell me why!!!!!!!!!!!!!!</a></p>
+                            <div class="qa-tags">
+                              <span class="glyphicon glyphicon-tags"> </span> 
+                              <a href="#"><span class="badge">linux</span></a>
+                              <a href="#"><span class="badge">java</span></a>
+                              &nbsp;&nbsp;
+                              <span class="glyphicon glyphicon-eye-open"> </span> 
+                              <span class="badge">690 K</span>
+                              &nbsp;&nbsp;
+                              <span class="glyphicon glyphicon-time"> </span> 
+                              <span class="badge">1 days ago</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                        </div>
+                      </li>
+                      <!--  content list end-->
+
+                      <!--  content list -->
+                      <li class="row">
+                        <div class="col-md-2">
+                          <div class="btn btn-primary btn-lg active">
+                            <span class="glyphicon glyphicon-comment"></span> 15
+                            <br>
+                          </div>
+                        </div>
+
+                        <div class="col-md-8 qa-margin-left">
+                            <p><a href="">tell me why!!!!!!!!!!!!!!</a></p>
+                            <div class="qa-tags">
+                              <span class="glyphicon glyphicon-tags"> </span> 
+                              <a href="#"><span class="badge">linux</span></a>
+                              <a href="#"><span class="badge">java</span></a>
+                              &nbsp;&nbsp;
+                              <span class="glyphicon glyphicon-eye-open"> </span> 
+                              <span class="badge">690 K</span>
+                              &nbsp;&nbsp;
+                              <span class="glyphicon glyphicon-time"> </span> 
+                              <span class="badge">1 days ago</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                        </div>
+                      </li>
                       <!--  content list end-->
 
                      </ul>
@@ -214,6 +272,7 @@
                     <div class="tab-pane fade" id="hot">
                       
                       <ul class="qa-list">
+
                        <!--  content list -->
                       <li class="row">
                         <div class="col-md-2">
@@ -272,15 +331,6 @@
                             <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
                         </div>
                       </li>
-                      <ul class="pagination">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                      </ul>
                       <!--  content list end-->
 
                     </ul>
@@ -293,14 +343,52 @@
 
     <!-- right-->
             <div class="col-lg-3">
-             
-              <!-- mark-->
-                <div class="row follow">
-                  <div class="col-md-12">
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="#">Tags</a></li>
-                      </ul>
+              <!-- ask-->
+               <button type="button" class="btn btn-primary btn-lg btn-block  ask">Ask</button>
+              <!-- ask-->
+               
+                  <!-- person-->
+                 <div class="row fix-margin-top">
+                  
+                    <div class="col-md-7">
+                      <img src="./static/image/git.png" alt="" class="head-img img-thumbnail">
+                    </div>
                     
+                    <div class="col-md-5 follow">
+                      <a type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-star"></span> 关注 999
+                      </a>
+                      <a type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-user"></span> 粉丝 999
+                      </a>
+                      <a type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-bookmark"></span> 收藏 999
+                      </a>
+                    </div>
+
+                 </div>
+                 <!-- person -->
+
+
+                 <!-- person edit-->
+                <div class="row fix-margin-top">
+                  <div class="col-md-12">
+                       <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <a href="#" class="panel-title pull-right border-0">Edit</a>
+                            <h3 class="panel-title">个人信息</h3>
+                          </div>
+                          <div class="panel-body">
+                            随便写点什么
+                          </div>
+                        </div>
+                  </div>
+                </div>
+                <!-- person edit-->
+
+                <!-- mark-->
+                <div class="row">
+                  <div class="col-md-12">
                     <span class="mark-p label label-default">Default</span>
                     <span class="mark-p label label-default">Default Default</span>
                     <span class="mark-p label label-default">Default</span>
@@ -309,7 +397,6 @@
                   </div>
                 </div>
                 <!-- mark -->
-                <img src="./static/image/ex.png" alt="..." class="img-thumbnail fix-margin-top">
 
             </div>  
     <!-- right-->
@@ -322,8 +409,8 @@
     <!-- foot-->
     <div class="foot">
       <div class="container">
-        <p>Power by <a href="">nxhnust</a></p>
-        <p>Current version  0.0.1 </p>
+      	<p></p>
+        <p>Power by nxhnust Current version  0.0.1 </p>
       </div>
     </div>
 
