@@ -10,12 +10,17 @@
 	margin-bottom: 0px;
 	background-color: #3276b1;
 }
+.hr-header {
+	margin-top: 0px;
+	border-top: 1.5px solid #ededed;
+}
 .hr-comment {
 	border-top: 2px dotted #ededed;
 	margin-top: 5px;
+	margin-bottom: 10px;
 }
-.hr-header {
-	margin-top: 0px;
+.hr-aside {
+	margin-bottom: 10px;
 	border-top: 1.5px solid #ededed;
 }
 
@@ -116,4 +121,68 @@
 }
 foot .container p a {
 	color: #ffffff;
+}
+.answer ul {
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+.answer ul li {
+	
+}
+.answer ul li h3 {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+.related-list ul li{
+	margin-top: 3px;
+	padding-bottom: 3px;
+}
+
+
+
+.i-feed,.i-google,.i-twitter,.i-github,.i-weibo,.i-facebook,.i-qq,.i-renren,.i-douban,.i-taobao,
+.i-linkedin,.i-tqq {
+	width: 16px;
+	height: 16px;
+	background: url('../image/icon-s052f1c03ec.png');
+	text-align: left;
+	text-indent: -9999em;
+	display: inline-block;
+	vertical-align: text-bottom
+}
+.i-feed {
+	background-position: 0 -240px
+}
+.i-google {
+	background-position: 0 -340px
+}
+.i-twitter {
+	background-position: 0 -324px
+}
+.i-github {
+	background-position: 0 -184px
+}
+.i-weibo {
+	background-position: 0 -200px
+}
+.i-facebook {
+	background-position: 0 -494px
+}
+.i-qq {
+	background-position: 0 -120px
+}
+.i-renren {
+	background-position: 0 -418px
+}
+.i-douban {
+	background-position: 0 -402px
+}
+.i-taobao {
+	background-position: 0 -448px
+}
+.i-linkedin {
+	background-position: 0 -478px
+}
+.i-tqq {
+	background-position: 0 -308px
 }
