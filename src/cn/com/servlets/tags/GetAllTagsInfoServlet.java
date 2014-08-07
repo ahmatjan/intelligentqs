@@ -34,7 +34,7 @@ public class GetAllTagsInfoServlet extends HttpServlet {
 		TagsInfoDaoImp tagsInfoDaoImp = new TagsInfoDaoImp();
 		List<TagsInfoBean> list = tagsInfoDaoImp.getAllTagsInfo();
 		request.setAttribute("tagsInfoList", list);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("question_ask.jsp").forward(request, response);
 	
 	}
 

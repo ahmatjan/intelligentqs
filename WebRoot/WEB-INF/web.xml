@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-  <display-name></display-name>	
-   <filter>
-  		<filter-name>char</filter-name>
-  		<filter-class>cn.com.flters.CharSetFilter</filter-class>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name></display-name>
+  <listener>
+    <listener-class>cn.com.config.ApiInitListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>char</filter-name>
+    <filter-class>cn.com.flters.CharSetFilter</filter-class>
   </filter>
-  
   <filter-mapping>
-  		<filter-name>char</filter-name>
-  		<url-pattern>/*</url-pattern>
+    <filter-name>char</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>cn.com.servlets.user.LoginServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>AskQuestionServlet</servlet-name>
     <servlet-class>cn.com.servlets.question.AskQuestionServlet</servlet-class>
   </servlet>
@@ -62,14 +56,43 @@
     <servlet-name>GetHotQuestionsServlet</servlet-name>
     <servlet-class>cn.com.servlets.question.GetHotQuestionsServlet</servlet-class>
   </servlet>
-
-
-
-
-
-
-
-<servlet-mapping>
+  <servlet>
+    <servlet-name>GetDetilQuestion</servlet-name>
+    <servlet-class>cn.com.servlets.question.GetDetilQuestion</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>cn.com.servlets.user.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserLogOffServlet</servlet-name>
+    <servlet-class>cn.com.servlets.user.UserLogOffServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdatePasswordServlet</servlet-name>
+    <servlet-class>cn.com.servlets.user.UpdatePasswordServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserLogoUploadServlet</servlet-name>
+    <servlet-class>cn.com.servlets.user.UserLogoUploadServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetPersionInfoServlet</servlet-name>
+    <servlet-class>cn.com.servlets.user.GetPersionInfoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DisscussPerson</servlet-name>
+    <servlet-class>cn.com.servlets.user.DiscussPerson</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchQuestionServlet</servlet-name>
+    <servlet-class>cn.com.servlets.question.SearchQuestionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AuthImg</servlet-name>
+    <servlet-class>cn.com.servlets.user.AuthImg</servlet-class>
+  </servlet>
+  <servlet-mapping>
     <servlet-name>GetAllTagsInfoServlet</servlet-name>
     <url-pattern>/getAllTagsInfo</url-pattern>
   </servlet-mapping>
@@ -113,8 +136,112 @@
     <servlet-name>GetHotQuestionsServlet</servlet-name>
     <url-pattern>/getHotQuestions</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetDetilQuestion</servlet-name>
+    <url-pattern>/getDetilQuestion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/registerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserLogOffServlet</servlet-name>
+    <url-pattern>/userLogOffServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdatePasswordServlet</servlet-name>
+    <url-pattern>/updatePasswordServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserLogoUploadServlet</servlet-name>
+    <url-pattern>/userLogoUploadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetPersionInfoServlet</servlet-name>
+    <url-pattern>/GetPersionInfoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DisscussPerson</servlet-name>
+    <url-pattern>/disscussPerson</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchQuestionServlet</servlet-name>
+    <url-pattern>/searchQuestion</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>AddDiscussServlet</display-name>
+    <servlet-name>AddDiscussServlet</servlet-name>
+    <servlet-class>cn.com.servlets.discuss.AddDiscussServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddDiscussServlet</servlet-name>
+    <url-pattern>/AddDiscussServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>getListDiscussServlet</display-name>
+    <servlet-name>getListDiscussServlet</servlet-name>
+    <servlet-class>cn.com.servlets.discuss.getListDiscussServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getListDiscussServlet</servlet-name>
+    <url-pattern>/getListDiscussServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AuthImg</servlet-name>
+    <url-pattern>/authImg</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetUserPassword</display-name>
+    <servlet-name>GetUserPassword</servlet-name>
+    <servlet-class>cn.com.servlets.user.GetUserPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetUserPassword</servlet-name>
+    <url-pattern>/getPassword</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RenrenLoginServlet</servlet-name>
+    <servlet-class>cn.com.servlets.user.RenrenLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RenrenLoginServlet</servlet-name>
+    <url-pattern>/rr_login</url-pattern>
+    
+    
+    
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>praise</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Praise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>praise</servlet-name>
+    <url-pattern>/praise</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>praises</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Praises</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>praises</servlet-name>
+    <url-pattern>/praises</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>tread</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Tread</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>tread</servlet-name>
+    <url-pattern>/tread</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

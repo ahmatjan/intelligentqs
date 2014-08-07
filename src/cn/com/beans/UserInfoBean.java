@@ -17,7 +17,8 @@ public class UserInfoBean {
 	private int user_mark = 0;
 	//兴趣标签（最多五个）
 	private String user_tags;
-	
+	//用户头像地址
+	private String user_logo;
 	//对应的Get、Set方法
 	public int getUser_id() {
 		return user_id;
@@ -55,4 +56,11 @@ public class UserInfoBean {
 	public void setUser_tags(String user_tags) {
 		this.user_tags = user_tags;
 	}
+	public String getUser_logo() {
+		return user_logo;
+	}
+	public void setUser_logo(String user_logo) {
+		this.user_logo = user_logo;
+	}
+	
 }

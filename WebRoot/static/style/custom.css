@@ -10,7 +10,9 @@
 	margin-bottom: 0px;
 	background-color: #3276b1;
 }
-
+.hr-comment {
+	border-top: 2px dotted #ededed;
+}
 .hr-header {
 	margin-top: 0px;
 	border-top: 1.5px solid #ededed;
@@ -18,8 +20,8 @@
 
 .nav-right > li {
 	padding: 0px 2px 0px 0px;
-  float: right;
-  margin-bottom: -1px;
+	float: right;
+	margin-bottom: -1px;
 }
 
 .qa-list {

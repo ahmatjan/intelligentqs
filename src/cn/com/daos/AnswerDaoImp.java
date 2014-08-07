@@ -9,8 +9,8 @@ import java.util.List;
 
 import cn.com.beans.AnswerBean;
 import cn.com.beans.TagsInfoBean;
-import cn.com.db.DBUtil;
 import cn.com.interfaces.AnswerDaoInf;
+import cn.com.util.DBUtil;
 
 /**
  * @author Xianxiaofei
@@ -42,7 +42,7 @@ public class AnswerDaoImp implements AnswerDaoInf{
 				answerBean.setAnswer_time(rs.getString("answer_time"));
 				answerBean.setAnswer_mark(rs.getInt("answer_mark"));
 				answerBean.setAnswer_user_id(rs.getInt("answer_user_id"));
-				answerBean.setQuestion__id(rs.getInt("question_id"));
+				answerBean.setQuestion_id(rs.getInt("question_id"));
 				answerBean.setAnswer_best(rs.getInt("answer_best"));
 			}
 		} catch (SQLException e) {
@@ -51,7 +51,7 @@ public class AnswerDaoImp implements AnswerDaoInf{
 		}finally{
 			db.free(rs, pst, con);
 		}
-		return answerBean;
+		return answerBean;					
 
 	}
 	//根据标回答描述得到回答信息
@@ -73,7 +73,7 @@ public class AnswerDaoImp implements AnswerDaoInf{
 				answerBean.setAnswer_time(rs.getString("answer_time"));
 				answerBean.setAnswer_mark(rs.getInt("answer_mark"));
 				answerBean.setAnswer_user_id(rs.getInt("answer_user_id"));
-				answerBean.setQuestion__id(rs.getInt("question_id"));
+				answerBean.setQuestion_id(rs.getInt("question_id"));
 				answerBean.setAnswer_best(rs.getInt("answer_best"));
 				listAnswerBeans.add(answerBean);
 			}
@@ -142,10 +142,10 @@ public class AnswerDaoImp implements AnswerDaoInf{
 		Connection con = db.getConn();
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		String sql= "select * from answer where answer_description = ?";
+		String sql= "select * from answer where answer_description like ?";
 		try {
 			pst = con.prepareStatement(sql);
-			pst.setString(1, answer_name);
+			pst.setString(1, "%"+answer_name+"%");
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				answerBean = new AnswerBean();
@@ -154,7 +154,7 @@ public class AnswerDaoImp implements AnswerDaoInf{
 				answerBean.setAnswer_time(rs.getString("answer_time"));
 				answerBean.setAnswer_mark(rs.getInt("answer_mark"));
 				answerBean.setAnswer_user_id(rs.getInt("answer_user_id"));
-				answerBean.setQuestion__id(rs.getInt("answer_question_id"));
+				answerBean.setQuestion_id(rs.getInt("answer_question_id"));
 				answerBean.setAnswer_best(rs.getInt("answer_best"));
 				listAnswerBeans.add(answerBean);
 			}
@@ -236,7 +236,7 @@ public class AnswerDaoImp implements AnswerDaoInf{
 				answerBean.setAnswer_time(rs.getString("answer_time"));
 				answerBean.setAnswer_mark(rs.getInt("answer_mark"));
 				answerBean.setAnswer_user_id(rs.getInt("answer_user_id"));
-				answerBean.setQuestion__id(rs.getInt("question_id"));
+				answerBean.setQuestion_id(rs.getInt("question_id"));
 				answerBean.setAnswer_best(rs.getInt("answer_best"));
 				listAnswerBeans.add(answerBean);
 			}
@@ -257,7 +257,7 @@ public class AnswerDaoImp implements AnswerDaoInf{
 			ResultSet rs = null;
 			try {
 
-				String sql = "select count(*) totalCount from answer where answer_best = 1";
+				String sql = "select count(distinct  question_id) totalCount from answer";
 				pst = conn.prepareStatement(sql);
 				rs = pst.executeQuery();
 				while(rs.next()){
@@ -272,4 +272,102 @@ public class AnswerDaoImp implements AnswerDaoInf{
 			}
 			return tagsCount;
 		}
+		
+	//根据某个问题ID得到所有回答信息
+		//查找回答信息
+		public List<AnswerBean> findAnswerByQuestionId(int answer_question_id) {
+			List<AnswerBean> listAnswerBeans = new ArrayList<AnswerBean>();
+			AnswerBean answerBean = null;
+			Connection con = db.getConn();
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+			String sql= "select * from answer where question_id = ?";
+			try {
+				pst = con.prepareStatement(sql);
+				pst.setInt(1, answer_question_id);
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					answerBean = new AnswerBean();
+					answerBean.setAnswer_id(rs.getInt("answer_id"));
+					answerBean.setAnswer_description(rs.getString("answer_description"));
+					answerBean.setAnswer_time(rs.getString("answer_time"));
+					answerBean.setAnswer_mark(rs.getInt("answer_mark"));
+					answerBean.setAnswer_user_id(rs.getInt("answer_user_id"));
+					answerBean.setQuestion_id(rs.getInt("question_id"));
+					answerBean.setAnswer_best(rs.getInt("answer_best"));
+					listAnswerBeans.add(answerBean);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				db.free(rs, pst, con);
+			}
+			return listAnswerBeans;
+		}
+		
+	
+		//根据标回答描述得到回答信息
+		public List<AnswerBean> getAnswerByUserId(int userId) {
+			List<AnswerBean> listAnswerBeans = new ArrayList<AnswerBean>();
+			AnswerBean answerBean = null;
+			Connection con = db.getConn();
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+//			String sql= "select * from answer where answer_user_id = ?";
+			//开发时使用
+			String sql= "select * from answer";
+			try {
+				pst = con.prepareStatement(sql);
+//				pst.setInt(1, userId);
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					answerBean = new AnswerBean();
+					answerBean.setAnswer_id(rs.getInt("answer_id"));
+					answerBean.setAnswer_description(rs.getString("answer_description"));
+					answerBean.setAnswer_time(rs.getString("answer_time"));
+					answerBean.setAnswer_mark(rs.getInt("answer_mark"));
+					answerBean.setAnswer_user_id(rs.getInt("answer_user_id"));
+					answerBean.setQuestion_id(rs.getInt("question_id"));
+					answerBean.setAnswer_best(rs.getInt("answer_best"));
+					listAnswerBeans.add(answerBean);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				db.free(rs, pst, con);
+			}
+			return listAnswerBeans;
+		}
+		
+		//根据回答内容得到精确问题
+		public AnswerBean getAnswerByAnswerKeywords(String answer_description) {
+			AnswerBean answerBean = new AnswerBean();
+			Connection con = db.getConn();
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+			String sql= "select * from answer where answer_description = ?";
+			try {
+				pst = con.prepareStatement(sql);
+				pst.setString(1, answer_description);
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					answerBean.setAnswer_id(rs.getInt("answer_id"));
+					answerBean.setAnswer_description(rs.getString("answer_description"));
+					answerBean.setAnswer_time(rs.getString("answer_time"));
+					answerBean.setAnswer_mark(rs.getInt("answer_mark"));
+					answerBean.setAnswer_user_id(rs.getInt("answer_user_id"));
+					answerBean.setQuestion_id(rs.getInt("question_id"));
+					answerBean.setAnswer_best(rs.getInt("answer_best"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				db.free(rs, pst, con);
+			}
+			return answerBean;
+		}
+		
 }

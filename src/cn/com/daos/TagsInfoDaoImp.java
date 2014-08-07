@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.com.beans.TagsInfoBean;
-import cn.com.db.DBUtil;
 import cn.com.interfaces.TagsInfoDaoInf;
+import cn.com.util.DBUtil;
 
 /**
  * @author Xianxiaofei

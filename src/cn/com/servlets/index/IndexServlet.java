@@ -21,7 +21,7 @@ import cn.com.daos.UserInfoDaoImp;
 
 /**
  * @author Xianxiaofei
- * @date:2014-5-21 обнГ7:41:41
+ * @date:2014-5-21 О©╫О©╫О©╫О©╫7:41:41
  */
 public class IndexServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +36,7 @@ public class IndexServlet extends HttpServlet {
 		QuestionDaoImp questionDaoImp = new QuestionDaoImp();
 		AnswerDaoImp answerDaoImp = new AnswerDaoImp();
 		UserInfoDaoImp userInfoDaoImp = new UserInfoDaoImp();
-		//╣ц╣╫кЫспнйлБоЙо╦пео╒тзжВрЁотй╬
+		//О©╫ц╣О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╦О©╫О©╫о╒О©╫О©╫О©╫О©╫рЁО©╫О©╫й╬
 		List<QuestionAllInfoBean> listAllQuestions =new ArrayList<QuestionAllInfoBean>();
 		
 		QuestionAllInfoBean questionAllInfoBean = null;
@@ -45,23 +45,43 @@ public class IndexServlet extends HttpServlet {
 		List<QuestionBean> listAllQuestion = questionDaoImp.getAllQuestions(0,10);
 		List<TagsInfoBean> listTags = tagsInfoDaoImp.getHotTags();
 		
-		//╢╕юМ╣ц╣╫╣дкЫспнйлБпео╒
+		//О©╫О©╫О©╫О©╫ц╣О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╒
 		for(int i=0; i<listAllQuestion.size();i++){
 			questionAllInfoBean = new QuestionAllInfoBean();
 			questionBean = listAllQuestion.get(i);
+			
+			//О©╫ц╣О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╠О©╫г╘
+			String tagsId [] = null;
+			//System.out.println(questionBean.getQuestion_tags());
+			if(questionBean.getQuestion_tags()== null || questionBean.getQuestion_tags().indexOf(",")==-1){
+				//О©╫О©╫О©╫О©╫д╛О©╫О©╫н╙О©╫чёО©╫О©╫О©╫О©╫щ©О©╫с╕О©╫ц╡О©╫О©╫О©╫0н╙О©╫ч╠О©╫г╘О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫11с╕О©╫ц©О©╫О©╫т╦О©╫н╙0
+				
+			}else{
+				tagsId = questionBean.getQuestion_tags().split(",");
+				StringBuffer tagStrBuffer = new StringBuffer();
+				for(int i1=0; i1< tagsId.length;i1++){
+					int tagsIdInt = Integer.parseInt(tagsId[i1]);
+					String tagsStr = tagsInfoDaoImp.getTagsInfoByTagsId(tagsIdInt).getTags_name()+" ";
+					tagStrBuffer.append(tagsStr);
+				}
+				//О©╫О©╫О©╫ц╠О©╫г╘н╙О©╫О©╫О©╫О©╫О©╫О©╫й╬
+				questionBean.setQuestion_tags(tagStrBuffer.toString());
+			}
+			
+			
 			String userName = userInfoDaoImp.getUserInfoByUserId(questionBean.getQuestion_user_id()).getUser_name();
 			int countOfAnswer = answerDaoImp.getContOfAnswer(questionBean.getQuestion_id());
 			
 			questionAllInfoBean.setQuestionUserName(userName);
 			questionAllInfoBean.setCountOfAnswers(countOfAnswer);
 			questionAllInfoBean.setVpOfQuestion(50);
-			questionAllInfoBean.setBestAnswer("тщнч");
+			questionAllInfoBean.setBestAnswer("О©╫О©╫О©╫О©╫");
 			questionAllInfoBean.setQuestionBean(questionBean);
 			listAllQuestions.add(questionAllInfoBean);
 		}
 		
 		
-		//╥ж╠П╣ц╣╫нйлБё╛ря╫Б╬Жё╛сц╩╖вэйЩ
+		//О©╫ж╠О©╫ц╣О©╫О©╫О©╫О©╫Бё╛О©╫я╫О©╫О©╫О©╫О©╫О©╫ц╩О©╫О©╫О©╫О©╫О©╫
 		int totalOfQuestion = questionDaoImp.getContOfQuestion();
 		int countOfSolution = answerDaoImp.getContOfsolution();
 		int totalOfUser = userInfoDaoImp.getCountOfUser();
@@ -73,37 +93,63 @@ public class IndexServlet extends HttpServlet {
 		session.setAttribute("listTags", listTags);
 		
 		
-		//*****************╟Эн╖╣д╢ЗбК©ирти╬ЁЩсцGetHotServlet╫Б╬Ж**********************
+		//*****************О©╫О©╫н╖О©╫д╢О©╫О©╫О©╫О©╫О©╫О©╫и╬О©╫О©╫О©╫О©╫GetHotServletО©╫О©╫О©╫**********************
 		//QuestionDaoImp questionDaoImp = new QuestionDaoImp();
-		//╩Я╣цххценйлБоЙо╦пео╒отй╬тзжВрЁ
+		//О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╦О©╫О©╫о╒О©╫О©╫й╬О©╫О©╫О©╫О©╫рЁ
 		List<QuestionAllInfoBean> listHotQuestions =new ArrayList<QuestionAllInfoBean>();
 		
 		//QuestionAllInfoBean questionAllInfoBean = null;
 		//  questionBean = new QuestionBean();
 		//AnswerDaoImp answerDaoImp = new AnswerDaoImp();
 		
-		//╩Я╣цххценйлБпео╒ё╗╟Эю╗сц╩╖цШё╛╠Йг╘ё╛╩ь╢ПйЩ╣х╣хё╘
+		//О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╒О©╫О©╫О©╫О©╫О©╫О©╫О©╫ц╩О©╫О©╫О©╫О©╫О©╫О©╫О©╫г╘О©╫О©╫О©╫ь╢О©╫О©╫О©╫О©╫х╣хёО©╫
 		List<QuestionBean> listHotQuestion = questionDaoImp.getHotQuestions();
 		
 		//UserInfoDaoImp userInfoDaoImp = new UserInfoDaoImp();
 		
-		//╢╕юМ╣ц╣╫╣дкЫспххценйлБпео╒
+		//О©╫О©╫О©╫О©╫ц╣О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╒
 		for(int i=0; i<10;i++){
 			questionAllInfoBean = new QuestionAllInfoBean();
 			questionBean = listHotQuestion.get(i);
+			
+			//О©╫ц╣О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╠О©╫г╘
+			String tagsId [] = null;
+			//System.out.println(questionBean.getQuestion_tags());
+			if(questionBean.getQuestion_tags()== null || questionBean.getQuestion_tags().indexOf(",")==-1){
+				//О©╫О©╫О©╫О©╫д╛О©╫О©╫н╙О©╫чёО©╫О©╫О©╫О©╫щ©О©╫с╕О©╫ц╡О©╫О©╫О©╫0н╙О©╫ч╠О©╫г╘О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫11с╕О©╫ц©О©╫О©╫т╦О©╫н╙0
+				
+			}else{
+				tagsId = questionBean.getQuestion_tags().split(",");
+				StringBuffer tagStrBuffer = new StringBuffer();
+				for(int i1=0; i1< tagsId.length;i1++){
+					int tagsIdInt = Integer.parseInt(tagsId[i1]);
+					String tagsStr = tagsInfoDaoImp.getTagsInfoByTagsId(tagsIdInt).getTags_name()+" ";
+					tagStrBuffer.append(tagsStr);
+				}
+				//О©╫О©╫О©╫ц╠О©╫г╘н╙О©╫О©╫О©╫О©╫О©╫О©╫й╬
+				questionBean.setQuestion_tags(tagStrBuffer.toString());
+			}
+			
+			
 			String userName = userInfoDaoImp.getUserInfoByUserId(questionBean.getQuestion_user_id()).getUser_name();
 			int countOfAnswer = answerDaoImp.getContOfAnswer(questionBean.getQuestion_id());
 			
 			questionAllInfoBean.setQuestionUserName(userName);
 			questionAllInfoBean.setCountOfAnswers(countOfAnswer);
 			questionAllInfoBean.setVpOfQuestion(50);
-			questionAllInfoBean.setBestAnswer("тщнч");
+			questionAllInfoBean.setBestAnswer("О©╫О©╫О©╫О©╫");
 			questionAllInfoBean.setQuestionBean(questionBean);
 			listHotQuestions.add(questionAllInfoBean);
 		}
 		request.setAttribute("listHotQuestions", listHotQuestions);
 		//************************************************
 		
+		
+		//О©╫О©╫рЁО©╫О©╫
+		int len = questionDaoImp.getContOfQuestion()/10;
+//		System.out.println("О©╫О©╫рЁО©╫О©╫О©╫О©╫"+len);
+		request.setAttribute("currentPage", 0);
+		session.setAttribute("len", len);
 		request.setAttribute("listQuestions", listAllQuestions);	
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

@@ -1,8 +1,8 @@
 body {
   padding-top: 80px;
   padding-bottom: 40px;
-  background: url("https://d1vgw4v7ja2ido.cloudfront.net/-f71e4191f3796f91.jpg") 
-    no-repeat fixed left 100% / 53% 100% rgb(255, 255, 255);
+  background: url("../../images/loginBackgroundImage.jpg") 
+    no-repeat fixed left 100% / 100% 100% rgb(255, 255, 255);
 
 }
 

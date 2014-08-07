@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.com.beans.QuestionBean;
-import cn.com.db.DBUtil;
 import cn.com.interfaces.QuestionDaoInf;
+import cn.com.util.DBUtil;
 
 /**
  * @author Friday
@@ -59,10 +59,11 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		ResultSet rs = null;
 		List<QuestionBean> list = null;
 		QuestionBean qb = null;
-		String sql = "select * from question where question_title like ?";
+		String sql = "select * from question where question_title like ? or question_description like ?";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, "%" + question_title + "%");
+			pst.setString(2, "%" + question_title + "%");
 			rs = pst.executeQuery();
 			if (rs != null) {
 				list = new ArrayList<QuestionBean>();
@@ -225,31 +226,21 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		}
 		return count;
 	}
-	
-	//获得热门问题
-	public List<QuestionBean> getHotQuestions() {
+
+	//更具提问者ID得到该用户提问的所有信息
+		public int getContOfQuestionByUserId(int question_user_id) {
+			int count = 0;
 			Connection conn = db.getConn();
 			PreparedStatement pst = null;
 			ResultSet rs = null;
-			List<QuestionBean> list = null;
-			QuestionBean qb = null;
-			String sql = "select * from question order by question_mark desc";
+			String sql = "select count(*) totalQuestion from question where question_user_id = ?";
 			try {
 				pst = conn.prepareStatement(sql);
+				pst.setInt(1, question_user_id);
 				rs = pst.executeQuery();
 				if (rs != null) {
-					list = new ArrayList<QuestionBean>();
 					while (rs.next()) {
-						qb = new QuestionBean();
-						qb.setQuestion_id(rs.getInt("question_id"));
-						qb.setQuestion_title(rs.getString("question_title"));
-						qb.setQuestion_description(rs
-								.getString("question_description"));
-						qb.setQuestion_time(rs.getString("question_time"));
-						qb.setQuestion_user_id(rs.getInt("question_user_id"));
-						qb.setQuestion_mark(rs.getInt("question_mark"));
-						qb.setQuestion_tags(rs.getString("question_tags"));
-						list.add(qb);
+						count = rs.getInt("totalQuestion");
 					}
 				}
 			} catch (SQLException e) {
@@ -258,21 +249,19 @@ public class QuestionDaoImp implements QuestionDaoInf {
 			} finally {
 				db.free(rs, pst, conn);
 			}
-			return list;
+			return count;
 		}
 	
-	//获得所有问题
-	public List<QuestionBean> getAllQuestions(int row, int countPage) {
+	// 获得热门问题
+	public List<QuestionBean> getHotQuestions() {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		List<QuestionBean> list = null;
 		QuestionBean qb = null;
-		String sql = "select * from question order by question_id desc limit ?,? ";
+		String sql = "select * from question order by question_mark desc";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, row);
-			pst.setInt(2, countPage);
 			rs = pst.executeQuery();
 			if (rs != null) {
 				list = new ArrayList<QuestionBean>();
@@ -297,5 +286,153 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		}
 		return list;
 	}
+
+	// 获得所有问题
+	public List<QuestionBean> getAllQuestions(int row, int countPage) {
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		List<QuestionBean> list = null;
+		QuestionBean qb = null;
+//		String sql = "select * from question order by question_id desc limit ?,? ";
+//		用一次，系统发布后不适用下面的SQL语句
+		String sql = "select * from question order by question_id desc";
+		try {
+			pst = conn.prepareStatement(sql);
+//			pst.setInt(1, row);
+//			pst.setInt(2, countPage);
+			rs = pst.executeQuery();
+			if (rs != null) {
+				list = new ArrayList<QuestionBean>();
+				while (rs.next()) {
+					qb = new QuestionBean();
+					qb.setQuestion_id(rs.getInt("question_id"));
+					qb.setQuestion_title(rs.getString("question_title"));
+					qb.setQuestion_description(rs
+							.getString("question_description"));
+					qb.setQuestion_time(rs.getString("question_time"));
+					qb.setQuestion_user_id(rs.getInt("question_user_id"));
+					qb.setQuestion_mark(rs.getInt("question_mark"));
+					qb.setQuestion_tags(rs.getString("question_tags"));
+					list.add(qb);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
+		}
+		return list;
+	}
+
+	// 根据提问者ID得到问题
+	public List<QuestionBean> getQuestionByUserId(int userId, int row,
+			int countPage) {
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		List<QuestionBean> list = null;
+		QuestionBean qb = null;
+		String sql = "select * from question where question_user_id = ? order by question_id desc limit ?,?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, userId);
+			pst.setInt(2, row);
+			pst.setInt(3, countPage);
+			rs = pst.executeQuery();
+			if (rs != null) {
+				list = new ArrayList<QuestionBean>();
+				while (rs.next()) {
+					qb = new QuestionBean();
+					qb.setQuestion_id(rs.getInt("question_id"));
+					qb.setQuestion_title(rs.getString("question_title"));
+					qb.setQuestion_description(rs
+							.getString("question_description"));
+					qb.setQuestion_time(rs.getString("question_time"));
+					qb.setQuestion_user_id(rs.getInt("question_user_id"));
+					qb.setQuestion_mark(rs.getInt("question_mark"));
+					qb.setQuestion_tags(rs.getString("question_tags"));
+					list.add(qb);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
+		}
+		return list;
+	}
+
+	// 搜索获得热门信息
+	public List<QuestionBean> getHotQuestionsBySearch(String context) {
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		List<QuestionBean> list = null;
+		QuestionBean qb = null;
+		String sql = "select * from question where question_title like ? or question_description like ? order by question_mark desc";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, "%" + context + "%");
+			pst.setString(2, "%" + context + "%");
+			rs = pst.executeQuery();
+			if (rs != null) {
+				list = new ArrayList<QuestionBean>();
+				while (rs.next()) {
+					qb = new QuestionBean();
+					qb.setQuestion_id(rs.getInt("question_id"));
+					qb.setQuestion_title(rs.getString("question_title"));
+					qb.setQuestion_description(rs
+							.getString("question_description"));
+					qb.setQuestion_time(rs.getString("question_time"));
+					qb.setQuestion_user_id(rs.getInt("question_user_id"));
+					qb.setQuestion_mark(rs.getInt("question_mark"));
+					qb.setQuestion_tags(rs.getString("question_tags"));
+					list.add(qb);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
+		}
+		return list;
+	}
+	
+	// 根据标问题内容得到问题信息
+		public QuestionBean getQuestionByQuestionKey(
+				String question_description) {
+			Connection conn = db.getConn();
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+			QuestionBean qb = new QuestionBean();
+			String sql = "select * from question where question_description = ?";
+			try {
+				pst = conn.prepareStatement(sql);
+				pst.setString(1, question_description);
+				rs = pst.executeQuery();
+				if (rs != null) {
+					while (rs.next()) {
+						qb.setQuestion_id(rs.getInt("question_id"));
+						qb.setQuestion_title(rs.getString("question_title"));
+						qb.setQuestion_description(rs
+								.getString("question_description"));
+						qb.setQuestion_time(rs.getString("question_time"));
+						qb.setQuestion_user_id(rs.getInt("question_user_id"));
+						qb.setQuestion_mark(rs.getInt("question_mark"));
+						qb.setQuestion_tags(rs.getString("question_tags"));
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				db.free(rs, pst, conn);
+			}
+			return qb;
+		}
 
 }

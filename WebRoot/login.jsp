@@ -1,24 +1,70 @@
-<%@ page language="java"%>
-<%@ page import="java.sql.*"%>
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
-
+<!doctype html>
 <html>
 <head>
-	<title>登陆表单</title>
+<meta charset="utf-8">
+<title>腾讯微博登录组件</title>
+<script src="http://mat1.gtimg.com/app/openjs/openjs.js"></script>
+<link rel="stylesheet" type="text/css" href="css/tencentweibo.css">
 </head>
-
 <body>
-<center>
-  <h1>管理者登陆 </h1>
-<hr>
-<form name="form1" method="post" action="login.jsp">
-请输入您的用户名：<input type="text" name="name"><p>
-请输入您的密码：<input type="password" name="password">
-    <p>
-      <input type="submit" name="Submit" value="　登　陆　">
-      <input type="reset" name="Submit2" value="　重　写　">
-  </form>
-</center>	
+	<div class="qq_account_log" id="qq_account_log">
+		<a class="login_btn login_btn03" id="login_btn" href="javascript:;">
+		</a>
+		<div class="logout_btn" id="logout_btn"></div>
+	</div>
+	<script defer="defer">
+		var login_btn = document.getElementById("login_btn"), logout_btn = document
+				.getElementById("logout_btn");
+		function login() {
+			T.login(function(loginStatus) {
+				getUserInfo();
+				login_btn.style.display = "none"
+				logout_btn.style.display = "inline-block";
+			}, function(loginError) {
+				alert(loginError.message);
+			});
+		}
+		function logout() {
+			logout_btn.style.display = "none";
+			login_btn.style.display = "inline-block";
+			T.logout();
+		}
+		function getUserInfo() {
+			T
+					.api("/user/info")
+					.success(
+							function(response) {
+								if (response.ret === 0) {
+									var html = "", imgsrc = "", data = response.data;
+									html = data.name + data.nick
+											+ '<a class="logout_text" id="logout_text"　href="javascript:void(0);">logout</a></span>';
+									logout_btn.innerHTML = html;
+									var logout_text = document
+											.getElementById("logout_text");
+									logout_text.onclick = logout;
+								} else {
+									alert(response.ret);
+								}
+							}).error(function(code, message) {
+						alert(message);
+					});
+		}
+		function init() {
+			T.init({
+				appkey : 801527196
+				
+			});
+			if (!T.loginStatus()) {
+				login_btn.style.display = "inline-block";
+				logout_btn.style.display = "none";
+			} else {
+				getUserInfo();
+				login_btn.style.display = "none";
+				logout_btn.style.display = "inline-block";
+			}
+			login_btn.onclick = login;
+		}
+		init();
+	</script>
 </body>
 </html>

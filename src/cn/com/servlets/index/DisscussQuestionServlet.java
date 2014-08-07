@@ -33,7 +33,8 @@ public class DisscussQuestionServlet extends HttpServlet {
 		TagsInfoDaoImp tagsInfoDaoImp = new TagsInfoDaoImp();
 		QuestionDaoImp questionDaoImp = new QuestionDaoImp();
 		AnswerDaoImp answerDaoImp = new AnswerDaoImp();
-		int len = questionDaoImp.getContOfQuestion();
+		//总页数
+		int len = (Integer) session.getAttribute("len");
 		
 		//得到要查看的某页
 		int currentPage;
@@ -46,12 +47,12 @@ public class DisscussQuestionServlet extends HttpServlet {
 				
 		//如果页数大于总数,跳到末页
 		if(currentPage > len) {
-			currentPage = len-10;
+			currentPage = len;
 		}
 				
 		//如果页数小于0
 		if(currentPage < 0) {
-			currentPage = len-10;
+			currentPage = len;
 		}
 
 		
@@ -66,7 +67,7 @@ public class DisscussQuestionServlet extends HttpServlet {
 		QuestionBean  questionBean = new QuestionBean();
 		 
 
-		List<QuestionBean> listAllQuestion = questionDaoImp.getAllQuestions(currentPage,currentPage+10);
+		List<QuestionBean> listAllQuestion = questionDaoImp.getAllQuestions(currentPage*10,10);
 		List<QuestionBean> listHotQuestion = questionDaoImp.getHotQuestions();
 		List<TagsInfoBean> listTags = tagsInfoDaoImp.getHotTags();
 		
@@ -101,8 +102,9 @@ public class DisscussQuestionServlet extends HttpServlet {
 		}
 		
 		//currentPage = currentPage+10;
-		session.setAttribute("currentPage", currentPage);
-		session.setAttribute("len", len);
+		
+		System.out.println("总页数："+len);
+		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("listQuestions", listAllQuestions);
 		request.setAttribute("listHotQuestions", listHotQuestions);
 		request.setAttribute("listTags", listTags);
