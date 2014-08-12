@@ -8,7 +8,7 @@
 
 .header-height {
 	margin-bottom: 0px;
-	background-color: #3276b1;
+	background-color: #428bca;
 }
 .hr-header {
 	margin-top: 0px;
@@ -45,6 +45,14 @@
 	border: 5px solid #ededed;
 	width: 60px;
 	height: 60px;
+}
+
+.person-img {
+	border: 5px solid #ededed;
+	width: 40px;
+	height: 40px;
+	margin-top: -15px;
+	margin-bottom: -15px;
 }
 
 .qa-margin-left {
@@ -117,7 +125,7 @@
 	color: #ffffff;
 	border-radius: 4px;
 	text-align: center;
-	background-color: #3276b1;
+	background-color: #357ebd;
 }
 foot .container p a {
 	color: #ffffff;
@@ -140,6 +148,34 @@ foot .container p a {
 .ask-btn {
 	margin-top: 30px;
 }
+.more {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #999;
+}
+.category-list li {
+	float: left;
+	padding: 3px 8px;
+	list-style: none;
+}
+.category-list {
+	padding: 10px 0px;
+}
+.category-list li a {
+	display: block;
+	padding: 3px;
+	border-radius: 25px;
+	text-decoration: none;
+	border: 1px solid #daecf5;
+}
+.category-list > li.active > a, .category-list > li.active > a:hover, .category-list > li.active > a:focus {
+	background: #259;
+	border-color: #259;
+	color: #fff;
+}
+
+
+
 
 
 
