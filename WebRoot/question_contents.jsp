@@ -37,6 +37,7 @@
 <!-- Bootstrap core CSS -->
 <link href="dist/css/bootstrap.css" rel="stylesheet">
 <!-- Custom styles for this template -->
+<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="static/style/custom.css">
 <link rel="stylesheet" type="text/css" href="tatic/style/wy.css">
 <link
@@ -117,7 +118,6 @@
 	<hr class="hr-header">
 
 
-
 	<div class="container main-content">
 
 		<!--question title start-->
@@ -140,7 +140,7 @@
 						<!--start-->
 						<div class="col-lg-1">
 							<button type="button" class="btn btn-primary btn-block btn-lg">
-								<span id="praises"></span>
+								<span id="praises"></span>${question.countOfAnswers}
 							</button>
 							<button type="button" class="btn btn-default btn-block btn-sm" id="praise">
 								<span class=" glyphicon glyphicon-thumbs-up" id="praise"></span>赞
@@ -183,129 +183,238 @@
 						</div>
 						<!-- end of list-3 -->
 					</div>
-					<p style="background-color: white;">&nbsp;</p>
+					
 				</div>
-				<!--end of answer-->
-
-				<div class="row">
-					<div class="col-lg-1"></div>
-					<div class="col-lg-11">
-						<ul id="myTab" class="row nav nav-tabs nav-right">
-							<li href="#time" class=""><a href="#" data-toggle="tab">得票数</a>
-							</li>
-							<li href="#vote" class=""><a href="#" data-toggle="tab">时间先后</a>
-							</li>
-							<li class="col-lg-9 col-md-offset--3">
-								<h3 class="">${coutAnswer }个回答</h3>
-								<p></p>
-								<p></p>
-							</li>
-						</ul>
-						<script type="text/javascript">
-							$('#myTab li').click(function(e) {
-								e.preventDefault()
-								$(this).tab('show')
-							})
-						</script>
-					</div>
-				</div>
-				<c:forEach items="${listAnswer }" var="answer" begin="0" step="1"
-					varStatus="class">
-					<div class="row list-1">
-						<!--start-->
-						<div class="col-lg-1">
-							<button type="button" class="btn btn-primary btn-block btn-lg">
-								<span>0</span>
-							</button>
-							<button type="button" class="btn btn-default btn-block btn-sm">
-								<span class=" glyphicon glyphicon-thumbs-up"></span>赞
-							</button>
-							<button type="button" class="btn btn-default btn-block btn-sm">
-								<span class=" glyphicon glyphicon-thumbs-down"></span>踩
-							</button>
-						</div>
-						<!--end-->
-
-						<!--start-->
+				<!--end of question-->
+				
+				<div class="answer">
+					<div class="row">
+						<div class="col-lg-1"></div>
 						<div class="col-lg-11">
-							<p></p>
-							<ul>
-								<li>${fn:escapeXml(answer.answerBean.answer_description) }</li>
+							<ul id="myTab" class="row nav nav-tabs nav-right">
+								<li href="#vote" class="">
+									<a href="#" data-toggle="tab">得票数</a>
+	                      		</li>
+	                      		<li href="#time" class="active">
+	                      			<a href="#" data-toggle="tab">时间先后</a>
+	                      		</li>
+	                      		<span class="col-lg-9 col-md-offset--3">
+	                      			<h3 class="">3 个回答</h3>
+	                      		</span>
 							</ul>
-							<p></p>
-							<div class="row">
-								<div class="col-md-9"></div>
-								<div class="col-md-1">
-									<img src="./static/image/git.png" alt="..."
-										class="qa-img img-circle">
-								</div>
-								<div class="col-md-2">
-									<p>用户&nbsp;${answer.userName  }</p>
-									<p>${answer.answerBean.answer_time}回答</p>
-								</div>
-								<div class="col-lg-12">
-									<hr class="hr-comment">
-								</div>
-							</div>
-							<div style="text-align: left;">
-								<p class="flip">
-									<font color="green" size="4">查看评论</font>
-								</p>${msg }
-							</div>
-
-							<div class="panel" style="background-color: #eee; display: none;">
-								<form action="AddDiscussServlet" method="post">
-									<input type="hidden" name="answer_id"
-										value="${ answer.answerBean.answer_id}"> <input
-										type="hidden" name="question_id"
-										value="${question.questionBean.question_id }"> <input
-										class="form-control" type="text" placeholder="对此问题有疑问？"
-										name="discuss_content" id="submitcomment"> <input
-										type="submit" class="btn btn-default" />
-								</form>
-								<c:forEach items="${listAllDiscuss }" var="listDiscuss"
-									begin="0" step="1" varStatus="class">
-									<%-- 评论ID：${ listDiscuss.discussBean.answer_id }
-									答案ID：${ answer.answerBean.answer_id}<br>
-							 		${listDiscuss.userName }
-									${listDiscuss.discussBean.content }   --%>
-									<!-- 比较答案ID和评论中的问题ID一致者显示 -->
-									<c:if
-										test="${ listDiscuss.discussBean.answer_id == answer.answerBean.answer_id }">
-
-
-										<div class="comments">
-											<div class="comment-list">
-
-												<div class="row">
-													<div class="col-lg-1">
-														<img src="./static/image/git.png" alt="..."
-															class="qa-img img-circle">
-													</div>
-													<div class="col-lg-10">
-														<p>
-															<a href="#"><span>${listDiscuss.userName }</span></a> <span>${listDiscuss.discussBean.time  }评论：</span>
-														</p>
-														<p>${listDiscuss.discussBean.content }</p>
-													</div>
-													<div class="col-lg-1 comment-reply">
-														<p>&nbsp;</p>
-													</div>
-													<div class="col-lg-12">
-														<hr style="border-color: gray;">
-													</div>
-												</div>
-											</div>
-											<!--end of comment-list-->
-										</div>
-									</c:if>
-								</c:forEach>
-							</div>
-							<hr class="hr-header">
+							<script type="text/javascript">
+								$('#myTab li').click(function(e) {
+									e.preventDefault()
+									$(this).tab('show')
+								})
+							</script>
 						</div>
-						<!--end-->
 					</div>
-				</c:forEach>
+					
+					<div id="myTabContent" class="tab-content">
+                 			<!-- answer_list -->
+                 			<div class="answer-list tab-pane fade active in" id="time">
+                 				<c:forEach items="${listAnswer }" var="answer" begin="0" step="1" varStatus="class">
+								<div class="row">
+									<!--start-->
+									<div class="col-lg-1">
+										<button type="button" class="btn btn-primary btn-block btn-lg" >
+											<span id="answer_${answer.answerBean.answer_id}">0</span>
+										</button> 
+										<button type="button" class="btn btn-default btn-block btn-sm" onclick="praiseas(this.value)" value="answer_${answer.answerBean.answer_id}">
+											<span class=" glyphicon glyphicon-thumbs-up"></span>赞
+										</button>
+										<button type="button" class="btn btn-default btn-block btn-sm" onclick="treadas(this.value)" value="answer_${answer.answerBean.answer_id}">
+											<span class=" glyphicon glyphicon-thumbs-down"></span>踩 
+										</button>
+									</div> 
+									<!--end-->
+			
+									<!--start-->
+									<div class="col-lg-11">
+										<p></p>
+										<ul>
+											<li>${fn:escapeXml(answer.answerBean.answer_description) }</li>
+										</ul>
+										<p></p>
+										<div class="row">
+											<div class="col-md-9"></div>
+											<div class="col-md-1">
+												<img src="./static/image/git.png" alt="..."
+													class="qa-img img-circle">
+											</div>
+											<div class="col-md-2">
+												<p>用户&nbsp;${answer.userName  }</p>
+												<p>${answer.answerBean.answer_time}回答</p>
+											</div>
+											<div class="col-lg-12">
+												<hr class="hr-comment">
+											</div>
+										</div>
+										<div style="text-align: left;">
+											<p class="flip">
+												<font color="green" size="4">查看评论</font>
+											</p>${msg }
+										</div>
+			
+										<div class="panel" style="background-color: #eee; display: none;">
+											<form action="AddDiscussServlet" method="post">
+												<input type="hidden" name="answer_id"
+													value="${ answer.answerBean.answer_id}"> <input
+													type="hidden" name="question_id"
+													value="${question.questionBean.question_id }"> <input
+													class="form-control" type="text" placeholder="对此问题有疑问？"
+													name="discuss_content" id="submitcomment"> <input
+													type="submit" class="btn btn-default" />
+											</form>
+											<c:forEach items="${listAllDiscuss }" var="listDiscuss"
+												begin="0" step="1" varStatus="class">
+												<%-- 评论ID：${ listDiscuss.discussBean.answer_id }
+												答案ID：${ answer.answerBean.answer_id}<br>
+										 		${listDiscuss.userName }
+												${listDiscuss.discussBean.content }   --%>
+												<!-- 比较答案ID和评论中的问题ID一致者显示 -->
+												<c:if
+													test="${ listDiscuss.discussBean.answer_id == answer.answerBean.answer_id }">
+			
+			
+													<div class="comments">
+														<div class="comment-list">
+			
+															<div class="row">
+																<div class="col-lg-1">
+																	<img src="./static/image/git.png" alt="..."
+																		class="qa-img img-circle">
+																</div>
+																<div class="col-lg-10">
+																	<p>
+																		<a href="#"><span>${listDiscuss.userName }</span></a> <span>${listDiscuss.discussBean.time  }评论：</span>
+																	</p>
+																	<p>${listDiscuss.discussBean.content }</p>
+																</div>
+																<div class="col-lg-1 comment-reply">
+																	<p>&nbsp;</p>
+																</div>
+																<div class="col-lg-12">
+																	<hr style="border-color: gray;">
+																</div>
+															</div>
+														</div>
+														<!--end of comment-list-->
+													</div>
+												</c:if>
+											</c:forEach>
+										</div>
+										<hr class="hr-header">
+									</div>
+									<!--end-->
+								</div>
+							</c:forEach>
+						</div>
+						<div class="answer-list tab-pane fade" id="vote">
+							<c:forEach items="${listAnswer }" var="answer" begin="0" step="1" varStatus="class">
+								<div class="row">
+									<!--start-->
+									<div class="col-lg-1">
+										<button type="button" class="btn btn-primary btn-block btn-lg" >
+											<span id="answer_${answer.answerBean.answer_id}">0</span>
+										</button> 
+										<button type="button" class="btn btn-default btn-block btn-sm" onclick="praiseas(this.value)" value="answer_${answer.answerBean.answer_id}">
+											<span class=" glyphicon glyphicon-thumbs-up"></span>赞
+										</button>
+										<button type="button" class="btn btn-default btn-block btn-sm" onclick="treadas(this.value)" value="answer_${answer.answerBean.answer_id}">
+											<span class=" glyphicon glyphicon-thumbs-down"></span>踩 
+										</button>
+									</div> 
+									<!--end-->
+			
+									<!--start-->
+									<div class="col-lg-11">
+										<p></p>
+										<ul>
+											<li>${fn:escapeXml(answer.answerBean.answer_description) }</li>
+										</ul>
+										<p></p>
+										<div class="row">
+											<div class="col-md-9"></div>
+											<div class="col-md-1">
+												<img src="./static/image/git.png" alt="..."
+													class="qa-img img-circle">
+											</div>
+											<div class="col-md-2">
+												<p>用户&nbsp;${answer.userName  }</p>
+												<p>${answer.answerBean.answer_time}回答</p>
+											</div>
+											<div class="col-lg-12">
+												<hr class="hr-comment">
+											</div>
+										</div>
+										<div style="text-align: left;">
+											<p class="flip">
+												<font color="green" size="4">查看评论</font>
+											</p>${msg }
+										</div>
+			
+										<div class="panel" style="background-color: #eee; display: none;">
+											<form action="AddDiscussServlet" method="post">
+												<input type="hidden" name="answer_id"
+													value="${ answer.answerBean.answer_id}"> <input
+													type="hidden" name="question_id"
+													value="${question.questionBean.question_id }"> <input
+													class="form-control" type="text" placeholder="对此问题有疑问？"
+													name="discuss_content" id="submitcomment"> <input
+													type="submit" class="btn btn-default" />
+											</form>
+											<c:forEach items="${listAllDiscuss }" var="listDiscuss"
+												begin="0" step="1" varStatus="class">
+												<%-- 评论ID：${ listDiscuss.discussBean.answer_id }
+												答案ID：${ answer.answerBean.answer_id}<br>
+										 		${listDiscuss.userName }
+												${listDiscuss.discussBean.content }   --%>
+												<!-- 比较答案ID和评论中的问题ID一致者显示 -->
+												<c:if
+													test="${ listDiscuss.discussBean.answer_id == answer.answerBean.answer_id }">
+			
+			
+													<div class="comments">
+														<div class="comment-list">
+			
+															<div class="row">
+																<div class="col-lg-1">
+																	<img src="./static/image/git.png" alt="..."
+																		class="qa-img img-circle">
+																</div>
+																<div class="col-lg-10">
+																	<p>
+																		<a href="#"><span>${listDiscuss.userName }</span></a> <span>${listDiscuss.discussBean.time  }评论：</span>
+																	</p>
+																	<p>${listDiscuss.discussBean.content }</p>
+																</div>
+																<div class="col-lg-1 comment-reply">
+																	<p>&nbsp;</p>
+																</div>
+																<div class="col-lg-12">
+																	<hr style="border-color: gray;">
+																</div>
+															</div>
+														</div>
+														<!--end of comment-list-->
+													</div>
+												</c:if>
+											</c:forEach>
+										</div>
+										<hr class="hr-header">
+									</div>
+									<!--end-->
+								</div>
+							</c:forEach>
+						</div>
+						<!-- end of answer_list -->
+					</div>
+				</div>
+				<!-- end of answer -->
+				
+				<!-- answer editor -->
 				<form action="addAnswerInfo" method="post">
 					<div class="edit-answer">
 						<div class="row">
@@ -455,8 +564,10 @@
 					</div>
 					<!--end of edit-answer-->
 				</form>
+				<!-- end of answer editor -->
+
 			</div>
-			<!-- left-->
+			<!-- end of left-->
 
 			<!-- right-->
 			<div class="col-lg-3">
@@ -597,6 +708,8 @@
 			<p>Power by hnust_qa current version 1.0</p>
 		</div>
 	</div>
-
+<!-- 分享 Button BEGIN -->
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?uid=1406205777695855&move=0&amp;btn=r3.gif" charset="utf-8"></script>
+<!-- 分享 Button END -->
 </body>
 </html>
