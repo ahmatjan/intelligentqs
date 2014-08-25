@@ -19,6 +19,9 @@ public class QuestionBean {
 	private int question_user_id;
 	//问题标签（最多五个）
 	private String question_tags;
+	//问题分类
+	private int question_categories_id;
+	
 	
 	//对应的Get、Set方法
 	public int getQuestion_id() {
@@ -62,6 +65,12 @@ public class QuestionBean {
 	}
 	public void setQuestion_tags(String question_tags) {
 		this.question_tags = question_tags;
+	}
+	public int getQuestion_categories_id() {
+		return question_categories_id;
+	}
+	public void setQuestion_categories_id(int question_categories_id) {
+		this.question_categories_id = question_categories_id;
 	}
 }
 

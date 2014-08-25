@@ -8,6 +8,8 @@ public class TagsInfoBean {
 	private int tags_id;
 	//标签名称
 	private String tags_name;
+	//标签分类
+	private int tags_categories_id;
 	
 	//对应的Get、Set方法
 	public int getTags_id() {
@@ -16,6 +18,7 @@ public class TagsInfoBean {
 	public void setTags_id(int tags_id) {
 		this.tags_id = tags_id;
 	}
+	
 	public String getTags_name() {
 		return tags_name;
 	}
@@ -23,5 +26,11 @@ public class TagsInfoBean {
 		this.tags_name = tags_name;
 	}
 	
+	public int getTags_categories_id() {
+		return tags_categories_id;
+	}
+	public void setTags_categories_id(int tags_categories_id) {
+		this.tags_categories_id = tags_categories_id;
+	}
 
 }
