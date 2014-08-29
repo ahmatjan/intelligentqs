@@ -204,6 +204,9 @@ foot .container p a {
 	margin-top: 40px;
 
 }
+.editor {
+	padding: 0px 30px;
+}
 
 .i-feed,.i-google,.i-twitter,.i-github,.i-weibo,.i-facebook,.i-qq,.i-renren,.i-douban,.i-taobao,
 .i-linkedin,.i-tqq {
