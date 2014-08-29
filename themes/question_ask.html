@@ -12,11 +12,13 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="./static/style/custom.css">
     <link rel="stylesheet" type="text/css" href="./static/style/wy.css">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-      
-    <script src="./static/style/wy.js"></script> 
-    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet"> 
+
+    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>  
     <script src="./dist/js/bootstrap.js"></script>
+    <script src="./static/style/wy.js"></script> 
+    <script src="./static/style/external/jquery.hotkeys.js"></script>
+    <script src="./static/style/external/google-code-prettify/prettify.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
@@ -89,8 +91,10 @@
                 </div>
               <!--question title end-->
 
-              <!--start of editor-->   
-                <div class="col-lg-12">
+              <!--start of editor--> 
+              
+              <div class="row alerts">
+                <div class="col-lg-12 editor">
                   <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
                       <div class="btn-group">
                         <a class="btn dropdown-toggle" data-toggle="dropdown" title="" data-original-title="Font">
@@ -163,9 +167,12 @@
                       <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="" style="display: none;">
                   </div>
                 </div>
-                <div class="col-lg-12">
-                  <textarea id="editor" class="form-control textarea-14 mousetrap" placeholder="为此问题提供一个答案" rows="8" autocomplete="off" spellcheck="false" name="text"></textarea>
+                <div class="col-lg-12 editor">
+                  <div id="editor">
+                    
+                  </div>
                 </div>
+              </div>
               <!--end of editor-->
               </div>
 
@@ -222,40 +229,6 @@
       </div>
     <!-- main-content end-->
     <hr class="hr-header">
-    
-    <script>
-      $(function(){
-        function initToolbarBootstrapBindings() {
-          var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier', 
-                'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
-                'Times New Roman', 'Verdana'],
-                fontTarget = $('[title=Font]').siblings('.dropdown-menu');
-          $.each(fonts, function (idx, fontName) {
-              fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
-          });
-          $('a[title]').tooltip({container:'body'});
-            $('.dropdown-menu input').click(function() {return false;})
-                .change(function () {$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');})
-            .keydown('esc', function () {this.value='';$(this).change();});
-
-          $('[data-role=magic-overlay]').each(function () { 
-            var overlay = $(this), target = $(overlay.data('target')); 
-            overlay.css('opacity', 0).css('position', 'absolute').offset(target.offset()).width(target.outerWidth()).height(target.outerHeight());
-          });
-          $('#voiceBtn').hide();
-          // if ("onwebkitspeechchange"  in document.createElement("input")) {
-          //   var editorOffset = $('#editor').offset();
-          //   $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
-          // } else {
-          //   $('#voiceBtn').hide();
-          // }
-        };
-        initToolbarBootstrapBindings();  
-        $('#editor').wysiwyg();
-        window.prettyPrint && prettyPrint();
-      });
-    </script>
-
     <!-- foot-->
     <div class="foot">
       <div class="container">
@@ -263,6 +236,46 @@
         <p>Power by nxhnust Current version  0.0.1 </p>
       </div>
     </div>
+<script>
+  $(function(){
+    function initToolbarBootstrapBindings() {
+      var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier', 
+            'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
+            'Times New Roman', 'Verdana'],
+            fontTarget = $('[title=Font]').siblings('.dropdown-menu');
+      $.each(fonts, function (idx, fontName) {
+          fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
+      });
+      $('a[title]').tooltip({container:'body'});
+      $('.dropdown-menu input').click(function() {return false;})
+        .change(function () {$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');})
+        .keydown('esc', function () {this.value='';$(this).change();});
+
+      $('[data-role=magic-overlay]').each(function () { 
+        var overlay = $(this), target = $(overlay.data('target')); 
+        overlay.css('opacity', 0).css('position', 'absolute').offset(target.offset()).width(target.outerWidth()).height(target.outerHeight());
+      });
+      if ("onwebkitspeechchange"  in document.createElement("input")) {
+        var editorOffset = $('#editor').offset();
+        $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+      } else {
+        $('#voiceBtn').hide();
+      }
+  };
+  function showErrorAlert (reason, detail) {
+    var msg='';
+    if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
+    else {
+      console.log("error uploading file", reason, detail);
+    }
+    $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
+     '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+  };
+    initToolbarBootstrapBindings();  
+  $('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
+    window.prettyPrint && prettyPrint();
+  });
+</script>
 
   </body>
 </html>

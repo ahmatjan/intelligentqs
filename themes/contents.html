@@ -14,9 +14,11 @@
     <link rel="stylesheet" type="text/css" href="./static/style/wy.css">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
 
-    <script src="./static/style/wy.js"></script>
-    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>  
     <script src="./dist/js/bootstrap.js"></script>
+    <script src="./static/style/wy.js"></script> 
+    <script src="./static/style/external/jquery.hotkeys.js"></script>
+    <script src="./static/style/external/google-code-prettify/prettify.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
@@ -124,7 +126,7 @@
                         </ul>
                       </p>
                       <div class="row">
-                          <div class="col-md-7">
+                          <div class="col-md-6">
                             <div class="qa-tags">
                               <p></p>
                               <span class="glyphicon glyphicon-tags"> </span> 
@@ -140,9 +142,9 @@
                           <div class="col-md-1">
                             <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-md-3">
                             <p>admin <span>144</span></p>
-                            <p>5月27日提问</p>
+                            <p>5月27日17:30:00提问</p>
                           </div>
                           <div class="col-lg-12">
                             <hr class="hr-comment">
@@ -150,33 +152,85 @@
                       </div>
                     </div><!--end of question-contents-->
 
-                    <div class="comments">
-                			<div class="comment-list hide">
-                        
-                        <div class="row">
-                  				<div class="col-lg-1">
-                  					<img src="./static/image/git.png" alt="..." class="qa-img img-circle">
-                  				</div>
-                  				<div class="col-lg-10">
-                  					<p><a href="#"><span>admin</span></a>
-                  					<span>2014年6月9日</span></p>
-                  					<p>骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子了骡子来这里资料骡子</p>
-                  				</div>
-                          <div class="col-lg-1 comment-reply">
-                            <p><a href="#"><span><small>回复</small></span></a></p>
-                          </div>
-                          <div class="col-lg-12">
-                            <hr class="hr-comment">
-                          </div>
-                        </div>
-                			</div><!--end of comment-list-->
+                     <div class="comments">
+                          
+                          <div id="collapseOne" class="comment-list panel-collapse collapse in">                            
+                            <div class="row">
+                              <div class="col-lg-1">
+                                <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                              </div>
+                              <div class="col-lg-10">
+                                <p><a href="#"><span>admin</span></a>
+                                <span>2014年6月9日</span></p>
+                                <p>骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子了骡子来这里资料骡子</p>
+                              </div>
+                              <div class="col-lg-1 comment-reply">
+                                <p><a href="#"><span><small>回复</small></span></a></p>
+                              </div>
+                              <div class="col-lg-12">
+                                <hr class="hr-comment">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-1">
+                                <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                              </div>
+                              <div class="col-lg-10">
+                                <p><a href="#"><span>admin</span></a>
+                                <span>2014年6月9日</span></p>
+                                <p>骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子了骡子来这里资料骡子</p>
+                              </div>
+                              <div class="col-lg-1 comment-reply">
+                                <p><a href="#"><span><small>回复</small></span></a></p>
+                              </div>
+                              <div class="col-lg-12">
+                                <hr class="hr-comment">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-1">
+                                <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                              </div>
+                              <div class="col-lg-10">
+                                <p><a href="#"><span>admin</span></a>
+                                <span>2014年6月9日</span></p>
+                                <p>骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子了骡子来这里资料骡子</p>
+                              </div>
+                              <div class="col-lg-1 comment-reply">
+                                <p><a href="#"><span><small>回复</small></span></a></p>
+                              </div>
+                              <div class="col-lg-12">
+                                <hr class="hr-comment">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-1">
+                                <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                              </div>
+                              <div class="col-lg-10">
+                                <p><a href="#"><span>admin</span></a>
+                                <span>2014年6月9日</span></p>
+                                <p>骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子了骡子来这里资料骡子</p>
+                              </div>
+                              <div class="col-lg-1 comment-reply">
+                                <p><a href="#"><span><small>回复</small></span></a></p>
+                              </div>
+                              <div class="col-lg-12">
+                                <hr class="hr-comment">
+                              </div>
+                            </div>
+                          </div><!--end of comment-list-->
 
-                        <div class="row comment-show">
-                          <div class="col-lg-12">
-                          	<p><a href="#"><span><small>显示评论(4条)</small></span></a></p>
-                          </div>
-                        </div><!--end of comment-show -->
-                    </div><!--end of comments-->
+                          <div class="row comment-show">
+                            <div class="col-lg-12 panel-heading">
+                              <p>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span><small>显示评论(4条)</small></span></a>
+                              </p>
+                            </div>
+                          </div><!--end of comment-show -->
+                         
+                        </div><!--end of comments-->
+
                   </div>
                   <!--end-->
                 </div>
@@ -210,7 +264,7 @@
                       $('#myTab li').click(function (e) {
                         e.preventDefault()
                         $(this).tab('show')
-                      })
+                      })                      
                     </script>
                   </div>
                 </div>
@@ -259,8 +313,63 @@
                         </div>
 
                         <div class="comments">
-                          <div class="comment-list">
-                            
+                          <div class="row comment-show">
+                            <div class="col-lg-12 panel-heading">
+                              <p>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse"><span><small>显示评论(4条)</small></span></a>
+                              </p>
+                            </div>
+                          </div><!--end of comment-show -->
+                         
+                          <div id="collapse" class="comment-list panel-collapse collapse">                            
+                            <div class="row">
+                              <div class="col-lg-1">
+                                <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                              </div>
+                              <div class="col-lg-10">
+                                <p><a href="#"><span>admin</span></a>
+                                <span>2014年6月9日</span></p>
+                                <p>骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子了骡子来这里资料骡子</p>
+                              </div>
+                              <div class="col-lg-1 comment-reply">
+                                <p><a href="#"><span><small>回复</small></span></a></p>
+                              </div>
+                              <div class="col-lg-12">
+                                <hr class="hr-comment">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-1">
+                                <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                              </div>
+                              <div class="col-lg-10">
+                                <p><a href="#"><span>admin</span></a>
+                                <span>2014年6月9日</span></p>
+                                <p>骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子了骡子来这里资料骡子</p>
+                              </div>
+                              <div class="col-lg-1 comment-reply">
+                                <p><a href="#"><span><small>回复</small></span></a></p>
+                              </div>
+                              <div class="col-lg-12">
+                                <hr class="hr-comment">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-1">
+                                <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
+                              </div>
+                              <div class="col-lg-10">
+                                <p><a href="#"><span>admin</span></a>
+                                <span>2014年6月9日</span></p>
+                                <p>骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子骡子了骡子来这里资料骡子</p>
+                              </div>
+                              <div class="col-lg-1 comment-reply">
+                                <p><a href="#"><span><small>回复</small></span></a></p>
+                              </div>
+                              <div class="col-lg-12">
+                                <hr class="hr-comment">
+                              </div>
+                            </div>
                             <div class="row">
                               <div class="col-lg-1">
                                 <img src="./static/image/git.png" alt="..." class="qa-img img-circle">
@@ -279,11 +388,6 @@
                             </div>
                           </div><!--end of comment-list-->
 
-                          <div class="row comment-show">
-                            <div class="col-lg-12">
-                              <p><a href="#"><span><small>显示评论(4条)</small></span></a></p>
-                            </div>
-                          </div><!--end of comment-show -->
                         </div><!--end of comments-->
 
                         <hr class="hr-header">
@@ -514,7 +618,7 @@
               <div class="edit-answer">
                 <div class="row">
                   <!--start of editor-->
-                  <div class="col-lg-12 fix-margin-top" style="bac">
+                  <div class="col-lg-12 fix-margin-top editor" style="bac">
                     <h3>撰写答案</h3>
 
                     <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
@@ -588,11 +692,12 @@
                       </div>
                       <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="" style="display: none;">
                     </div>
-                    <!-- <div id="editor" contenteditable="true">123...</div> -->
+                    <!--  -->
                     <div class="">
-                      <textarea id="editor" class="form-control mono textarea-14 mousetrap" placeholder="为此问题提供一个答案" rows="8" autocomplete="off" spellcheck="false" name="text"></textarea>
-                    </div>
-                    
+                      <div id="editor">
+                        为此问题提供一个答案
+                      </div>                      
+                    </div>                   
                   </div>
                   <!--end of editor-->
                   <div class="col-lg-10"></div>
