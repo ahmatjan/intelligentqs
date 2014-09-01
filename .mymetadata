@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="hnust_qa"
+  id="myeclipse.1399686159765"
+  context-root="/hnust_qa"
+  j2ee-spec="5.0"
+  archive="hnust_qa.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
