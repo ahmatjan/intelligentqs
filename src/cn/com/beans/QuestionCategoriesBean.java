@@ -1,14 +1,10 @@
 package cn.com.beans;
 
 public class QuestionCategoriesBean {
-	//问题分类ID
 	private int question_categories_id;
-	//问题分类名称
 	private String question_categories_name;
-	//问题分类描述
 	private String question_categories_description;
-	
-	//对应的get()与set()方法
+	private int last_categories_id;
 	public int getQuestion_categories_id() {
 		return question_categories_id;
 	}
@@ -28,6 +24,10 @@ public class QuestionCategoriesBean {
 			String question_categories_description) {
 		this.question_categories_description = question_categories_description;
 	}
-	
-
+	public int getLast_categories_id() {
+		return last_categories_id;
+	}
+	public void setLast_categories_id(int last_categories_id) {
+		this.last_categories_id = last_categories_id;
+	}
 }

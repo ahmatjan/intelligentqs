@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.com.beans.AnswerBean;
+import cn.com.beans.QuestionBean;
 import cn.com.beans.TagsInfoBean;
 import cn.com.interfaces.AnswerDaoInf;
 import cn.com.util.DBUtil;
@@ -30,7 +31,7 @@ public class AnswerDaoImp implements AnswerDaoInf{
 		Connection con = db.getConn();
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		String sql= "select * from answer where tag_id = ?";
+		String sql= "select * from answer where answer_id = ?";
 		try {
 			pst = con.prepareStatement(sql);
 			pst.setInt(1, answer_id);
@@ -273,15 +274,14 @@ public class AnswerDaoImp implements AnswerDaoInf{
 			return tagsCount;
 		}
 		
-	//根据某个问题ID得到所有回答信息
-		//查找回答信息
+	//根据某个问题ID得到所有回答信息按时间排序
 		public List<AnswerBean> findAnswerByQuestionId(int answer_question_id) {
 			List<AnswerBean> listAnswerBeans = new ArrayList<AnswerBean>();
 			AnswerBean answerBean = null;
 			Connection con = db.getConn();
 			PreparedStatement pst = null;
 			ResultSet rs = null;
-			String sql= "select * from answer where question_id = ?";
+			String sql= "select * from answer where question_id = ? order by answer_id desc";
 			try {
 				pst = con.prepareStatement(sql);
 				pst.setInt(1, answer_question_id);
@@ -314,12 +314,12 @@ public class AnswerDaoImp implements AnswerDaoInf{
 			Connection con = db.getConn();
 			PreparedStatement pst = null;
 			ResultSet rs = null;
-//			String sql= "select * from answer where answer_user_id = ?";
+			String sql= "select * from answer where answer_user_id = ?";
 			//开发时使用
-			String sql= "select * from answer";
+//			String sql= "select * from answer";
 			try {
 				pst = con.prepareStatement(sql);
-//				pst.setInt(1, userId);
+				pst.setInt(1, userId);
 				rs = pst.executeQuery();
 				while (rs.next()) {
 					answerBean = new AnswerBean();
@@ -369,5 +369,59 @@ public class AnswerDaoImp implements AnswerDaoInf{
 			}
 			return answerBean;
 		}
+		
+		public String updateAns_remark(int remark, int answer_id) {
+			Connection conn = db.getConn();
+			PreparedStatement pst = null;
+			boolean rs = true;
+			QuestionBean qb = new QuestionBean();
+			String sql = "update answer set answer_mark = ? where answer_id = ?";
+			try {
+				pst = conn.prepareStatement(sql);
+				pst.setLong(1, remark);
+				pst.setLong(2, answer_id);
+				rs = pst.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				db.free(pst, conn);
+			}
+			return "True";
+		}
+		
+		
+		//根据问题ID得到该问题答案列表按热门
+		public List<AnswerBean> findHotAnswerByQuestionId(int answer_question_id) {
+			List<AnswerBean> listAnswerBeans = new ArrayList<AnswerBean>();
+			AnswerBean answerBean = null;
+			Connection con = db.getConn();
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+			String sql= "select * from answer where question_id = ? order by answer_mark desc";
+			try {
+				pst = con.prepareStatement(sql);
+				pst.setInt(1, answer_question_id);
+				rs = pst.executeQuery();
+				while (rs.next()) {
+					answerBean = new AnswerBean();
+					answerBean.setAnswer_id(rs.getInt("answer_id"));
+					answerBean.setAnswer_description(rs.getString("answer_description"));
+					answerBean.setAnswer_time(rs.getString("answer_time"));
+					answerBean.setAnswer_mark(rs.getInt("answer_mark"));
+					answerBean.setAnswer_user_id(rs.getInt("answer_user_id"));
+					answerBean.setQuestion_id(rs.getInt("question_id"));
+					answerBean.setAnswer_best(rs.getInt("answer_best"));
+					listAnswerBeans.add(answerBean);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				db.free(rs, pst, con);
+			}
+			return listAnswerBeans;
+		}
+		
 		
 }

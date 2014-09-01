@@ -32,6 +32,7 @@ public class RegisterServlet extends HttpServlet {
 		String passwd1 = request.getParameter("passwd1");
 		String passwd2 = request.getParameter("passwd2");
 		String userEmail = request.getParameter("userEmail");
+		System.out.println(userName+userEmail+passwd2);
 		UserInfoDaoImp userDao = new UserInfoDaoImp();
 		if (passwd1 != null & passwd2 != null) {
 			if (!passwd1.equals("") & !passwd2.equals("")

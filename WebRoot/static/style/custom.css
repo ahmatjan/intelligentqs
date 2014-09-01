@@ -19,6 +19,12 @@
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
+.hr-category {
+	border-top: 2px dotted #ededed;
+	margin: 10px 15px;
+	margin-bottom: 0px;
+
+}
 .hr-aside {
 	margin-bottom: 10px;
 	border-top: 1.5px solid #ededed;
@@ -155,16 +161,16 @@ foot .container p a {
 }
 .category-list li {
 	float: left;
-	padding: 3px 8px;
+	padding: 5px 8px;
 	list-style: none;
 }
 .category-list {
-	padding: 10px 0px;
+	padding: 15px 0px;
 }
 .category-list li a {
 	display: block;
-	padding: 3px;
-	border-radius: 25px;
+	padding: 5px 15px;
+	border-radius: 50px;
 	text-decoration: none;
 	border: 1px solid #daecf5;
 }
@@ -172,4 +178,79 @@ foot .container p a {
 	background: #259;
 	border-color: #259;
 	color: #fff;
+}
+.son ul li a {
+	display: block;
+	padding: 5px 10px;
+	border-radius: 50px;
+	text-decoration: none;
+	border: 1px solid #daecf5;
+}
+.question-category {
+	margin: 15px 10px;
+}
+.question-category img {
+	margin-left: -5px;
+}
+.tag-img {
+	width: 80px;
+	height: 80px;
+	margin-left: 35px;
+}
+.tag-title {
+	margin-top: 25px;
+}
+.tag-follow {
+	margin-top: 40px;
+
+}
+.editor {
+	padding: 0px 30px;
+}
+
+.i-feed,.i-google,.i-twitter,.i-github,.i-weibo,.i-facebook,.i-qq,.i-renren,.i-douban,.i-taobao,
+.i-linkedin,.i-tqq {
+	width: 16px;
+	height: 16px;
+	background: url('../image/icon-s052f1c03ec.png');
+	text-align: left;
+	text-indent: -9999em;
+	display: inline-block;
+	vertical-align: text-bottom
+}
+.i-feed {
+	background-position: 0 -240px
+}
+.i-google {
+	background-position: 0 -340px
+}
+.i-twitter {
+	background-position: 0 -324px
+}
+.i-github {
+	background-position: 0 -184px
+}
+.i-weibo {
+	background-position: 0 -200px
+}
+.i-facebook {
+	background-position: 0 -494px
+}
+.i-qq {
+	background-position: 0 -120px
+}
+.i-renren {
+	background-position: 0 -418px
+}
+.i-douban {
+	background-position: 0 -402px
+}
+.i-taobao {
+	background-position: 0 -448px
+}
+.i-linkedin {
+	background-position: 0 -478px
+}
+.i-tqq {
+	background-position: 0 -308px
 }

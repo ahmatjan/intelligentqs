@@ -1,6 +1,5 @@
 package cn.com.util;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Date;    
 import java.util.Properties;   
 
@@ -14,10 +13,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;    
 import javax.mail.internet.MimeBodyPart;    
 import javax.mail.internet.MimeMessage;    
-import javax.mail.internet.MimeMultipart;    
-import javax.mail.internet.MimeUtility;
-
-import sun.misc.BASE64Encoder;
+import javax.mail.internet.MimeMultipart;
   
 /**   
 * 简单邮件（不带附件的邮件）发送器   

@@ -75,6 +75,9 @@ public class DisscussQuestionServlet extends HttpServlet {
 		for(int i=0; i<listAllQuestion.size();i++){
 			questionAllInfoBean = new QuestionAllInfoBean();
 			questionBean = listAllQuestion.get(i);
+			if(questionBean.getQuestion_description().length() > 100){
+				questionBean.setQuestion_description(questionBean.getQuestion_description().substring(0, 100)+"...");
+			}
 			String userName = userInfoDaoImp.getUserInfoByUserId(questionBean.getQuestion_user_id()).getUser_name();
 			int countOfAnswer = answerDaoImp.getContOfAnswer(questionBean.getQuestion_id());
 			
@@ -90,6 +93,9 @@ public class DisscussQuestionServlet extends HttpServlet {
 		for(int i=0; i<10;i++){
 			questionAllInfoBean = new QuestionAllInfoBean();
 			questionBean = listHotQuestion.get(i);
+			if(questionBean.getQuestion_description().length() > 100){
+				questionBean.setQuestion_description(questionBean.getQuestion_description().substring(0, 100)+"...");
+			}
 			String userName = userInfoDaoImp.getUserInfoByUserId(questionBean.getQuestion_user_id()).getUser_name();
 			int countOfAnswer = answerDaoImp.getContOfAnswer(questionBean.getQuestion_id());
 			

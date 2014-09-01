@@ -1,6 +1,6 @@
 <%@page import="cn.com.beans.UserInfoBean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="./static/style/custom.css">
     <link rel="stylesheet" type="text/css" href="./static/style/wy.css">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-      
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <script src="./static/style/wy.js"></script> 
     <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
     <script src="./dist/js/bootstrap.js"></script>
@@ -37,64 +37,63 @@
 			.getAttribute("userBean");
 %>
   <body>
-      <div class="container header-bg">
-        <nav class="navbar navbar-default header-border header-height" role="navigation">
-          
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div class="row">
-              <div class="col-lg-6">
-                <form class="navbar-form navbar-left" role="search" action="searchQuestion" method="post">
+    	<div class="container header-bg">
+      <nav class="navbar navbar-default header-border header-height" role="navigation">
+        
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="row">
+
+            <div class="col-lg-6">
+              <form class="navbar-form navbar-left" role="Search" action="searchQuestion" method="post">
                 <div class="input-group ">
                   <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit"> Search </button>
+                    <button class="btn btn-default" type="button">LOGO</button>
                   </span>
-                  <input type="text" class="form-control" name="context">
+                  <input type="text" class="form-control" placeholder="提问之前不妨搜索试试？" value="" name="context" value="${searchKeyWords }">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <span class="glyphicon glyphicon-search"></span>&nbsp;搜索
+                    </button>
+                  </span>
                 </div><!-- /input-group -->
-               </form>
-              </div><!-- /.col-lg-6 -->
+              </form>
+            </div><!--col-lg-6-->
 
-             <div class="col-lg-6">
-
-                   <%
-						if (uib != null) {
-					%>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index">首页</a>
-						<!-- 
-						<li><div class="col-md-2"><img src="<%=uib.getUser_logo() %>" alt="" style="width:36px;height: 42px;padding-top: 8px"></div></li>
-						 -->
-						<li><a href="GetPersionInfoServlet"><%=uib.getUser_name() %></a>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">Account <b class="caret"></b>
-						</a>
-							<ul class="dropdown-menu">
-								<li><a href="GetPersionInfoServlet">我的主页</a>
-								</li>
-								<li><a href="userLogOffServlet">退出</a>
-								</li>
-								<li class="divider"></li>
-								<li><a href="#">建议反馈</a>
-								</li>
-							</ul></li>
-					</ul>
-					<%
-						} else {
-					%>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index">首页</a>
-						<li><a href="userLogin.jsp">登录</a>
-						</li>
-						<li><a href="userRegister.jsp">注册</a>
-						</li>
-					</ul>
-					<%
-						}
-					%>
-              </div>
+            <div class="col-lg-3">
+              <ul class="nav navbar-nav navbar-left">
+                <li><a href="index">主页</a></li>
+                <li><a href="category.jsp">发现</a></li>
+              </ul>
             </div>
-          </div><!-- /.navbar-collapse -->
-        </nav>
-      </div>
+
+            <div class="col-lg-3">
+            <%if(uib !=  null) {%>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">消息 <span class="badge">0</span></a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="./static/image/git.png" alt="..." class="person-img img-circle">&nbsp;&nbsp;<%=uib.getUser_name()%><b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="GetPersionInfoServlet">我的主页</a></li>
+                    <li><a href="#">帐号设置</a></li>
+                    <li><a href="userLogOffServlet">退出</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">建议反馈</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <%} else{ %>
+              		<ul class="nav navbar-nav navbar-right">
+							<li><a href="index">首页</a>
+							</li><li><a href="userLogin.jsp">登录</a></li>
+							<li><a href="userRegister.jsp">注册</a></li>
+						</ul>
+			<%} %>              
+            </div>
+          </div>
+        </div><!-- navbar-collapse -->
+      </nav>
+    </div>
 
       <hr class="hr-header">
 
@@ -108,7 +107,7 @@
             <div class="col-lg-9">
               <div class="row">
                 <div class="col-lg-12">
-                  <h2><small>提出新问题</small></h2>
+                  <h2><small>提出新问题<font color="red">${ Msg}</font></small></h2>
                 </div>
                 <hr class="hr-header">
               <!--question title start-->
@@ -243,7 +242,6 @@
                   	<div class="col-lg-6 ask-btn">
                   		<a href="#" type="button" class="btn btn-primary btn-lg btn-block" onclick="document.form.submit();">提出问题</a>
                   	</div>
-                  	<div class="col-lg-3"></div>
                   </div>
 
             </div>  

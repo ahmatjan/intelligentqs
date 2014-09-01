@@ -38,7 +38,6 @@ public class Tread extends HttpServlet {
 		
 		RUtil redis = new RUtil();
 		Jedis rdb = redis.con();
-		rdb.set("name","tx");
 		
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -53,19 +52,30 @@ public class Tread extends HttpServlet {
         	String select_praise = "userid:" + uib.getUser_id() + ":questionid:" + question_id;
         	String select_praises = "questionid:" + question_id;
         	
+        	QuestionDaoImp qsDao = new QuestionDaoImp();
+            QuestionBean qs = qsDao.getQuestionByQuestionId(Integer.parseInt(question_id));
+            int qs_mark = qs.getQuestion_mark();
+        	
            	String mark = rdb.hget("praise", select_praise);
 
-        	if (mark == null) {
-        		rdb.hset("praise", select_praise, "0");
+        	if (mark == null || mark.equals("0")) {
+        		rdb.hset("praise", select_praise, "-1");
         		rdb.hincrBy("praises", select_praises, -1);
+        		String marks = (String) rdb.hget("praises", select_praises);
+        		qsDao.updateQS_remark(Integer.parseInt(marks), Integer.parseInt(question_id)); 
         		out.write("True");
         	}
-        	else if (mark.equals("0")) {
-        		out.write("Flase");
+        	else if (mark.equals("-1")) {
+        		rdb.hset("praise", select_praise, "0");
+        		qsDao.updateQS_remark(qs_mark + 1, Integer.parseInt(question_id));    		
+        		rdb.hincrBy("praises", select_praises, 1);
+        		out.write("True");
         	}
         	else {
-        		rdb.hset("praise", select_praise, "0");
-        		rdb.hincrBy("praises", select_praises, -1);
+        		rdb.hset("praise", select_praise, "-1");
+        		rdb.hincrBy("praises", select_praises, -2);
+        		String marks = (String) rdb.hget("praises", select_praises);
+        		qsDao.updateQS_remark(Integer.parseInt(marks), Integer.parseInt(question_id)); 
         		out.write("True");
         	}
         }

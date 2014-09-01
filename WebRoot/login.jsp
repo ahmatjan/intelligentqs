@@ -5,6 +5,7 @@
 <title>腾讯微博登录组件</title>
 <script src="http://mat1.gtimg.com/app/openjs/openjs.js"></script>
 <link rel="stylesheet" type="text/css" href="css/tencentweibo.css">
+<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
 </head>
 <body>
 	<div class="qq_account_log" id="qq_account_log">

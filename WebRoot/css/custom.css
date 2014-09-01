@@ -8,18 +8,31 @@
 
 .header-height {
 	margin-bottom: 0px;
-	background-color: #3276b1;
+	background-color: #428bca;
 }
-
 .hr-header {
 	margin-top: 0px;
+	border-top: 1.5px solid #ededed;
+}
+.hr-comment {
+	border-top: 2px dotted #ededed;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.hr-category {
+	border-top: 1px dotted #ededed;
+	margin: 10px;
+	margin-bottom: 0px;
+}
+.hr-aside {
+	margin-bottom: 10px;
 	border-top: 1.5px solid #ededed;
 }
 
 .nav-right > li {
 	padding: 0px 2px 0px 0px;
-  float: right;
-  margin-bottom: -1px;
+	float: right;
+	margin-bottom: -1px;
 }
 
 .qa-list {
@@ -37,6 +50,14 @@
 	border: 5px solid #ededed;
 	width: 60px;
 	height: 60px;
+}
+
+.person-img {
+	border: 5px solid #ededed;
+	width: 40px;
+	height: 40px;
+	margin-top: -15px;
+	margin-bottom: -15px;
 }
 
 .qa-margin-left {
@@ -109,8 +130,113 @@
 	color: #ffffff;
 	border-radius: 4px;
 	text-align: center;
-	background-color: #3276b1;
+	background-color: #357ebd;
 }
 foot .container p a {
 	color: #ffffff;
+}
+.answer ul {
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+.answer ul li {
+	
+}
+.answer ul span h3 {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+.related-list ul li{
+	margin-top: 3px;
+	padding-bottom: 3px;
+}
+.ask-btn {
+	margin-top: 30px;
+}
+.more {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #999;
+}
+.category-list li {
+	float: left;
+	padding: 5px 8px;
+	list-style: none;
+}
+.category-list {
+	padding: 10px 0px;
+}
+.category-list li a {
+	display: block;
+	padding: 5px 10px;
+	border-radius: 50px;
+	text-decoration: none;
+	border: 1px solid #daecf5;
+}
+.category-list > li.active > a, .category-list > li.active > a:hover, .category-list > li.active > a:focus {
+	background: #259;
+	border-color: #259;
+	color: #fff;
+}
+.son ul li a {
+	display: block;
+	padding: 5px 10px;
+	border-radius: 50px;
+	text-decoration: none;
+	border: 1px solid #daecf5;
+}
+
+
+
+
+.i-feed,.i-google,.i-twitter,.i-github,.i-weibo,.i-facebook,.i-qq,.i-renren,.i-douban,.i-taobao,
+.i-linkedin,.i-tqq {
+	width: 16px;
+	height: 16px;
+	background: url('../image/icon-s052f1c03ec.png');
+	text-align: left;
+	text-indent: -9999em;
+	display: inline-block;
+	vertical-align: text-bottom
+}
+.i-feed {
+	background-position: 0 -240px
+}
+.i-google {
+	background-position: 0 -340px
+}
+.i-twitter {
+	background-position: 0 -324px
+}
+.i-github {
+	background-position: 0 -184px
+}
+.i-weibo {
+	background-position: 0 -200px
+}
+.i-facebook {
+	background-position: 0 -494px
+}
+.i-qq {
+	background-position: 0 -120px
+}
+.i-renren {
+	background-position: 0 -418px
+}
+.i-douban {
+	background-position: 0 -402px
+}
+.i-taobao {
+	background-position: 0 -448px
+}
+.i-linkedin {
+	background-position: 0 -478px
+}
+.i-tqq {
+	background-position: 0 -308px
+}
+
+.answer ul span h3 {
+	margin-bottom: 0px;
+	margin-top: 0px;
 }

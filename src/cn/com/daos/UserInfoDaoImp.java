@@ -8,18 +8,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.com.beans.BasicUserInfoBean;
 import cn.com.beans.UserInfoBean;
 import cn.com.interfaces.UserInfoDaoInf;
 import cn.com.util.DBUtil;
 
 /**
  * @author Xianxiaofei
- * @date:2014-5-10 ï¿½ï¿½ï¿½ï¿½10:16:17
+ * @date:2014-5-10 ÉÏÎç10:16:17
  */
 
 /**
  * @author Friday
- * @date 2014-5-18 ï¿½ï¿½ï¿½ï¿½4:12:33
+ * @date 2014-5-18 ÏÂÎç4:12:33
  */
 public class UserInfoDaoImp implements UserInfoDaoInf {
 
@@ -29,7 +30,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		db = new DBUtil();
 	}
 
-	// Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+	// Í¨¹ýÓÃ»§ÃûÑéÖ¤ÓÃ»§ÊÇ·ñ´æÔÚ
 	public boolean validataByUserName(String user_name) {
 		Boolean bool = false;
 		Connection conn = db.getConn();
@@ -49,7 +50,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 
-	// ï¿½ï¿½Â¼ï¿½ï¿½Ö¤
+	// µÇÂ¼ÑéÖ¤
 	public boolean validateByUserNameAndUserPassword(String user_name,
 			String user_password) {
 		Boolean bool = false;
@@ -71,7 +72,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½
+	// ÃÜÂëÕÒ»Ø
 		public boolean validateByUserNameAndUserEmail(String user_name,
 				String user_email) {
 			Boolean bool = false;
@@ -93,7 +94,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 			return bool;
 		}
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	// ¸ù¾ÝÓÃ»§ÃûµÃµ½ÓÃ»§ÐÅÏ¢
 	public UserInfoBean getUserInfoByUserName(String user_name) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -121,7 +122,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return userBean;
 	}
 
-	// ï¿½ï¿½ï¿½ï¿½idï¿½Ãµï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	// ¸ù¾ÝidµÃµ½ÓÃ»§ÐÅÏ¢
 	public UserInfoBean getUserInfoByUserId(int user_id) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -149,7 +150,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return userBean;
 	}
 
-	// É¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	// É¾³ýÓÃ»§ÐÅÏ¢
 	public boolean deleteUserInfoByUserId(int user_id) {
 		boolean bool = false;
 		Connection conn = db.getConn();
@@ -171,7 +172,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ãµï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½Ð±ï¿½
+	// ¸ù¾ÝÐÕÃûÄ£ºý²éÑ¯µÃµ½ÓÃ»§ÐÅÏ¢ÁÐ±í
 	public List<UserInfoBean> getUserInfoAllInfoByUserName(String user_name) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -207,7 +208,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return list;
 	}
 
-	// ï¿½Þ¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	// ÐÞ¸ÄÓÃ»§ÐÅÏ¢
 	public boolean updateUserInfoByUserId(UserInfoBean uib) {
 		boolean bool = false;
 		Connection conn = db.getConn();
@@ -235,7 +236,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 
-	// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	// µÃµ½ËùÓÐÓÃ»§ÐÅÏ¢
 	public List<UserInfoBean> getAllUserInfo() {
 		List<UserInfoBean> list = null;
 		UserInfoBean userBean = null;
@@ -269,7 +270,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return list;
 	}
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ã‘ï¿½ï¿½ï¿½Ï¢,×¢ï¿½á¹¦ï¿½ï¿½
+	// Ôö¼ÓÓÃ‘ôÐÅÏ¢,×¢²á¹¦ÄÜ
 	public boolean addUserInfo(UserInfoBean uib) {
 		boolean bool = false;
 		Connection conn = db.getConn();
@@ -297,7 +298,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 
-	// Í³ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Í³¼ÆÓÃ»§×ÜÊý
 	public int getCountOfUser() {
 		int count = 0;
 		Connection conn = db.getConn();
@@ -321,17 +322,73 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return count;
 	}
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½ï¿½Ã»ï¿½
+	//»ñµÃÈÈÃÅµÄÓÃ»§
 	public List<UserInfoBean> getHotUserInfos() {
-		// TODO Auto-generated method stub
-		return null;
+		List<UserInfoBean> list = null;
+		UserInfoBean userBean = null;
+		Connection conn = db.getConn();
+		Statement st = null;
+		ResultSet rs = null;
+		String sql = "select * from user_info order by user_mark desc";
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			if (rs != null) {
+				list = new ArrayList<UserInfoBean>();
+				while (rs.next()) {
+					userBean = new UserInfoBean();
+					userBean.setUser_id(rs.getInt("user_id"));
+					userBean.setUser_name(rs.getString("user_name"));
+					userBean.setUser_password(rs.getString("user_password"));
+					userBean.setUser_email(rs.getString("user_email"));
+					userBean.setUser_mark(rs.getInt("user_mark"));
+					userBean.setUser_tags(rs.getString("user_tags"));
+					userBean.setUser_logo(rs.getString("user_logo"));
+					list.add(userBean);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, st, conn);
+		}
+		return list;
 	}
 	
-	//ï¿½Ð¶ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½
+	//ÅÐ¶Ï×Ö·û´®ÊÇ·ñÓÉ×ÖÄ¸ºÍÊý×Ö¹¹³É
 	public boolean  isIleagle(String str){
 		boolean bool = false;
-		bool = str.matches("^[\\da-zA-Z]*$"); //Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ò·µ»ï¿½true
+		bool = str.matches("^[\\da-zA-Z]*$"); //Ã»ÆäËû×Ö·ûÔò·µ»Øtrue
 		return bool;
 	}
+	
+	// get basic infomation of user
+		public BasicUserInfoBean getBasicUserInfoByUserId(int user_id){
+			int count = 0;
+			BasicUserInfoBean basicInfo = new BasicUserInfoBean();
+			Connection conn = db.getConn();
+			PreparedStatement pst = null;
+			ResultSet rs = null;
+			String sql = "select *from question  where question_user_id=?";
+			try {
+				pst = conn.prepareStatement(sql);
+				pst.setInt(1, user_id);
+				rs = pst.executeQuery();
+				if ( rs != null) {
+					while(rs.next()){
+						count = count +1;
+					}
+				}
+				basicInfo.set_questions(count);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				db.free(rs, pst, conn);
+			}
+
+			return basicInfo;
+		}
+
 	
 }

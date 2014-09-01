@@ -50,9 +50,18 @@ public class AddAnswerInfoServlet extends HttpServlet {
 			request.getRequestDispatcher("userLogin.jsp").forward(request, response);
 			return;
 		}
-		
-		String answerDescription = request.getParameter("answer_description");
+		String answerDescription;
 		int question_id = Integer.parseInt(request.getParameter("question_id"));
+		try{
+			answerDescription = request.getParameter("answer_description");
+			System.out.println(answerDescription);
+		}catch(Exception e){
+			request.setAttribute("question_id", question_id);
+			request.getRequestDispatcher("getDetilQuestion").forward(request, response);
+			return;
+		}
+		
+		System.out.println(question_id);
 		Date date = new Date();
 		AnswerDaoImp answerDaoImp = new AnswerDaoImp();
 		AnswerBean answerBean = new AnswerBean();

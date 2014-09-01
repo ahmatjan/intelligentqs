@@ -39,6 +39,7 @@ public class TagsInfoDaoImp implements TagsInfoDaoInf{
 				tagBean = new TagsInfoBean();
 				tagBean.setTags_id(rs.getInt("tag_id"));
 				tagBean.setTags_name(rs.getString("tag_name"));
+				tagBean.setTags_categories_id(rs.getInt("tags_categories_id"));
 				
 			}
 		} catch (SQLException e) {
@@ -66,6 +67,7 @@ public class TagsInfoDaoImp implements TagsInfoDaoInf{
 				tagBean = new TagsInfoBean();
 				tagBean.setTags_id(rs.getInt("tag_id"));
 				tagBean.setTags_name(rs.getString("tag_name"));
+				tagBean.setTags_categories_id(rs.getInt("tags_categories_id"));
 				listTagBeans.add(tagBean);
 			}
 		} catch (SQLException e) {
@@ -82,11 +84,12 @@ public class TagsInfoDaoImp implements TagsInfoDaoInf{
 		Boolean bool = false;
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
-		String sql = "insert into tags_info(tag_name) VALUES(?)";
-		String tag_name = tagsInfoBean.getTags_name();
+		String sql = "insert into tags_info(tag_name,tags_categories_id) VALUES(?,?)";
+		
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, tag_name);
+			pst.setString(1, tagsInfoBean.getTags_name());
+			pst.setInt(1, tagsInfoBean.getTags_categories_id());
 			int len = pst.executeUpdate();
 			if (len > 0) {
 				bool = true;
@@ -141,6 +144,7 @@ public class TagsInfoDaoImp implements TagsInfoDaoInf{
 				tagBean = new TagsInfoBean();
 				tagBean.setTags_id(rs.getInt("tag_id"));
 				tagBean.setTags_name(rs.getString("tag_name"));
+				tagBean.setTags_categories_id(rs.getInt("tags_categories_id"));
 				listTagBeans.add(tagBean);
 			}
 		} catch (SQLException e) {
@@ -159,10 +163,11 @@ public class TagsInfoDaoImp implements TagsInfoDaoInf{
 		PreparedStatement pst = null;
 		try {
 
-			String sql = "update tags_info set tag_name = ? where tag_id = ?";
+			String sql = "update tags_info set tag_name = ? ,tags_categories_id = ? where tag_id = ?";
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, tagsInfoBean.getTags_name());
-			pst.setInt(2, tagsInfoBean.getTags_id());
+			pst.setInt(2, tagsInfoBean.getTags_categories_id());
+			pst.setInt(3, tagsInfoBean.getTags_id());
 			int len = pst.executeUpdate();
 			if (len > 0) {
 				bool = true;
@@ -216,6 +221,7 @@ public class TagsInfoDaoImp implements TagsInfoDaoInf{
 					tagBean = new TagsInfoBean();
 					tagBean.setTags_id(rs.getInt("tag_id"));
 					tagBean.setTags_name(rs.getString("tag_name"));
+					tagBean.setTags_categories_id(rs.getInt("tags_categories_id"));
 					listTagBeans.add(tagBean);
 				}
 			} catch (SQLException e) {

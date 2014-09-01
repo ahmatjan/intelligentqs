@@ -42,6 +42,7 @@ public class AddTagInfoServlet extends HttpServlet {
 		}
 		TagsInfoBean tagsBean = new TagsInfoBean();
 		tagsBean.setTags_name(tags_name);
+		tagsBean.setTags_categories_id(0);
 		
 		TagsInfoDaoImp tagsInfoDaoImp = new TagsInfoDaoImp();
 		List<TagsInfoBean> list = tagsInfoDaoImp.getTagsInfoByTagsName(tags_name);

@@ -43,6 +43,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 				qb.setQuestion_user_id(rs.getInt("question_user_id"));
 				qb.setQuestion_mark(rs.getInt("question_mark"));
 				qb.setQuestion_tags(rs.getString("question_tags"));
+				qb.setQuestion_categories_id(rs.getInt("question_categories_id"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -77,6 +78,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 					qb.setQuestion_user_id(rs.getInt("question_user_id"));
 					qb.setQuestion_mark(rs.getInt("question_mark"));
 					qb.setQuestion_tags(rs.getString("question_tags"));
+					qb.setQuestion_categories_id(rs.getInt("question_categories_id"));
 					list.add(qb);
 				}
 			}
@@ -114,6 +116,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 					qb.setQuestion_user_id(rs.getInt("question_user_id"));
 					qb.setQuestion_mark(rs.getInt("question_mark"));
 					qb.setQuestion_tags(rs.getString("question_tags"));
+					qb.setQuestion_categories_id(rs.getInt("question_categories_id"));
 					list.add(qb);
 				}
 			}
@@ -133,7 +136,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		Connection connection = db.getConn();
 		PreparedStatement pstm = null;
 		try {
-			String sql = "Insert into question (question_title,question_description,question_time,question_mark,question_user_id,question_tags) values(?,?,?,?,?,?)";
+			String sql = "Insert into question (question_title,question_description,question_time,question_mark,question_user_id,question_tags,question_categories_id) values(?,?,?,?,?,?,?)";
 			pstm = connection.prepareStatement(sql);
 			pstm.setString(1, questionBean.getQuestion_title());
 			pstm.setString(2, questionBean.getQuestion_description());
@@ -141,6 +144,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 			pstm.setInt(4, questionBean.getQuestion_mark());
 			pstm.setInt(5, questionBean.getQuestion_user_id());
 			pstm.setString(6, questionBean.getQuestion_tags());
+			pstm.setInt(7, questionBean.getQuestion_categories_id());
 			int len = pstm.executeUpdate();
 			if (len > 0) {
 				bool = true;
@@ -182,7 +186,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
 		try {
-			String sql = "update question set question_title = ?,question_description = ?,question_time = ?,question_mark = ?,question_user_id = ?,question_tags = ?";
+			String sql = "update question set question_title = ?,question_description = ?,question_time = ?,question_mark = ?,question_user_id = ?,question_tags = ?,question_categories_id = ?";
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, questionBean.getQuestion_title());
 			pst.setString(2, questionBean.getQuestion_description());
@@ -190,6 +194,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 			pst.setInt(4, questionBean.getQuestion_mark());
 			pst.setInt(5, questionBean.getQuestion_user_id());
 			pst.setString(6, questionBean.getQuestion_tags());
+			pst.setInt(7, questionBean.getQuestion_categories_id());
 			int len = pst.executeUpdate();
 			if (len > 0) {
 				bool = true;
@@ -227,31 +232,31 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return count;
 	}
 
-	//更具提问者ID得到该用户提问的所有信息
-		public int getContOfQuestionByUserId(int question_user_id) {
-			int count = 0;
-			Connection conn = db.getConn();
-			PreparedStatement pst = null;
-			ResultSet rs = null;
-			String sql = "select count(*) totalQuestion from question where question_user_id = ?";
-			try {
-				pst = conn.prepareStatement(sql);
-				pst.setInt(1, question_user_id);
-				rs = pst.executeQuery();
-				if (rs != null) {
-					while (rs.next()) {
-						count = rs.getInt("totalQuestion");
-					}
+	// 更具提问者ID得到该用户提问的所有信息
+	public int getContOfQuestionByUserId(int question_user_id) {
+		int count = 0;
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "select count(*) totalQuestion from question where question_user_id = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, question_user_id);
+			rs = pst.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					count = rs.getInt("totalQuestion");
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				db.free(rs, pst, conn);
 			}
-			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
 		}
-	
+		return count;
+	}
+
 	// 获得热门问题
 	public List<QuestionBean> getHotQuestions() {
 		Connection conn = db.getConn();
@@ -275,6 +280,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 					qb.setQuestion_user_id(rs.getInt("question_user_id"));
 					qb.setQuestion_mark(rs.getInt("question_mark"));
 					qb.setQuestion_tags(rs.getString("question_tags"));
+					qb.setQuestion_categories_id(rs.getInt("question_categories_id"));
 					list.add(qb);
 				}
 			}
@@ -294,13 +300,13 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		ResultSet rs = null;
 		List<QuestionBean> list = null;
 		QuestionBean qb = null;
-//		String sql = "select * from question order by question_id desc limit ?,? ";
-//		用一次，系统发布后不适用下面的SQL语句
-		String sql = "select * from question order by question_id desc";
+		String sql = "select * from question order by question_id desc limit ?,? ";
+		// 用一次，系统发布后不适用下面的SQL语句
+		// String sql = "select * from question order by question_id desc";
 		try {
 			pst = conn.prepareStatement(sql);
-//			pst.setInt(1, row);
-//			pst.setInt(2, countPage);
+			pst.setInt(1, row);
+			pst.setInt(2, countPage);
 			rs = pst.executeQuery();
 			if (rs != null) {
 				list = new ArrayList<QuestionBean>();
@@ -314,6 +320,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 					qb.setQuestion_user_id(rs.getInt("question_user_id"));
 					qb.setQuestion_mark(rs.getInt("question_mark"));
 					qb.setQuestion_tags(rs.getString("question_tags"));
+					qb.setQuestion_categories_id(rs.getInt("question_categories_id"));
 					list.add(qb);
 				}
 			}
@@ -353,6 +360,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 					qb.setQuestion_user_id(rs.getInt("question_user_id"));
 					qb.setQuestion_mark(rs.getInt("question_mark"));
 					qb.setQuestion_tags(rs.getString("question_tags"));
+					qb.setQuestion_categories_id(rs.getInt("question_categories_id"));
 					list.add(qb);
 				}
 			}
@@ -390,6 +398,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 					qb.setQuestion_user_id(rs.getInt("question_user_id"));
 					qb.setQuestion_mark(rs.getInt("question_mark"));
 					qb.setQuestion_tags(rs.getString("question_tags"));
+					qb.setQuestion_categories_id(rs.getInt("question_categories_id"));
 					list.add(qb);
 				}
 			}
@@ -401,38 +410,93 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		}
 		return list;
 	}
-	
-	// 根据标问题内容得到问题信息
-		public QuestionBean getQuestionByQuestionKey(
-				String question_description) {
-			Connection conn = db.getConn();
-			PreparedStatement pst = null;
-			ResultSet rs = null;
-			QuestionBean qb = new QuestionBean();
-			String sql = "select * from question where question_description = ?";
-			try {
-				pst = conn.prepareStatement(sql);
-				pst.setString(1, question_description);
-				rs = pst.executeQuery();
-				if (rs != null) {
-					while (rs.next()) {
-						qb.setQuestion_id(rs.getInt("question_id"));
-						qb.setQuestion_title(rs.getString("question_title"));
-						qb.setQuestion_description(rs
-								.getString("question_description"));
-						qb.setQuestion_time(rs.getString("question_time"));
-						qb.setQuestion_user_id(rs.getInt("question_user_id"));
-						qb.setQuestion_mark(rs.getInt("question_mark"));
-						qb.setQuestion_tags(rs.getString("question_tags"));
-					}
+
+	// 根据问题内容得到问题信息
+	public QuestionBean getQuestionByQuestionByDescription(
+			String question_description) {
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		QuestionBean qb = new QuestionBean();
+		String sql = "select * from question where question_description = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, question_description);
+			rs = pst.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					qb.setQuestion_id(rs.getInt("question_id"));
+					qb.setQuestion_title(rs.getString("question_title"));
+					qb.setQuestion_description(rs
+							.getString("question_description"));
+					qb.setQuestion_time(rs.getString("question_time"));
+					qb.setQuestion_user_id(rs.getInt("question_user_id"));
+					qb.setQuestion_mark(rs.getInt("question_mark"));
+					qb.setQuestion_tags(rs.getString("question_tags"));
+					qb.setQuestion_categories_id(rs.getInt("question_categories_id"));
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				db.free(rs, pst, conn);
 			}
-			return qb;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
 		}
+		return qb;
+	}
+
+	// 根据问题标题得到问题信息
+	public boolean getQuestionByQuestionByTitle(String question_title) {
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		QuestionBean qb = new QuestionBean();
+		boolean bool = false;
+		String sql = "select * from question where question_title = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, question_title);
+			rs = pst.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					// qb.setQuestion_id(rs.getInt("question_id"));
+					// qb.setQuestion_title(rs.getString("question_title"));
+					// qb.setQuestion_description(rs
+					// .getString("question_description"));
+					// qb.setQuestion_time(rs.getString("question_time"));
+					// qb.setQuestion_user_id(rs.getInt("question_user_id"));
+					// qb.setQuestion_mark(rs.getInt("question_mark"));
+					// qb.setQuestion_tags(rs.getString("question_tags"));
+					bool = true;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
+		}
+		return bool;
+	}
+
+	public String updateQS_remark(int remark, int question_id) {
+		Connection conn = db.getConn();
+		PreparedStatement pst = null;
+		boolean rs = true;
+		QuestionBean qb = new QuestionBean();
+		String sql = "update question set question_mark = ? where question_id = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setLong(1, remark);
+			pst.setLong(2, question_id);
+			rs = pst.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(pst, conn);
+		}
+		return "True";
+	}
 
 }

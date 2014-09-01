@@ -31,8 +31,13 @@ public class LoginServlet extends HttpServlet {
 		
 		String ver = (String) session.getAttribute("rand");
 		String vercode = request.getParameter("vercode");
+		if(ver == null || vercode == null){
+			response.sendRedirect("userLogin.jsp");
+			session.removeAttribute("vercode");
+			return;
+		}
 		// 判断验证码是否正确  
-		if(!vercode.equalsIgnoreCase(ver)){
+		if(!vercode.equalsIgnoreCase(ver)||vercode == null){
 			request.setAttribute("Msg", "<font color='red'>验证码错误！</font>");
 			session.removeAttribute("vercode");
 			request.getRequestDispatcher("userLogin.jsp").forward(request, response);

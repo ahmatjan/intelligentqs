@@ -17,19 +17,28 @@ public class DBUtil {
 	//������ӷ���
 	public Connection getConn() {
 		Connection conn = null;
-//		String Username=SaeUserInfo.getAccessKey();
-//		String Password=SaeUserInfo.getSecretKey();
+		
+		/*****��д���ݿ������Ϣ ע���е���ϢΪ�ٶȿ��������ķ�����ʹ��*****/
+//		String databaseName = "XPLicCEZZoSPzufKXedM"; //XPLicCEZZoSPzufKXedM
+//		String host = "sqld.duapp.com"; //sqld.duapp.com
+//		String portStr = "4050"; //4050
+//		int port = Integer.parseInt(portStr);
+//		String username = "3dN4oydNzXvFL9NfDmdZ0KhP";//�û���:  3dN4oydNzXvFL9NfDmdZ0KhP
+//		String password = "sGg3cjewYkf1Qivc2i4HYFG9Sw6Kz0WT";//����: sGg3cjewYkf1Qivc2i4HYFG9Sw6Kz0WT
+		
+//		//����ʹ��
+		String databaseName = "hnust_qa"; //XPLicCEZZoSPzufKXedM
+		String host = "localhost"; //sqld.duapp.com
+		String portStr = "3306"; //4050
+		int port = Integer.parseInt(portStr);
+		String username = "root";//�û���:  3dN4oydNzXvFL9NfDmdZ0KhP
+		String password = "niuyichao";//����: sGg3cjewYkf1Qivc2i4HYFG9Sw6Kz0WT
+		
+		String conDriver = "jdbc:mysql://"+host+":"+portStr+"/"+databaseName+"?useUnicode=true&characterEncoding=utf8";
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(
-					//�ٶȿ��������ķ���������ʹ��
-//					"jdbc:mysql://sqld.duapp.com:4050/XPLicCEZZoSPzufKXedM?useUnicode=true&characterEncoding=utf8", "3dN4oydNzXvFL9NfDmdZ0KhP", "sGg3cjewYkf1Qivc2i4HYFG9Sw6Kz0WT");
-					//����SAE���ݿ�����
-//					"jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_hnustqa?useUnicode=true&characterEncoding=utf8", Username,Password);
-//			"jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_hnustqa?useUnicode=true&characterEncoding=utf8", "n1l0ol55n2","00j2ihl30lxx4i53mhy225xjl0x4kwh0yy3403y3");
-					//�������ݿ⿪��ʹ��
-			"jdbc:mysql://localhost:3306/hnust_qa?useUnicode=true&characterEncoding=utf8", "root","niuyichao");
+			conn = DriverManager.getConnection(conDriver, username,password);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

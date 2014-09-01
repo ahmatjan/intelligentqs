@@ -11,7 +11,7 @@
     <title>用户注册</title>
     <!-- Bootstrap core CSS -->
     <link href="./dist/css/bootstrap.css" rel="stylesheet">
-
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <!-- Custom styles for this template -->
     <link href="./static/style/signin.css" rel="stylesheet">
 
@@ -65,8 +65,14 @@
               <input type="password" id="passwd2" name="passwd2" class="form-control" placeholder="Password" required>
                <input type="text" id="user" name="userEmail" class="form-control" placeholder="Email将用来找回密码" required autofocus>
               <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>&nbsp;
-			<label class='loginlabel'><a href='userLogin.jsp'><font color="white">已有账户登录</font></a><font color='white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;人人登录：<a href="#"><img alt="人人账号登陆" src="images/renren3.png" height="22px"></a></font></label>
-             <a style="color: red;margin-left:180px;text-decoration: none" >${Msg }</a>
+			<br>
+					<div>
+						<div style="float: left;vertical-align: middle;"><a href='userLogin.jsp'>账户登录</a></div>
+						<div style="float: left;margin-left: 22px"><a href="https://graph.renren.com/oauth/authorize?client_id=270288&response_type=code&redirect_uri=http://hnustqa.duapp.com/rr_login&display=page">
+							<img alt="人人账号登陆" src="images/renren_login.png" height="24px" width="100px"></a></div>
+						<div style="float: left;margin-left: 22px"><a href="login.do"><img alt="QQ账号登陆" height="24px" width="100px" src="images/qq_login.png" /></a></div>
+					</div>
+					<a style="color: red; margin-left: 100px; text-decoration: none">${Msg }</a>
 			</form>
           <div class='contains'></div>
         </div>

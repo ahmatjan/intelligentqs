@@ -18,7 +18,7 @@
 </script>
 <!-- Bootstrap core CSS -->
 <link href="./dist/css/bootstrap.css" rel="stylesheet">
-
+<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
 <!-- Custom styles for this template -->
 <link href="./static/style/signin.css" rel="stylesheet">
 

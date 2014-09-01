@@ -52,19 +52,31 @@ public class Praise extends HttpServlet {
         	String select_praise = "userid:" + uib.getUser_id() + ":questionid:" + question_id;
         	String select_praises = "questionid:" + question_id;
         	
+        	QuestionDaoImp qsDao = new QuestionDaoImp();
+            QuestionBean qs = qsDao.getQuestionByQuestionId(Integer.parseInt(question_id));
+            int qs_mark = qs.getQuestion_mark();
+        	//hget返回名称为key的hash中field对应的value
            	String mark = (String) rdb.hget("praise", select_praise);
-        	if (mark == null) {
+        	if (mark == null || mark.equals("0")) {
         		rdb.hset("praise", select_praise, "1");
-        		rdb.hincrBy("praises", select_praises, 1);
+        		rdb.hincrBy("praises", select_praises, 1);//hincrBy将名称为praises的hash中select_praises的value增加1
+        		String marks = (String) rdb.hget("praises", select_praises);
+        		qsDao.updateQS_remark(Integer.parseInt(marks), Integer.parseInt(question_id)); 
         		out.write("True");
         	}
-        	else if (mark.equals("0")) {
+        	else if (mark.equals("-1")) {
         		rdb.hset("praise", select_praise, "1");
-        		rdb.hincrBy("praises", select_praises, 1);
+        		rdb.hincrBy("praises", select_praises, 2);
+        		String marks = (String) rdb.hget("praises", select_praises);
+        		qsDao.updateQS_remark(Integer.parseInt(marks), Integer.parseInt(question_id)); 
         		out.write("True");
         	}
         	else {
-        		out.write("False");
+        		rdb.hset("praise", select_praise, "0");
+        		rdb.hincrBy("praises", select_praises, -1);
+        		String marks = (String) rdb.hget("praises", select_praises);
+        		qsDao.updateQS_remark(Integer.parseInt(marks), Integer.parseInt(question_id)); 
+        		out.write("True");
         	}
         }
         

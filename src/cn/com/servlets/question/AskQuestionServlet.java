@@ -43,11 +43,27 @@ public class AskQuestionServlet extends HttpServlet {
 			request.getRequestDispatcher("userLogin.jsp").forward(request, response);
 			return;
 		}
-		String question_title = request.getParameter("question_title");
+		String question_title;
+		try{
+			question_title = request.getParameter("question_title");
+		}catch(Exception e){
+			System.out.println("该问题标题有错！");
+			request.setAttribute("Msg", "问题提交失败，错误原因：该问题标题有误!");
+			request.getRequestDispatcher("question_ask.jsp").forward(request, response);
+			return;
+		}
+		
 		String question_description = request
 				.getParameter("question_description");
 		String question_tags = request.getParameter("question_tags");
-
+		
+		QuestionDaoImp questionDao = new QuestionDaoImp();
+		if(questionDao.getQuestionByQuestionByTitle(question_title)){
+			System.out.println("该问题已存在！");
+			request.setAttribute("Msg", "问题提交失败，错误原因：该问题已存在!");
+			request.getRequestDispatcher("question_ask.jsp").forward(request, response);
+			return;
+		}
 		//登录后使用注释的语句
 		int question_user_id = (uib.getUser_id());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//设置日期格式
@@ -60,11 +76,13 @@ public class AskQuestionServlet extends HttpServlet {
 		questionBean.setQuestion_user_id(question_user_id);
 		questionBean.setQuestion_time(question_time);
 		questionBean.setQuestion_mark(question_mark);
-		QuestionDaoImp questionDao = new QuestionDaoImp();
+		//问题分类默认为0
+		questionBean.setQuestion_categories_id(0);
+		
 		if(questionDao.addQuestion(questionBean)){
 			
 			QuestionBean questionBean1 = new QuestionBean();
-			questionBean1 = questionDao.getQuestionByQuestionKey(question_description);
+			questionBean1 = questionDao.getQuestionByQuestionByDescription(question_description);
 			
 			//对当前问题分词处理
 			ChineseAnalyzerUtil chineseAnalyzerUtil = new ChineseAnalyzerUtil();

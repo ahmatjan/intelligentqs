@@ -21,6 +21,7 @@ UserInfoBean userBean = (UserInfoBean)session.getAttribute("userBean");
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
 <style type="text/css">
 body {
 	font-size: 14px;

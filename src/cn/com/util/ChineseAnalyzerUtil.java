@@ -1,7 +1,7 @@
 package cn.com.util;
 /**
  * @author Xianxiaofei
- * @date:2014ï¿½ï¿½7ï¿½ï¿½30ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½3:28:03
+ * @date:2014Äê7ÔÂ30ÈÕ ÏÂÎç3:28:03
  */
 
 import java.io.IOException;
@@ -10,11 +10,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;
 
@@ -26,33 +23,32 @@ import cn.com.daos.AnswerDaoImp;
 import cn.com.daos.AnswersKeywordsDaoImp;
 import cn.com.daos.QuestionDaoImp;
 import cn.com.daos.QuestionsKeywordsDaoImp;
-//import sun.misc.Sort;
 
 public class ChineseAnalyzerUtil {
 
 	/**
-	 * getTextDefï¿½Ô´ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·Ö´Ê£ï¿½ï¿½ï¿½Í³ï¿½Æºï¿½Ã¿ï¿½ï¿½ï¿½Îµï¿½Æµï¿½ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½Ü¼òµ¥£ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IKï¿½Ðµï¿½ï¿½à£¬IKSegmenterï¿½Ç·Ö´Êµï¿½ï¿½ï¿½Òªï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ç·Ö´ÊµÄ¾ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ ï¿½Ö´ÊµÄ½ï¿½ï¿½ï¿½ï¿½Lexemeï¿½ï¿½ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½getLexemeText()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ØµÄ·Ö´Ê½ï¿½ï¿½ï¿½ï¿½
+	 * getTextDef¶Ô´«ÈëµÄ²ÎÊý½øÐÐ·Ö´Ê£¬²¢Í³¼ÆºÃÃ¿¸ö´ÎµÄÆµÂÊ
+	 * ´úÂëºÜ¼òµ¥£¬Ö÷Òª½éÉÜÏÂIKÖÐµÄÀà£¬IKSegmenterÊÇ·Ö´ÊµÄÖ÷ÒªÀà£¬Æä²ÎÊý·Ö±ðÊÇ·Ö´ÊµÄ¾ä×Ó»òÕßÎÄÕÂ£¬ºóÃæµÄ²ÎÊýÊÇÊÇ·ñ¿ªÆôÖÇÄÜÄ£Ê½£¬
+	 * ²»¿ªÆô¾Í°´×îÐ¡´ÊÒå·Ö¡£ ·Ö´ÊµÄ½á¹ûÊÇLexemeÕâ¸öÀà£¬ÓÃÆäÖÐµÄgetLexemeText()·½·¨¾ÍÄÜÈ¡³öÏà¹ØµÄ·Ö´Ê½á¹û¡£
 	 * 
 	 */
 	public  Map<String, Integer> getTextDef(String text)
 			throws IOException {
 		Map<String, Integer> wordsFren = new HashMap<String, Integer>();
-		//trueÊ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ü·Ö´Ê²ï¿½ï¿½ï¿½
+		//trueÊ¹ÓÃÖÇÄÜ·Ö´Ê²ßÂÔ
 		IKSegmenter ikSegmenter = new IKSegmenter(new StringReader(text), true);
-		//ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½
+		//´ÊÔª¶ÔÏó
 		Lexeme lexeme;
-		//nextï¿½Ö´Ê£ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ôª
+		//next·Ö´Ê£¬»ñÈ¡ÏÂÒ»¸ö´ÊÔª
 		while ((lexeme = ikSegmenter.next()) != null) {
 			if (lexeme.getLexemeText().length() > 1) {
-				//Map  containsKey(String Key)ï¿½Ð¶ï¿½keyï¿½ï¿½Ã»ï¿½Ð¶ï¿½Ó¦ï¿½ï¿½valueÖµï¿½ï¿½ï¿½Ð£ï¿½ï¿½ò·µ»ï¿½true
+				//Map  containsKey(String Key)ÅÐ¶ÏkeyÓÐÃ»ÓÐ¶ÔÓ¦µÄvalueÖµ£»ÓÐ£¬Ôò·µ»Øtrue
 				if (wordsFren.containsKey(lexeme.getLexemeText())) {
 					wordsFren.put(lexeme.getLexemeText(),
-							//ï¿½ï¿½ï¿½Ú°Ñµï¿½Ç°ï¿½Ö´ÊµÄ´ï¿½ï¿½ï¿½ï¿½ï¿½1
+							//´æÔÚ°Ñµ±Ç°·Ö´ÊµÄ´ÎÊý¼Ó1
 							wordsFren.get(lexeme.getLexemeText()) + 1);
 				} else {
-					//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½ï¿½
+					//²»´æÔÚ¾ÍÌí¼Ó
 					wordsFren.put(lexeme.getLexemeText(), 1);
 				}
 			}
@@ -61,8 +57,8 @@ public class ChineseAnalyzerUtil {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¼ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½Ö´Ê½ï¿½ï¿½ï¿½Í³ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½Åµï¿½Ò»ï¿½ï¿½mapï¿½á¹¹ï¿½Ð£ï¿½mapï¿½ï¿½valueï¿½ï¿½Ó¦ï¿½Ë´ÊµÄ³ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ò»ï¿½Â£ï¿½
-	 * ï¿½ï¿½Ö»ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ·Ö´Ê½ï¿½ï¿½ï¿½ï¿½
+	 * ½ÓÏÂÀ´ÊÇ¼ÆËã´ÊÆµ£¬½«·Ö´Ê½á¹ûºÍ³öÏÖ´ÎÊý·Åµ½Ò»¸ömap½á¹¹ÖÐ£¬mapµÄvalue¶ÔÓ¦ÁË´ÊµÄ³öÏÖ´ÎÊý¡£ÕâÀï×¢ÒâÒ»ÏÂ£¬
+	 * ÎÒÖ»¼ÇÂ¼Á½¸ö×Ö¼°Á½¸ö×ÖÒÔÉÏµÄ·Ö´Ê½á¹û¡£
 	 * 
 	 * @param wordsFrenMaps
 	 * @param topWordsCount
@@ -71,7 +67,7 @@ public class ChineseAnalyzerUtil {
 
 		List<Map.Entry<String, Integer>> oldWordFrenList = new ArrayList<Map.Entry<String, Integer>>(
 				wordsFrenMaps.entrySet());
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ô·Ö´Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½Õ³ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ô¼ï¿½È¥Ð´Êµï¿½Ö£ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½collectionsï¿½ï¿½sortï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Õâ¸ö·½·¨Ö÷Òª¶Ô·Ö´Ê½á¹û¼°´ÊÆµ°´ÕÕ³öÏÖ´ÎÊýÅÅÐò£¬Ã»ÓÐ×Ô¼ºÈ¥Ð´ÊµÏÖ£¬Ö÷Òª½èÓÃÁËcollectionsµÄsort·½·¨¡£
 		Collections.sort(oldWordFrenList,
 				new Comparator<Map.Entry<String, Integer>>() {
 					public int compare(Map.Entry<String, Integer> obj1,
@@ -82,7 +78,7 @@ public class ChineseAnalyzerUtil {
 		return oldWordFrenList;
 	}
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·Ö´Ê´ï¿½ï¿½ï¿½
+	//¶ÔÒÑÓÐÎÊÌâ½øÐÐ·Ö´Ê´¦Àí
 	public static void main(String args[]) throws IOException {
 		
 		ChineseAnalyzerUtil chineseAnalyzerUtil = new ChineseAnalyzerUtil();
@@ -92,7 +88,7 @@ public class ChineseAnalyzerUtil {
 		QuestionDaoImp questionDaoImp = new QuestionDaoImp();
 		AnswerDaoImp answerDaoImp = new AnswerDaoImp();
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Daoï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Þ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
+		//ÕâÀïËù´«²ÎÊýÖ»ÔÚDao·½·¨ÖÐµÄÎÞ²ÎÊýµÄÓï¾äÊ¹ÓÃ
 		listQuestionBeans = questionDaoImp.getAllQuestions(0, 0);
 		listAnswerBeans = answerDaoImp.getAnswerByUserId(0);
 		QuestionsKeywordsDaoImp questionsKeywordsDaoImp = new QuestionsKeywordsDaoImp();
@@ -109,7 +105,7 @@ public class ChineseAnalyzerUtil {
 			QuestionsKeywordsBean questionKeywords = new QuestionsKeywordsBean();
 			
 			questionKeywords.setQuestion_id(questionId);
-			//È¡ï¿½Ö´ï¿½Æµï¿½ï¿½ï¿½ï¿½ßµï¿½Ç°20
+			//È¡·Ö´ÊÆµÂÊ×î¸ßµÄÇ°20
 			for (int i1 = 0; i1 < 20 && i1 < map.size(); i1++) {
 				Map.Entry<String, Integer> wordFrenEntry = map.get(i1);
 				questionContext2.append(wordFrenEntry.getKey()+",");
@@ -119,7 +115,7 @@ public class ChineseAnalyzerUtil {
 			questionKeywords.setQuestions_keywords_counts(countTopN.toString());
 			
 			if(questionsKeywordsDaoImp.addQuestionsKeywordsBean(questionKeywords)){
-				System.out.println("ï¿½ï¿½"+(i+1)+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+"successï¿½ï¿½");
+				System.out.println("µÚ"+(i+1)+"¸öÎÊÌâ"+"success£¡");
 			}
 			
 		}
@@ -134,7 +130,7 @@ public class ChineseAnalyzerUtil {
 			AnswersKeywordsBean answersKeywordsBean = new AnswersKeywordsBean();
 			
 			answersKeywordsBean.setAnswers_id(answers_id);
-			//È¡ï¿½Ö´ï¿½Æµï¿½ï¿½ï¿½ï¿½ßµï¿½Ç°20
+			//È¡·Ö´ÊÆµÂÊ×î¸ßµÄÇ°20
 			for (int i1 = 0; i1 < 20 && i1 < map.size(); i1++) {
 				Map.Entry<String, Integer> wordFrenEntry = map.get(i1);
 				answerContext2.append(wordFrenEntry.getKey()+",");
@@ -144,12 +140,38 @@ public class ChineseAnalyzerUtil {
 			answersKeywordsBean.setAnswers_keywords_counts(countTopN.toString());
 			
 			if(answersKeywordsDaoImp.addAnswersKeywordsBean(answersKeywordsBean)){
-				System.out.println("ï¿½ï¿½"+(j+1)+"ï¿½ï¿½ï¿½Ø´ï¿½"+"successï¿½ï¿½");
+				System.out.println("µÚ"+(j+1)+"¸ö»Ø´ð"+"success£¡");
 			}
 			
 			
 		}
 
+	}
+	
+	public List<String> getSearchKeyWords(String text)
+			throws IOException {
+		List<String> listKeyWords = new ArrayList<String>();
+		//trueÊ¹ÓÃÖÇÄÜ·Ö´Ê²ßÂÔ
+		IKSegmenter ikSegmenter = new IKSegmenter(new StringReader(text), true);
+		//´ÊÔª¶ÔÏó
+		Lexeme lexeme;
+		//next·Ö´Ê£¬»ñÈ¡ÏÂÒ»¸ö´ÊÔª
+		while ((lexeme = ikSegmenter.next()) != null) {
+			if (lexeme.getLexemeText().length() > 1) {
+				//²éÕÒÊÇ·ñÒÑ¾­´æÔÚ¸Ã·Ö´Ê
+				boolean bool = false;
+				for(int i=0; i<listKeyWords.size();i++){
+					if(listKeyWords.get(i).equals(lexeme.getLexemeText())){
+						bool = true;
+						break;
+					}
+				}
+				if (!bool) {
+					listKeyWords.add(lexeme.getLexemeText());
+				} 
+			}
+		}
+		return listKeyWords;
 	}
 
 }

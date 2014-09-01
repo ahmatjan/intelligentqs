@@ -1,14 +1,10 @@
 package cn.com.beans;
 
 public class TagsCategoriesBean {
-	//标签分类ID
-	private int tags_categories_id; 
-	//标签分类名称
+	private int tags_categories_id;
 	private String tags_categories_name;
-	//标签分类描述
 	private String tags_categories_description;
-
-	//对应的get()与set()方法
+	private int last_categories_id;
 	public int getTags_categories_id() {
 		return tags_categories_id;
 	}
@@ -27,5 +23,10 @@ public class TagsCategoriesBean {
 	public void setTags_categories_description(String tags_categories_description) {
 		this.tags_categories_description = tags_categories_description;
 	}
-	
+	public int getLast_categories_id() {
+		return last_categories_id;
+	}
+	public void setLast_categories_id(int last_categories_id) {
+		this.last_categories_id = last_categories_id;
+	}
 }

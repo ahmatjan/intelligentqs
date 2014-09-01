@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name></display-name>
   <listener>
-    <listener-class>cn.com.config.ApiInitListener</listener-class>
+    <listener-class>cn.com.renrenConfig.ApiInitListener</listener-class>
   </listener>
   <filter>
     <filter-name>char</filter-name>
@@ -213,11 +213,24 @@
   <servlet-mapping>
     <servlet-name>RenrenLoginServlet</servlet-name>
     <url-pattern>/rr_login</url-pattern>
-    
-    
-    
   </servlet-mapping>
-    <servlet>
+  <servlet>
+    <servlet-name>QQlogin</servlet-name>
+    <servlet-class>cn.com.servlets.user.QQIndexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QQlogin</servlet-name>
+    <url-pattern>/login.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>afterlogin</servlet-name>
+    <servlet-class>cn.com.servlets.user.QQLoginRedirectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>afterlogin</servlet-name>
+    <url-pattern>/afterlogin.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>praise</servlet-name>
     <servlet-class>cn.com.servlets.rest.Praise</servlet-class>
   </servlet>
@@ -225,8 +238,7 @@
     <servlet-name>praise</servlet-name>
     <url-pattern>/praise</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>praises</servlet-name>
     <servlet-class>cn.com.servlets.rest.Praises</servlet-class>
   </servlet>
@@ -234,8 +246,7 @@
     <servlet-name>praises</servlet-name>
     <url-pattern>/praises</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>tread</servlet-name>
     <servlet-class>cn.com.servlets.rest.Tread</servlet-class>
   </servlet>
@@ -243,5 +254,183 @@
     <servlet-name>tread</servlet-name>
     <url-pattern>/tread</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>praisesas</servlet-name>
+    <servlet-class>cn.com.servlets.rest.PraisesAS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>praisesas</servlet-name>
+    <url-pattern>/praisesas</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>praiseas</servlet-name>
+    <servlet-class>cn.com.servlets.rest.PraiseAS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>praiseas</servlet-name>
+    <url-pattern>/praiseas</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>treadas</servlet-name>
+    <servlet-class>cn.com.servlets.rest.TreadAS</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>treadas</servlet-name>
+    <url-pattern>/treadas</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Basicinfo</servlet-name>
+    <servlet-class>cn.com.servlets.user.BasicUserInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Basicinfo</servlet-name>
+    <url-pattern>/basic</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>follow</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Follow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>follow</servlet-name>
+    <url-pattern>/follow</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>unfollow</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Unfollow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>unfollow</servlet-name>
+    <url-pattern>/unfollow</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>followings</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Following</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>followings</servlet-name>
+    <url-pattern>/followings</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>followers</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Follower</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>followers</servlet-name>
+    <url-pattern>/followers</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>follows</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Follows</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>follows</servlet-name>
+    <url-pattern>/follows</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>star</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Star</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>star</servlet-name>
+    <url-pattern>/star</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>havestar</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Havestar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>havestar</servlet-name>
+    <url-pattern>/havestar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>unstar</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Unstar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>unstar</servlet-name>
+    <url-pattern>/unstar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>stars</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Stars</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>stars</servlet-name>
+    <url-pattern>/stars</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>stared</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Stared</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>stared</servlet-name>
+    <url-pattern>/stared</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>prefollow</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Prefollow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>prefollow</servlet-name>
+    <url-pattern>/prefollow</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>prestar</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Prestar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>prestar</servlet-name>
+    <url-pattern>/prestar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>prepraise</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Prepraise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>prepraise</servlet-name>
+    <url-pattern>/prepraise</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>prepraiseas</servlet-name>
+    <servlet-class>cn.com.servlets.rest.Preprepraise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>prepraiseas</servlet-name>
+    <url-pattern>/prepraiseas</url-pattern>
+  </servlet-mapping>
+  <!-- 初始化分类页面 -->
+  <servlet>
+    <description></description>
+    <display-name>InitCategoriesServlet</display-name>
+    <servlet-name>InitCategoriesServlet</servlet-name>
+    <servlet-class>cn.com.servlets.index.InitCategoriesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitCategoriesServlet</servlet-name>
+    <url-pattern>/InitCategoriesServlet</url-pattern>
+  </servlet-mapping>
   
+  <!-- 根据问题分类得到问题信息 -->
+  <servlet>
+    <description></description>
+    <display-name>GetQuestionsByCategoriesServlet</display-name>
+    <servlet-name>GetQuestionsByCategoriesServlet</servlet-name>
+    <servlet-class>cn.com.servlets.question.GetQuestionsByCategoriesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetQuestionsByCategoriesServlet</servlet-name>
+    <url-pattern>/getQuestionsByCategoriesServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 根据标签分类得到问题信息 -->
+  <servlet>
+    <description></description>
+    <display-name>GetQuestionsByTagCategoriesServlet</display-name>
+    <servlet-name>GetQuestionsByTagCategoriesServlet</servlet-name>
+    <servlet-class>cn.com.servlets.question.GetQuestionsByTagCategoriesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetQuestionsByTagCategoriesServlet</servlet-name>
+    <url-pattern>/getQuestionsByTagCategoriesServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
