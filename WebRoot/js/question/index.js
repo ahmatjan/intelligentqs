@@ -12,6 +12,12 @@ $(document).ready(function() {
 		
 		$.post('basic', {'user_id': user_id}, function(data) {
 			var datas = $.parseJSON(data);
+			if (datas["solve"] == undefined){
+				datas["solve"] = 0;
+			}
+			if (datas["questions"] == undefined){
+				datas["solve"] = 0;
+			}
 			var question = "<span class='glyphicon glyphicon-question-sign'></span>问题"  + datas['questions'];
 			$('#m_question').html(question);
 			var solve = "<span class='glyphicon glyphicon-ok'></span>解决"  + datas['solve'];		

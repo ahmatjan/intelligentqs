@@ -2,45 +2,48 @@ package cn.com.interfaces;
 
 import java.util.List;
 
+import cn.com.beans.BasicUserInfoBean;
 import cn.com.beans.UserInfoBean;
 
 /**
  * @author Xianxiaofei
- * @date:2014-5-10 ÉÏÎç10:14:24
+ * @date:2014-5-10 ï¿½ï¿½ï¿½ï¿½10:14:24
  */
 public interface UserInfoDaoInf {
 
-	// Í¨¹ıÓÃ»§ÃûÑéÖ¤ÓÃ»§ÊÇ·ñ´æÔÚ
+	// Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	boolean validataByUserName(String user_name);
 
-	// µÇÂ¼ÑéÖ¤
+	// ï¿½ï¿½Â¼ï¿½ï¿½Ö¤
 	boolean validateByUserNameAndUserPassword(String user_name,
 			String user_password);
 
-	// ¸ù¾İÓÃ»§ÃûµÃµ½ÓÃ»§ĞÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	UserInfoBean getUserInfoByUserName(String user_name);
 
-	// ¸ù¾İidµÃµ½ÓÃ»§ĞÅÏ¢
+	// ï¿½ï¿½ï¿½idï¿½Ãµï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	UserInfoBean getUserInfoByUserId(int user_id);
 
-	// µÃµ½ËùÓĞĞÅÏ¢
+	// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	List<UserInfoBean> getAllUserInfo();
 
-	// É¾³ıÓÃ»§ĞÅÏ¢
+	// É¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	boolean deleteUserInfoByUserId(int user_id);
 
-	// °´ĞÕÃûÄ£ºı²éÑ¯
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ñ¯
 	List<UserInfoBean> getUserInfoAllInfoByUserName(String user_name);
 
-	// ĞÂÔöÓÃ»§ĞÅÏ¢(×¢²áÓÃ)
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢(×¢ï¿½ï¿½ï¿½ï¿½)
 	boolean addUserInfo(UserInfoBean uib);
 
-	// ĞŞ¸ÄÓÃ»§ĞÅÏ¢
+	// ï¿½Ş¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	boolean updateUserInfoByUserId(UserInfoBean uib);
 
-	// »ñµÃÓÃ»§×ÜÊı
+	// ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	int getCountOfUser();
 
-	// »ñµÃÈÈÃÅµÄÓÃ»§
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½ï¿½Ã»ï¿½
 	List<UserInfoBean> getHotUserInfos();
+	
+	BasicUserInfoBean getBasicUserInfoByUserId(int user_id);
 }

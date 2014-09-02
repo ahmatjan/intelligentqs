@@ -142,9 +142,9 @@
 							<button type="button" class="btn btn-default btn-block btn-sm" id="tread">
 								<span class=" glyphicon glyphicon-thumbs-down"></span>踩
 							</button>
-							<button type="button" class="btn btn-default btn-block btn-sm" id="prestar" onclick="next_star()">
-								
+							<button type="button" class="btn btn-default btn-block btn-sm" id="prestar" onclick="next_star()">						
 							</button>
+							
 						</div>
 						<!--end-->
 
@@ -242,9 +242,37 @@
 										</button>
 										<button type="button" class="btn btn-default btn-block btn-sm"
 											onclick="treadas(this.value)"
-											value="answer_${answer.answerBean.answer_id}">
+											value="answer_${answer.answerBean.answer_id}" id="${best}">
 											<span class=" glyphicon glyphicon-thumbs-down"></span>踩
 										</button>
+										
+									<!-- whether belong me-->
+										<c:choose>
+											<c:when test="${belong == 1 }">
+											
+											<!-- whether it has a best answer -->
+											 <c:if test="${best == -1}">
+											 	<button type="button" class="btn btn-default btn-block btn-sm"
+												value="answer_${answer.answerBean.answer_id}" onclick="accept(this.value)">
+												<span class=" glyphicon glyphicon-bookmark"></span>采纳									
+												</button>
+											 </c:if>
+											 <c:if test="${best ==  answer.answerBean.answer_id}">
+											 	<button type="button" class="btn btn-default btn-block btn-sm"
+												value="answer_${answer.answerBean.answer_id}">
+												<span class=" glyphicon glyphicon-bookmark"></span>最佳									
+												</button>
+											 </c:if>
+											</c:when>
+											<c:otherwise>
+											 <c:if test="${best ==  answer.answerBean.answer_id}">
+												<button type="button" class="btn btn-default btn-block btn-sm"
+												value="answer_${answer.answerBean.answer_id}">
+												<span class=" glyphicon glyphicon-bookmark"></span>最佳									
+												</button>
+											 </c:if>
+											</c:otherwise>
+										</c:choose>
 									</div>
 									<!--end-->
 									<!--end-->

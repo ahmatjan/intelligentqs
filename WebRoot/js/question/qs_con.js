@@ -10,13 +10,13 @@ $(document).ready(function(){
 		var pre = $("#prestar");
 		if (data == 1) {  
 			console.log(1);
-			pre.attr("value", "1")
-			pre.html("已收藏")
+			pre.attr("value", "1");
+			pre.html("已收藏");
 		}
 		else {
 			console.log(0);
-			pre.attr("value", "0")
-			pre.html("<span class='glyphicon glyphicon-star'></span>收藏")
+			pre.attr("value", "0");
+			pre.html("<span class='glyphicon glyphicon-star'></span>收藏");
 		}
 	});
 });
@@ -28,8 +28,8 @@ function next_star(){
 		$.post('star', {'question_id' : qs_id}, function(data){
 			if (data == 1) {
 				console.log(1);
-				pre.attr("value", "1")
-				pre.html("已收藏")
+				pre.attr("value", "1");
+				pre.html("已收藏");
 			}
 		});
 	}
@@ -38,9 +38,20 @@ function next_star(){
 		$.post('unstar', {'question_id' : qs_id}, function(data){
 			if (data == 1){
 				console.log(0);
-				pre.attr("value", "0")
-				pre.html("<span class='glyphicon glyphicon-star'></span>收藏")
+				pre.attr("value", "0");
+				pre.html("<span class='glyphicon glyphicon-star'></span>收藏");
 			}
 		});
 	}
+}
+
+function accept(value) {
+	var qs_id = $("#questionid").attr('value');
+	$.post('accept', {"question_id":qs_id, "answer_id":value}, function(data) {
+		if (data == 1){
+			window.location.reload();
+		}
+		else{		
+		}
+	});
 }
