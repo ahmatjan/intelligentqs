@@ -15,12 +15,12 @@ import cn.com.util.DBUtil;
 
 /**
  * @author Xianxiaofei
- * @date:2014-5-10 ÉÏÎç10:16:17
+ * @date:2014-5-10 ï¿½ï¿½ï¿½ï¿½10:16:17
  */
 
 /**
  * @author Friday
- * @date 2014-5-18 ÏÂÎç4:12:33
+ * @date 2014-5-18 ï¿½ï¿½ï¿½ï¿½4:12:33
  */
 public class UserInfoDaoImp implements UserInfoDaoInf {
 
@@ -30,7 +30,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		db = new DBUtil();
 	}
 
-	// Í¨¹ýÓÃ»§ÃûÑéÖ¤ÓÃ»§ÊÇ·ñ´æÔÚ
+	// Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	public boolean validataByUserName(String user_name) {
 		Boolean bool = false;
 		Connection conn = db.getConn();
@@ -50,7 +50,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 
-	// µÇÂ¼ÑéÖ¤
+	// ï¿½ï¿½Â¼ï¿½ï¿½Ö¤
 	public boolean validateByUserNameAndUserPassword(String user_name,
 			String user_password) {
 		Boolean bool = false;
@@ -72,7 +72,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 	
-	// ÃÜÂëÕÒ»Ø
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½
 		public boolean validateByUserNameAndUserEmail(String user_name,
 				String user_email) {
 			Boolean bool = false;
@@ -94,7 +94,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 			return bool;
 		}
 
-	// ¸ù¾ÝÓÃ»§ÃûµÃµ½ÓÃ»§ÐÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public UserInfoBean getUserInfoByUserName(String user_name) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -122,7 +122,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return userBean;
 	}
 
-	// ¸ù¾ÝidµÃµ½ÓÃ»§ÐÅÏ¢
+	// ï¿½ï¿½ï¿½idï¿½Ãµï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public UserInfoBean getUserInfoByUserId(int user_id) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -150,7 +150,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return userBean;
 	}
 
-	// É¾³ýÓÃ»§ÐÅÏ¢
+	// É¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public boolean deleteUserInfoByUserId(int user_id) {
 		boolean bool = false;
 		Connection conn = db.getConn();
@@ -172,7 +172,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 
-	// ¸ù¾ÝÐÕÃûÄ£ºý²éÑ¯µÃµ½ÓÃ»§ÐÅÏ¢ÁÐ±í
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ñ¯ï¿½Ãµï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½Ð±ï¿½
 	public List<UserInfoBean> getUserInfoAllInfoByUserName(String user_name) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -208,7 +208,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return list;
 	}
 
-	// ÐÞ¸ÄÓÃ»§ÐÅÏ¢
+	// ï¿½Þ¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public boolean updateUserInfoByUserId(UserInfoBean uib) {
 		boolean bool = false;
 		Connection conn = db.getConn();
@@ -236,7 +236,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 
-	// µÃµ½ËùÓÐÓÃ»§ÐÅÏ¢
+	// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public List<UserInfoBean> getAllUserInfo() {
 		List<UserInfoBean> list = null;
 		UserInfoBean userBean = null;
@@ -270,7 +270,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return list;
 	}
 
-	// Ôö¼ÓÓÃ‘ôÐÅÏ¢,×¢²á¹¦ÄÜ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ã‘ï¿½ï¿½ï¿½Ï¢,×¢ï¿½á¹¦ï¿½ï¿½
 	public boolean addUserInfo(UserInfoBean uib) {
 		boolean bool = false;
 		Connection conn = db.getConn();
@@ -298,7 +298,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return bool;
 	}
 
-	// Í³¼ÆÓÃ»§×ÜÊý
+	// Í³ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int getCountOfUser() {
 		int count = 0;
 		Connection conn = db.getConn();
@@ -322,7 +322,7 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return count;
 	}
 
-	//»ñµÃÈÈÃÅµÄÓÃ»§
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½ï¿½Ã»ï¿½
 	public List<UserInfoBean> getHotUserInfos() {
 		List<UserInfoBean> list = null;
 		UserInfoBean userBean = null;
@@ -356,10 +356,10 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 		return list;
 	}
 	
-	//ÅÐ¶Ï×Ö·û´®ÊÇ·ñÓÉ×ÖÄ¸ºÍÊý×Ö¹¹³É
+	//ï¿½Ð¶ï¿½ï¿½Ö·ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½
 	public boolean  isIleagle(String str){
 		boolean bool = false;
-		bool = str.matches("^[\\da-zA-Z]*$"); //Ã»ÆäËû×Ö·ûÔò·µ»Øtrue
+		bool = str.matches("^[\\da-zA-Z]*$"); //Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ò·µ»ï¿½true
 		return bool;
 	}
 	
@@ -386,7 +386,6 @@ public class UserInfoDaoImp implements UserInfoDaoInf {
 			} finally {
 				db.free(rs, pst, conn);
 			}
-
 			return basicInfo;
 		}
 

@@ -16,7 +16,8 @@ import cn.com.beans.UserInfoBean;
 import cn.com.daos.UserInfoDaoImp;
 import cn.com.beans.BasicUserInfoBean;
 
-
+import redis.clients.jedis.Jedis;
+import cn.com.util.RUtil;
 /**
  * @author banama
  */
@@ -35,10 +36,18 @@ public class BasicUserInfo extends HttpServlet {
 			UserInfoDaoImp userDao = new UserInfoDaoImp();
 			BasicUserInfoBean basicInfo = userDao.getBasicUserInfoByUserId(user_id);
 			JSONObject json = new JSONObject();
+			
+			RUtil redis = new RUtil();
+			Jedis rdb = redis.con();
+			
 			try {
+				String select_solve = "userid:" + request.getParameter("user_id") + ":solve";
+				String solves = rdb.hget("solve", select_solve);
+				System.out.print(select_solve);
+				System.out.println(solves);
 				json.put("questions",basicInfo.get_questions());
 				//json.put("solve",basicInfo.get_solve());
-				json.put("solve","0");
+				json.put("solve",solves);
 				json.put("stars",basicInfo.get_stars()); 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block

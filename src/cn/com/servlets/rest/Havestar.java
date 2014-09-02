@@ -55,6 +55,7 @@ public class Havestar extends HttpServlet {
         	String uid = request.getParameter("user_id");
         	String select_star = "user:" + uid + ":star";  
             ArrayList stars = new ArrayList(rdb.zrange(select_star, 0, -1)); 
+            len = stars.size();
             out.println(len);
         }
         

@@ -1,8 +1,8 @@
 $(document).ready(function(){
-	$.post('stared', {'question_id':32}, function(data){
+	/*$.post('stared', {'question_id':32}, function(data){
 		//console.log("this question stared");
 		//console.log(data);
-	});
+	});*/
 	
 	var person_id = $('#person').attr('value');
 	//console.log(person_id);
@@ -32,7 +32,8 @@ $(document).ready(function(){
 		$('#collectqs').html(html);
 	})
 	
-	$.post('havestar', {'user_id': person_id}, function(data){	
+	$.post('havestar', {'user_id': person_id}, function(data){
+		console.log(data)
 		var havastar = "<span class='glyphicon glyphicon-bookmark'></span> 收藏" + data;
 		$('#havastar').html(havastar);
 	})

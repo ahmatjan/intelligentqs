@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import cn.com.beans.AnswerAllInfoBean;
 import cn.com.beans.AnswerBean;
@@ -19,12 +20,16 @@ import cn.com.beans.DiscussBean;
 import cn.com.beans.QuestionAllInfoBean;
 import cn.com.beans.QuestionBean;
 import cn.com.beans.QuestionsKeywordsBean;
+import cn.com.beans.UserInfoBean;
 import cn.com.daos.AnswerDaoImp;
 import cn.com.daos.DiscussDaoImp;
 import cn.com.daos.QuestionDaoImp;
 import cn.com.daos.QuestionsKeywordsDaoImp;
 import cn.com.daos.TagsInfoDaoImp;
 import cn.com.daos.UserInfoDaoImp;
+
+import redis.clients.jedis.Jedis;
+import cn.com.util.RUtil;
 
 public class GetDetilQuestion extends HttpServlet {
 
@@ -36,19 +41,21 @@ public class GetDetilQuestion extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// µÃµ½´«ÈëÎÊÌâID
+		// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+		HttpSession session = request.getSession();
+       UserInfoBean uib = (UserInfoBean) session.getAttribute("userBean");
 		QuestionDaoImp questionDaoImp = new QuestionDaoImp();
 		// System.out.println(request.getParameter("question_id"));
 		int question_id;
 		try {
 			question_id = Integer.parseInt(request.getParameter("question_id"));
 		} catch (NumberFormatException e) {
-			// Èç¹û´«Èë·ÇÊýÖµ,Ìøµ½Ê×Ò³
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ï¿½ï¿½ï¿½Ò³
 			response.sendRedirect("index");
 			return;
 		}
 
-		// Èç¹ûÒ³ÊýÐ¡ÓÚ0
+		// ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ð¡ï¿½ï¿½0
 		if (question_id < 0) {
 			response.sendRedirect("index");
 			return;
@@ -56,18 +63,18 @@ public class GetDetilQuestion extends HttpServlet {
 		QuestionBean questionBean = questionDaoImp
 				.getQuestionByQuestionId(question_id);
 
-		// µÃµ½ÌáÎÊÕßµÄÃû×Ö
+		// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½
 		UserInfoDaoImp userInfoDaoImp = new UserInfoDaoImp();
 		String userName = userInfoDaoImp.getUserInfoByUserId(
 				questionBean.getQuestion_user_id()).getUser_name();
 
-		// µÃµ½¸ÃÎÊÌâµÄ±êÇ©
+		// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Ç©
 		String tagsId[] = null;
 		TagsInfoDaoImp tagsInfoDaoImp = new TagsInfoDaoImp();
 		// System.out.println(questionBean.getQuestion_tags());
 		if (questionBean.getQuestion_tags() == null
 				|| questionBean.getQuestion_tags().indexOf(",") == -1) {
-			// ÕâÀïÄ¬ÈÏÎªÎÞ£¬Êý¾Ý¿âÓ¦¸Ã²åÈë0ÎªÎÞ±êÇ©ÃèÊö£¬ÏÂÃæµÄ11Ó¦¸Ã¿ÉÒÔ¸ÄÎª0
+			// ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Îªï¿½Þ£ï¿½ï¿½ï¿½Ý¿ï¿½Ó¦ï¿½Ã²ï¿½ï¿½ï¿½0Îªï¿½Þ±ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½11Ó¦ï¿½Ã¿ï¿½ï¿½Ô¸ï¿½Îª0
 
 		} else {
 			tagsId = questionBean.getQuestion_tags().split(",");
@@ -78,31 +85,31 @@ public class GetDetilQuestion extends HttpServlet {
 						.getTags_name() + " ";
 				tagStrBuffer.append(tagsStr);
 			}
-			// ÉèÖÃ±êÇ©ÎªÎÄ×ÖÏÔÊ¾
+			// ï¿½ï¿½ï¿½Ã±ï¿½Ç©Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 			questionBean.setQuestion_tags(tagStrBuffer.toString());
 		}
 
-		// ·ÅÈëÍêÕûµÄÎÊÌâÃèÊöÖÐ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		QuestionAllInfoBean questionAllInfoBean = new QuestionAllInfoBean();
 		questionAllInfoBean.setQuestionUserName(userName);
-		questionAllInfoBean.setBestAnswer("ÎÞ");
+		questionAllInfoBean.setBestAnswer("ï¿½ï¿½");
 		questionAllInfoBean.setCountOfAnswers(23);
 		questionAllInfoBean.setVpOfQuestion(50);
 		questionAllInfoBean.setQuestionBean(questionBean);
 
-		// µÃµ½¸ÃÎÊÌâµÄËùÓÐ´ð°¸
+		// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½
 		AnswerDaoImp answerDaoImp = new AnswerDaoImp();
 		List<AnswerBean> listAnswer = answerDaoImp
 				.findAnswerByQuestionId(question_id);
 		List<AnswerAllInfoBean> listAllAnswer = new ArrayList<AnswerAllInfoBean>();
 
-		// ÆÀÂÛ»ñÈ¡
+		// ï¿½ï¿½ï¿½Û»ï¿½È¡
 		List<DiscussAllInfoBean> listAllDiscuss = new ArrayList<DiscussAllInfoBean>();
 		List<DiscussBean> listdiscussBean = new ArrayList<DiscussBean>();
 		DiscussDaoImp discussDao = new DiscussDaoImp();
 		DiscussAllInfoBean discussBean = null;
 
-		// ÓÃ»§Dao
+		// ï¿½Ã»ï¿½Dao
 		UserInfoDaoImp userDao = new UserInfoDaoImp();
 
 		AnswerAllInfoBean answerAllBean = null;
@@ -113,11 +120,11 @@ public class GetDetilQuestion extends HttpServlet {
 			answerAllBean.setAnswerBean(listAnswer.get(i));
 			answerAllBean.setUserName(answerUserName);
 			listAllAnswer.add(answerAllBean);
-			// µÃµ½µ±Ç°Ñ­»·ÎÊÌâµÄÆÀÂÛ
+			// ï¿½Ãµï¿½ï¿½ï¿½Ç°Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			listdiscussBean = discussDao.getDiscussByAnswerId(listAnswer.get(i)
 					.getAnswer_id());
 			for (int j = 0; j < listdiscussBean.size(); j++) {
-				// ÆÀÂÛ½øÐÐ·â×°
+				// ï¿½ï¿½ï¿½Û½ï¿½ï¿½Ð·ï¿½×°
 				discussBean = new DiscussAllInfoBean();
 				String userDiscussName = userDao.getUserInfoByUserId(
 						listdiscussBean.get(j).getUser_id()).getUser_name();
@@ -127,12 +134,12 @@ public class GetDetilQuestion extends HttpServlet {
 			}
 		}
 		
-		//°´ÈÈÃÅÎÊÌâµÃµ½ÐÅÏ¢
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Ï¢
 		List<AnswerBean> listHotAnswer = answerDaoImp
 				.findHotAnswerByQuestionId(question_id);
 		List<AnswerAllInfoBean> listHotAllAnswer = new ArrayList<AnswerAllInfoBean>();
 
-		// ÆÀÂÛ»ñÈ¡
+		// ï¿½ï¿½ï¿½Û»ï¿½È¡
 		List<DiscussAllInfoBean> listHotAllDiscuss = new ArrayList<DiscussAllInfoBean>();
 		List<DiscussBean> listHotdiscussBean = new ArrayList<DiscussBean>();
 		DiscussAllInfoBean discussHotBean = null;
@@ -145,11 +152,11 @@ public class GetDetilQuestion extends HttpServlet {
 			answerHotAllBean.setAnswerBean(listHotAnswer.get(i));
 			answerHotAllBean.setUserName(answerUserName);
 			listHotAllAnswer.add(answerHotAllBean);
-			// µÃµ½µ±Ç°Ñ­»·ÎÊÌâµÄÆÀÂÛ
+			// ï¿½Ãµï¿½ï¿½ï¿½Ç°Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			listHotdiscussBean = discussDao.getDiscussByAnswerId(listAnswer.get(i)
 					.getAnswer_id());
 			for (int j = 0; j < listHotdiscussBean.size(); j++) {
-				// ÆÀÂÛ½øÐÐ·â×°
+				// ï¿½ï¿½ï¿½Û½ï¿½ï¿½Ð·ï¿½×°
 				discussHotBean = new DiscussAllInfoBean();
 				String userDiscussName = userDao.getUserInfoByUserId(
 						listHotdiscussBean.get(j).getUser_id()).getUser_name();
@@ -160,26 +167,26 @@ public class GetDetilQuestion extends HttpServlet {
 		}
 		
 		int coutAnswer = listAnswer.size();
-		// Í¨¹ýrequest°ÑËùÐèÐÅÏ¢·¢ËÍ¸øÏêÏ¸ÎÊÌâÒ³Ãæ
+		// Í¨ï¿½ï¿½requestï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 
-		// µÃµ½ÎÊÌâÍÆ¼ö************************
+		// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½************************
 		QuestionsKeywordsDaoImp questionKeyDao = new QuestionsKeywordsDaoImp();
 		QuestionsKeywordsBean questionsKeywordsBean = new QuestionsKeywordsBean();
-		// µÃµ½µ±Ç°ÎÊÌâµÄ·Ö´Ê´¦Àí½á¹û
+		// ï¿½Ãµï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ä·Ö´Ê´ï¿½ï¿½ï¿½ï¿½ï¿½
 		questionsKeywordsBean = questionKeyDao
 				.getQuestionKeyByQuestionId(question_id);
 		String[] tmp = questionsKeywordsBean.getQuesitons_keywords_topN()
 				.split(",");
 
-		// ¸ù¾Ýµ±Ç°ÎÊÌâ½á¹ûÈ¥Æ¥ÅäËùÓÐÎÊÌâ·Ö´Ê
+		// ï¿½ï¿½Ýµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½
 		List<QuestionsKeywordsBean> listTemp = new ArrayList<QuestionsKeywordsBean>();
-		// ·â×°ËùÓÐÆ¥ÅäµÃµ½µÄÎÊÌâID
+		// ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
 		List<Integer> listQuestionId = new ArrayList<Integer>();
 		for (int j = 0; j < tmp.length; j++) {
 			listTemp = questionKeyDao.getQuestionsKeywordsByKeyWords(tmp[j]);
 			for (int i = 0; i < listTemp.size(); i++) {
 				int empId = listTemp.get(i).getQuestion_id();
-				// Èç¹ûÈ¡µÃÎÊÌâID²»µÈÓÚµ±Ç°ÎÊÌâID£¬Ôò´æÈë
+				// ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Ç°ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				if (empId != question_id) {
 					listQuestionId.add(listTemp.get(i).getQuestion_id());
 				}
@@ -187,17 +194,41 @@ public class GetDetilQuestion extends HttpServlet {
 			}
 
 		}
-		// ¸ù¾ÝµÃµ½µÄÎÊÌâID¼¯ºÏµÃµ½ËùÓÐÎÊÌâºóÈ¥²éÕÒÎÊÌâÐÅÏ¢
+		// ï¿½ï¿½ÝµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ÏµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		List<QuestionBean> questionKeyList = new ArrayList<QuestionBean>();
-		// È¥³ýÖØ¸´µÄID
+		// È¥ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ID
 		listQuestionId = this.removeDuplicateWithOrder(listQuestionId);
 		for (int i = 0; i < listQuestionId.size(); i++) {
 			questionKeyList.add(questionDaoImp
 					.getQuestionByQuestionId(listQuestionId.get(i)));
 		}
 
-		// ********************************
-
+		// ***************whether the question belongs to the logined people*****************
+		if (uib != null) {
+			if (uib.getUser_id() == questionAllInfoBean.getQuestionBean().getQuestion_user_id()){
+				request.setAttribute("belong", "1");
+			}
+			else {
+				request.setAttribute("belong", "0");
+			}
+		}
+		else {
+			request.setAttribute("belong", "0");
+		}
+		
+		RUtil redis = new RUtil();
+		Jedis rdb = redis.con();
+		String best = "questionid:" + questionAllInfoBean.getQuestionBean().getQuestion_id();
+		String bestcode = "answer_" + rdb.hget("accept", best);
+		if ( bestcode == null){
+			request.setAttribute("best", "-1");
+		}
+		else {
+			request.setAttribute("best", bestcode);
+		}
+		
+		System.out.println("---best" + request.getAttribute("best"));
+		System.out.println("---belong" + request.getAttribute("belong"));
 		request.setAttribute("questionKeyList", questionKeyList);
 		request.setAttribute("listAllDiscuss", listAllDiscuss);
 		request.setAttribute("coutAnswer", coutAnswer);
@@ -207,10 +238,9 @@ public class GetDetilQuestion extends HttpServlet {
 		request.setAttribute("listHotAllAnswer", listHotAllAnswer);
 		request.getRequestDispatcher("question_contents.jsp").forward(request,
 				response);
-
 	}
 
-	// È¥³ýÖØ¸´µÄÎÊÌâID
+	// È¥ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
 	public static List removeDuplicateWithOrder(List list) {
 		Set set = new HashSet();
 		List newList = new ArrayList();
