@@ -242,7 +242,7 @@
 										</button>
 										<button type="button" class="btn btn-default btn-block btn-sm"
 											onclick="treadas(this.value)"
-											value="answer_${answer.answerBean.answer_id}" id="${best}" value="${answer.answerBean.answer_id}">
+											value="answer_${answer.answerBean.answer_id}" id="${best}">
 											<span class=" glyphicon glyphicon-thumbs-down"></span>踩
 										</button>
 										

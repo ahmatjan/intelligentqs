@@ -219,16 +219,14 @@ public class GetDetilQuestion extends HttpServlet {
 		RUtil redis = new RUtil();
 		Jedis rdb = redis.con();
 		String best = "questionid:" + questionAllInfoBean.getQuestionBean().getQuestion_id();
-		String bestcode = "answer_" + rdb.hget("accept", best);
+		String bestcode = rdb.hget("accept", best);
 		if ( bestcode == null){
 			request.setAttribute("best", "-1");
 		}
 		else {
 			request.setAttribute("best", bestcode);
 		}
-		
-		System.out.println("---best" + request.getAttribute("best"));
-		System.out.println("---belong" + request.getAttribute("belong"));
+	
 		request.setAttribute("questionKeyList", questionKeyList);
 		request.setAttribute("listAllDiscuss", listAllDiscuss);
 		request.setAttribute("coutAnswer", coutAnswer);
