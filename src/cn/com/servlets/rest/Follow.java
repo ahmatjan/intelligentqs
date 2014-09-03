@@ -22,6 +22,8 @@ import cn.com.daos.QuestionsKeywordsDaoImp;
 import cn.com.daos.UserInfoDaoImp;
 import cn.com.util.ChineseAnalyzerUtil;
 import cn.com.util.RUtil;
+
+import cn.com.mq.Notify;
 /**
  * @author Banama
  */
@@ -51,13 +53,18 @@ public class Follow extends HttpServlet {
         	String following = request.getParameter("following");
         	String uid = Integer.toString(uib.getUser_id());
         	String select_following = "user:" + uid + ":following";
-            String select_follower = "user:" + following + ":follower";
+        	String select_follower = "user:" + following + ":follower";
             
-            rdb.sadd(select_following, following);
-            rdb.sadd(select_follower, uid);
-            out.println(1);
+           // info notify
+        	Notify notifys = new Notify();
+        	notifys.set_userid(uib.getUser_id());
+        	notifys.set_followingid(Integer.parseInt(following));
+        	notifys.following();
+        	
+        	rdb.sadd(select_following, following);
+        	rdb.sadd(select_follower, uid);
+        	out.println(1);
         }
-        
         out.flush();
         out.close();
 	}
