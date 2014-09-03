@@ -444,4 +444,27 @@
     <servlet-name>accept</servlet-name>
     <url-pattern>/accept</url-pattern>
   </servlet-mapping>
+  
+  <!-- messages -->
+  <servlet>
+    <description></description>
+    <servlet-name>messages</servlet-name>
+    <servlet-class>cn.com.servlets.mq.Messages</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>messages</servlet-name>
+    <url-pattern>/messages</url-pattern>
+  </servlet-mapping>
+   
+    <!-- get message -->
+  <servlet>
+    <description></description>
+    <servlet-name>message</servlet-name>
+    <servlet-class>cn.com.servlets.mq.Message</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>message</servlet-name>
+    <url-pattern>/getMessage</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -9,9 +9,8 @@ public class FollowSubject extends Subject{
 	UserInfoBean userbean = new UserInfoBean();
 	
 	public void bong(int userid, int followingid){
-		System.out.print("bong");
-		userbean = userdao.getUserInfoByUserId(followingid);
+		userbean = userdao.getUserInfoByUserId(userid);
 		String str = "你被" + userbean.getUser_name() + "关注了";
-		this.change(userid, str);
+		this.info(followingid, str);
 	}
 }

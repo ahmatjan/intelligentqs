@@ -20,6 +20,7 @@ import cn.com.beans.UserInfoBean;
 import cn.com.daos.QuestionDaoImp;
 import cn.com.daos.QuestionsKeywordsDaoImp;
 import cn.com.daos.UserInfoDaoImp;
+import cn.com.mq.Notify;
 import cn.com.util.ChineseAnalyzerUtil;
 import redis.clients.jedis.Jedis;  
 import cn.com.util.RUtil;
@@ -59,6 +60,12 @@ public class Tread extends HttpServlet {
            	String mark = rdb.hget("praise", select_praise);
 
         	if (mark == null || mark.equals("0")) {
+        		// praise notify
+        		Notify notifys = new Notify();
+        		notifys.set_questionid(Integer.parseInt(question_id));
+        		notifys.set_userid(uib.getUser_id());
+        		notifys.tread();
+        		
         		rdb.hset("praise", select_praise, "-1");
         		rdb.hincrBy("praises", select_praises, -1);
         		String marks = (String) rdb.hget("praises", select_praises);
@@ -72,6 +79,12 @@ public class Tread extends HttpServlet {
         		out.write("True");
         	}
         	else {
+        		// praise notify
+        		Notify notifys = new Notify();
+        		notifys.set_questionid(Integer.parseInt(question_id));
+        		notifys.set_userid(uib.getUser_id());
+        		notifys.tread();
+        		
         		rdb.hset("praise", select_praise, "-1");
         		rdb.hincrBy("praises", select_praises, -2);
         		String marks = (String) rdb.hget("praises", select_praises);

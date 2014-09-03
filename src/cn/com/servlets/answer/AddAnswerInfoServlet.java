@@ -25,10 +25,13 @@ import cn.com.daos.AnswersKeywordsDaoImp;
 import cn.com.daos.QuestionsKeywordsDaoImp;
 import cn.com.util.ChineseAnalyzerUtil;
 
+import cn.com.util.RUtil;
+import redis.clients.jedis.Jedis;
+import cn.com.mq.Notify;
 /***********************
  * @author butterfly   
- * @version£º1.0        
- * @created£º2014-5-17    
+ * @versionï¿½ï¿½1.0        
+ * @createdï¿½ï¿½2014-5-17    
  ***********************
  */
 
@@ -71,9 +74,17 @@ public class AddAnswerInfoServlet extends HttpServlet {
 		answerBean.setAnswer_user_id(userInfoBean.getUser_id());
 		answerBean.setQuestion_id(question_id);
 		
+		//answer info notify
+		Notify notifys = new Notify();
+		notifys.set_questionid(question_id);
+		notifys.set_userid(userInfoBean.getUser_id());
+		notifys.answer();
+		
+		
+		
 		if(answerDaoImp.addAnswer(answerBean)){
 			
-			//¶Ôµ±Ç°ÎÊÌâ·Ö´Ê´¦Àí
+			//ï¿½Ôµï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ö´Ê´ï¿½ï¿½ï¿½
 			ChineseAnalyzerUtil chineseAnalyzerUtil = new ChineseAnalyzerUtil();
 			AnswerBean answerBean1 = new AnswerBean();
 			answerBean1 = answerDaoImp.getAnswerByAnswerKeywords(answerDescription);	
@@ -86,7 +97,7 @@ public class AddAnswerInfoServlet extends HttpServlet {
 			AnswersKeywordsBean answersKeywordsBean = new AnswersKeywordsBean();
 			
 			answersKeywordsBean.setAnswers_id(answers_id);
-			//È¡·Ö´ÊÆµÂÊ×î¸ßµÄÇ°20
+			//È¡ï¿½Ö´ï¿½Æµï¿½ï¿½ï¿½ï¿½ßµï¿½Ç°20
 			for (int i1 = 0; i1 < 20 && i1 < map.size(); i1++) {
 				Map.Entry<String, Integer> wordFrenEntry = map.get(i1);
 				answerContext2.append(wordFrenEntry.getKey()+",");
@@ -95,17 +106,17 @@ public class AddAnswerInfoServlet extends HttpServlet {
 			answersKeywordsBean.setAnswers_keywords_topN(answerContext2.toString());
 			answersKeywordsBean.setAnswers_keywords_counts(countTopN.toString());
 			
-			////´æÈëÊý¾Ý¿âÖÐ
+			////ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½
 			AnswersKeywordsDaoImp answersKeywordsDaoImp = new AnswersKeywordsDaoImp();
 			if(answersKeywordsDaoImp.addAnswersKeywordsBean(answersKeywordsBean)){
-				System.out.println("ÐÂÔö»Ø´ð·Ö´Ê´¦Àísuccess£¡");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½Ö´Ê´ï¿½ï¿½ï¿½successï¿½ï¿½");
 			}
 			
 			request.setAttribute("question_id", question_id);
 			request.getRequestDispatcher("getDetilQuestion").forward(request, response);
 			return ;
 		}else{
-			request.setAttribute("Msg", "ÐÂÔöÊ§°Ü");
+			request.setAttribute("Msg", "ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 	

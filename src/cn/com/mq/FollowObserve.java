@@ -5,14 +5,12 @@ import cn.com.util.RUtil;
 
 public class FollowObserve implements Observe{
 	
-	private String observeState;
-	
 	@Override
-	public void update(int userid, String str){
+	public void update(int followingid, String str){
 		RUtil redis = new RUtil();
 		Jedis rdb = redis.con();
 		
-		String mq = "userid:" + userid + ":mq";
+		String mq = "userid:" + followingid + ":mq";
 		rdb.lpush(mq, str);
 	}
 }

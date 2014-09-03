@@ -15,10 +15,10 @@ public abstract class Subject {
 		list.remove(observe);
 	}
 	
-	public void change(int userid, String str){
+	public void info(int id, String str){
 		System.out.print("change");
 		for(Observe observe : list){
-			observe.update(userid, str);
+			observe.update(id, str);
 		}
 	}
 }

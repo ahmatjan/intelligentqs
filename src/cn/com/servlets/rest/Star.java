@@ -1,6 +1,7 @@
 package cn.com.servlets.rest;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +23,8 @@ import cn.com.daos.QuestionsKeywordsDaoImp;
 import cn.com.daos.UserInfoDaoImp;
 import cn.com.util.ChineseAnalyzerUtil;
 import cn.com.util.RUtil;
+
+import cn.com.mq.Notify;
 /**
  * @author Banama
  */
@@ -53,10 +56,13 @@ public class Star extends HttpServlet {
         	String select_star = "user:" + uid + ":star";
             String select_srats = "questionid:" + question_id;
             
+            //star info notify
+            Notify notifys = new Notify();
+            notifys.set_userid(uib.getUser_id());
+            notifys.set_questionid(Integer.parseInt(question_id));
+            notifys.star();
+            
             int mark = (int) (rdb.zcard(select_star) + 1);
-            System.out.println("-------mark-----");
-            System.out.print(mark);
-            System.out.println("-------mark-----");
             rdb.zadd(select_star, mark, question_id);
             rdb.hincrBy("stars", select_srats, 1);
             out.println(1);

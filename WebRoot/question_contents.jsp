@@ -80,8 +80,8 @@
 
             <div class="col-lg-3">
             <%if(uib !=  null) {%>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">消息 <span class="badge">0</span></a></li>
+             <ul class="nav navbar-nav navbar-right">
+                <li><a href="getMessage" id="message">消息 <span class="badge"></span></a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="./static/image/git.png" alt="..." class="person-img img-circle">&nbsp;&nbsp;<%=uib.getUser_name()%><b class="caret"></b></a>
@@ -94,6 +94,7 @@
                   </ul>
                 </li>
               </ul>
+              <script src="js/question/message.js"></script>
               <%} else{ %>
               		<ul class="nav navbar-nav navbar-right">
 							<li><a href="index">首页</a>

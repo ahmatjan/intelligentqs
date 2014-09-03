@@ -23,6 +23,7 @@ import cn.com.daos.UserInfoDaoImp;
 import cn.com.util.ChineseAnalyzerUtil;
 import redis.clients.jedis.Jedis;  
 import cn.com.util.RUtil;
+import cn.com.mq.Notify;
 /**
  * @author Banama
  */
@@ -55,16 +56,28 @@ public class Praise extends HttpServlet {
         	QuestionDaoImp qsDao = new QuestionDaoImp();
             QuestionBean qs = qsDao.getQuestionByQuestionId(Integer.parseInt(question_id));
             int qs_mark = qs.getQuestion_mark();
-        	//hget·µ»ØÃû³ÆÎªkeyµÄhashÖÐfield¶ÔÓ¦µÄvalue
+        	//hgetï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªkeyï¿½ï¿½hashï¿½ï¿½fieldï¿½ï¿½Ó¦ï¿½ï¿½value
            	String mark = (String) rdb.hget("praise", select_praise);
         	if (mark == null || mark.equals("0")) {
+        		// praise notify
+        		Notify notifys = new Notify();
+        		notifys.set_questionid(Integer.parseInt(question_id));
+        		notifys.set_userid(uib.getUser_id());
+        		notifys.praise();
+        		
         		rdb.hset("praise", select_praise, "1");
-        		rdb.hincrBy("praises", select_praises, 1);//hincrBy½«Ãû³ÆÎªpraisesµÄhashÖÐselect_praisesµÄvalueÔö¼Ó1
+        		rdb.hincrBy("praises", select_praises, 1);//hincrByï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªpraisesï¿½ï¿½hashï¿½ï¿½select_praisesï¿½ï¿½valueï¿½ï¿½ï¿½ï¿½1
         		String marks = (String) rdb.hget("praises", select_praises);
         		qsDao.updateQS_remark(Integer.parseInt(marks), Integer.parseInt(question_id)); 
         		out.write("True");
         	}
         	else if (mark.equals("-1")) {
+        		// praise notify
+        		Notify notifys = new Notify();
+        		notifys.set_questionid(Integer.parseInt(question_id));
+        		notifys.set_userid(uib.getUser_id());
+        		notifys.praise();
+        		
         		rdb.hset("praise", select_praise, "1");
         		rdb.hincrBy("praises", select_praises, 2);
         		String marks = (String) rdb.hget("praises", select_praises);
