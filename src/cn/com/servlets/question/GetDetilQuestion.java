@@ -226,7 +226,11 @@ public class GetDetilQuestion extends HttpServlet {
 		else {
 			request.setAttribute("best", bestcode);
 		}
+<<<<<<< HEAD
 		
+=======
+	
+>>>>>>> 510edbd599b815308940d6a59ea8690ce17b1adc
 		request.setAttribute("questionKeyList", questionKeyList);
 		request.setAttribute("listAllDiscuss", listAllDiscuss);
 		request.setAttribute("coutAnswer", coutAnswer);
