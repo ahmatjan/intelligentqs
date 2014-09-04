@@ -456,7 +456,7 @@
     <url-pattern>/messages</url-pattern>
   </servlet-mapping>
    
-    <!-- get message -->
+    <!-- get message api -->
   <servlet>
     <description></description>
     <servlet-name>message</servlet-name>
@@ -464,6 +464,17 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>message</servlet-name>
+    <url-pattern>/message</url-pattern>
+  </servlet-mapping>
+  
+      <!-- get message api servlet-->
+  <servlet>
+    <description></description>
+    <servlet-name>getmessage</servlet-name>
+    <servlet-class>cn.com.servlets.mq.GetMessage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getmessage</servlet-name>
     <url-pattern>/getMessage</url-pattern>
   </servlet-mapping>
   

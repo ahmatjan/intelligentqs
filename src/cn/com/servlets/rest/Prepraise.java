@@ -25,6 +25,10 @@ import redis.clients.jedis.Jedis;
 import cn.com.util.RUtil;
 /**
  * @author Banama
+ * 
+ * 		if the question have praised by me 
+ * 		POST /prepraise question_id 
+ * 		yes ? return 1 : return 0  (and -1 is tread)
  */
 public class Prepraise extends HttpServlet {
 
@@ -51,7 +55,7 @@ public class Prepraise extends HttpServlet {
         	String question_id = request.getParameter("question_id");
         	String select_praise = "userid:" + uib.getUser_id() + ":questionid:" + question_id;
         	
-        	//hget·µ»ØÃû³ÆÎªkeyµÄhashÖÐfield¶ÔÓ¦µÄvalue
+        	//hgetï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªkeyï¿½ï¿½hashï¿½ï¿½fieldï¿½ï¿½Ó¦ï¿½ï¿½value
            	String mark = (String) rdb.hget("praise", select_praise);
         	if (mark == null || mark.equals("0")) {
         		out.println(0);

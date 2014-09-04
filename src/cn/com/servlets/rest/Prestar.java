@@ -24,6 +24,11 @@ import cn.com.util.ChineseAnalyzerUtil;
 import cn.com.util.RUtil;
 /**
  * @author Banama
+ * 
+ * 		if the question had been collected/stared by me 
+ * 		POST /prestar questionid
+ * 		yes : return 1 : return 0
+ * 		
  */
 public class Prestar extends HttpServlet {
 

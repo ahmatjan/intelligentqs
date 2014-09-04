@@ -28,6 +28,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 /**
  * @author Banama
+ * 
+ * 		the number that following and followed
+ * 		POST follows user_id
+ * 		return a json 
  */
 public class Follows extends HttpServlet {
 
@@ -51,8 +55,8 @@ public class Follows extends HttpServlet {
             ArrayList follower = new ArrayList(rdb.smembers(select_follower));
             System.out.println(following.size());
             try {
-                    json.put("following", following.size());
-                    json.put("follower", follower.size());
+                    json.put("following", following.size()); // you follow                  
+                    json.put("follower", follower.size());   // you are followed
             } catch (JSONException e) {
                     // TODO Auto-generated catch block
             }

@@ -27,6 +27,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 /**
  * @author Banama
+ * 
+ * 		how mant numbers the question hd been collected/stared\
+ * 		POST /stared question_id
+ * 		return the number 
  */
 public class Stared extends HttpServlet {
 

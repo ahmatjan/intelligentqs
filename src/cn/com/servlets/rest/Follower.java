@@ -28,6 +28,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 /**
  * @author Banama
+ * 
+ * 		the list for someone that have following user
+ * 		POST  followers user_id (the user_id is the one' id that you want to know who has followed it)
+ * 		return a json that the value of 'follower' is a id-list
  */
 public class Follower extends HttpServlet {
 

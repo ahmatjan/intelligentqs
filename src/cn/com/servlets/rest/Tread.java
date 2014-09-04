@@ -26,6 +26,10 @@ import redis.clients.jedis.Jedis;
 import cn.com.util.RUtil;
 /**
  * @author Banama
+ * 
+ * 		tread ( cai ) a question
+ * 		POST /tread question_id
+ * 		
  */
 public class Tread extends HttpServlet {
 
@@ -59,6 +63,7 @@ public class Tread extends HttpServlet {
         	
            	String mark = rdb.hget("praise", select_praise);
 
+           	
         	if (mark == null || mark.equals("0")) {
         		// praise notify
         		Notify notifys = new Notify();

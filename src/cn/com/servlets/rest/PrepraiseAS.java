@@ -27,6 +27,10 @@ import redis.clients.jedis.Jedis;
 import cn.com.util.RUtil;
 /**
  * @author Banama
+ * 
+ *		if the answer have praised by me 
+ * 		POST /prepraiseas answerid 
+ * 		yes ? return 1 : return 0  (and -1 is tread)
  */
 public class PrepraiseAS extends HttpServlet {
 

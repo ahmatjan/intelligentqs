@@ -254,3 +254,12 @@ foot .container p a {
 .i-tqq {
 	background-position: 0 -308px
 }
+
+.message-li{
+	padding:20px;
+	border-bottom:1px solid #ededed;
+}
+
+.message-ul{
+	
+}

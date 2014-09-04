@@ -15,7 +15,7 @@ public class PraiseSubject extends Subject{
 	public void bong(int userid, int questionid){
 		qsbean = qsdao.getQuestionByQuestionId(questionid);
 		userbean = userdao.getUserInfoByUserId(userid);
-		String str =  "你的问题" + qsbean.getQuestion_title() + "被" + userbean.getUser_name() + "赞了";
+		String str =  "3:你的问题:" + qsbean.getQuestion_title() + ":被:" + userbean.getUser_name() + ":赞了:" + questionid + ":" + userid;
 		this.info(qsbean.getQuestion_user_id(), str);
 	}
 	

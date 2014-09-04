@@ -27,6 +27,11 @@ import cn.com.util.RUtil;
 import cn.com.mq.Notify;
 /**
  * @author Banama
+ * 		
+ * 		collect/star a question
+ * 		POST /star question_id
+ * 		success : return 1 : reutrun something other
+ * 
  */
 public class Star extends HttpServlet {
 

@@ -10,7 +10,7 @@ public class FollowSubject extends Subject{
 	
 	public void bong(int userid, int followingid){
 		userbean = userdao.getUserInfoByUserId(userid);
-		String str = "你被" + userbean.getUser_name() + "关注了";
+		String str = "2:你被:" + userbean.getUser_name() + ":关注了:" + userid;
 		this.info(followingid, str);
 	}
 }

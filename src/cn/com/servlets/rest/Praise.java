@@ -26,6 +26,10 @@ import cn.com.util.RUtil;
 import cn.com.mq.Notify;
 /**
  * @author Banama
+ * 
+ * 		praise( zan ) a question
+ * 		POST praise question_id
+ * 		if the event success return "True", or return something other.
  */
 public class Praise extends HttpServlet {
 

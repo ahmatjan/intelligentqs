@@ -11,7 +11,7 @@ public class StarObserve implements Observe{
 		Jedis rdb = redis.con();
 		
 		String mq = "userid:" + userid + ":mq";
-		rdb.lpush(mq, str);
+		rdb.rpush(mq, str);
 	}
 
 }

@@ -11,6 +11,6 @@ public class FollowObserve implements Observe{
 		Jedis rdb = redis.con();
 		
 		String mq = "userid:" + followingid + ":mq";
-		rdb.lpush(mq, str);
+		rdb.rpush(mq, str);
 	}
 }

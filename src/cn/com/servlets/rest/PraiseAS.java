@@ -27,6 +27,10 @@ import redis.clients.jedis.Jedis;
 import cn.com.util.RUtil;
 /**
  * @author Banama
+ * 
+ * 		praise( zan ) a answer
+ * 		POST praise answerid
+ * 		if the event success return "True", or return something other.
  */
 public class PraiseAS extends HttpServlet {
 
@@ -61,18 +65,24 @@ public class PraiseAS extends HttpServlet {
             int ans_mark = ans.getAnswer_mark();
         	
            	String mark = (String) rdb.hget("praiseas", select_praiseas);
+           	
+          	//if no praise and no tread
         	if (mark == null || mark.equals("0")) {
         		rdb.hset("praiseas", select_praiseas, "1");
         		rdb.hincrBy("praisesas", select_praisesas, 1);
         		ansDao.updateAns_remark(ans_mark + 1, answer_id);
         		out.write("True");
         	}
+
+        	//if have treaded
         	else if (mark.equals("-1")) {
         		rdb.hset("praiseas", select_praiseas, "1");
         		ansDao.updateAns_remark(ans_mark + 2, answer_id);
         		rdb.hincrBy("praisesas", select_praisesas, 2);
         		out.write("True");
         	}
+        	
+        	//if have praised
         	else {
         		rdb.hset("praiseas", select_praiseas, "0");
         		ansDao.updateAns_remark(ans_mark - 1, answer_id);

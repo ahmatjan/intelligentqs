@@ -25,6 +25,10 @@ import redis.clients.jedis.Jedis;
 import cn.com.util.RUtil;
 /**
  * @author Banama
+ * 
+ *		caculate the score of a answer (praise and tread)
+ * 		POST praisesas answerid
+ * 		success ? return <number> : return "0"
  */
 public class PraisesAS extends HttpServlet {
 

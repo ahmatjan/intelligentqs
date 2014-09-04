@@ -15,7 +15,7 @@ public class AnswerSubject extends Subject{
 	public void bong(int userid, int questionid){
 		qsbean = qsdao.getQuestionByQuestionId(questionid);
 		userbean = userdao.getUserInfoByUserId(userid);
-		String str =  "你的问题" + qsbean.getQuestion_title() + "被" + userbean.getUser_name() + "回答了";
+		String str =  "1:你的问题:" + qsbean.getQuestion_title() + ":被:" + userbean.getUser_name() + ":回答了:" + questionid + ":" + userid;
 		this.info(qsbean.getQuestion_user_id(), str);
 	}
 }

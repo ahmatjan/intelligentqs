@@ -15,11 +15,15 @@ import cn.com.mq.PraiseObserve;
 import cn.com.mq.TreadSubject;
 import cn.com.mq.TreadObserve;
 
+import cn.com.mq.AcceptSubject;
+import cn.com.mq.AcceptObserve;
+
 public class Notify {
 	
 	private int userid;
 	private int followingid;
 	private int questionid;
+	private int answerid;
 	
 	public void set_userid(int userid){
 		this.userid = userid;
@@ -31,6 +35,10 @@ public class Notify {
 	
 	public void set_questionid(int questionid){
 		this.questionid = questionid;
+	}
+	
+	public void set_answerid(int answerid){
+		this.answerid = answerid;
 	}
 	
 	
@@ -77,6 +85,15 @@ public class Notify {
 		
 		subject.attach(observe);
 		subject.bong(userid, questionid);
+		subject.remove(observe);
+	}
+	
+	public void accept(){
+		AcceptSubject subject = new AcceptSubject();
+		AcceptObserve observe = new AcceptObserve();
+		
+		subject.attach(observe);
+		subject.bong(userid, answerid);
 		subject.remove(observe);
 	}
 }

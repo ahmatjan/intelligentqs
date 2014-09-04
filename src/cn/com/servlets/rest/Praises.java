@@ -26,24 +26,17 @@ import cn.com.util.RUtil;
 
 /**
  * @author Banama
+ * 
+ * 		caculate the score of a question (praise and tread)
+ * 		POST praises question_id
+ * 		success ? return <number> : return "0"
+ * 
  */
 public class Praises extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//doPost(request, response);
-		RUtil redis = new RUtil();
-		Jedis rd = redis.con();
-		rd.set("name", "1");
-		String t = rd.get("name");
-		PrintWriter out = response.getWriter();
-		String text = "1";
-		if (t.equals(text)){
-			out.write("asas");
-		}
-		else {
-			out.write(t + 's');
-		}
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

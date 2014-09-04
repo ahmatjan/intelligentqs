@@ -24,8 +24,13 @@ import cn.com.daos.QuestionsKeywordsDaoImp;
 import cn.com.daos.UserInfoDaoImp;
 import cn.com.util.ChineseAnalyzerUtil;
 import cn.com.util.RUtil;
+import cn.com.mq.Notify;
 /**
  * @author Banama
+ * 
+ * 		(choose the question_id of question as the best one)
+ * 		POST accept question_id 
+ * 		susscess ? return 1 : return 0
  */
 public class Accept extends HttpServlet {
 	
@@ -58,6 +63,12 @@ public class Accept extends HttpServlet {
         		out.println(0);
         	}
         	else {
+        		// accept notify (info system)
+        		Notify notifys = new Notify();
+        		notifys.set_answerid(Integer.parseInt(answerid.split("_")[1]));
+        		notifys.set_userid(uib.getUser_id());
+        		notifys.accept();
+        		
         		String select_accept = "questionid:" + questionid;
               String select_solve = "userid:" + asbean.getAnswer_user_id() + ":solve";
               rdb.hset("accept", select_accept, answerid.split("_")[1]);

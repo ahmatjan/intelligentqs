@@ -11,7 +11,7 @@ public class TreadSubject extends Subject{
 	
 	public void bong(int userid, int questionid){
 		qsbean = qsdao.getQuestionByQuestionId(questionid);
-		String str =  "你的问题" + qsbean.getQuestion_title() + "被踩了";
+		String str =  "5:你的问题:" + qsbean.getQuestion_title() + ":被踩了:" + questionid;
 		this.info(qsbean.getQuestion_user_id(), str);
 	}
 }

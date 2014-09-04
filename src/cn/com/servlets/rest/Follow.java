@@ -26,6 +26,11 @@ import cn.com.util.RUtil;
 import cn.com.mq.Notify;
 /**
  * @author Banama
+ * 
+ * 		follow some one 
+ * 		POST  follow followingid (the followingid the user_id of the one you want to follow)
+ * 		success ? return 1 : do something(such as 0, 'require login' and so on)
+ * 
  */
 public class Follow extends HttpServlet {
 
@@ -55,7 +60,7 @@ public class Follow extends HttpServlet {
         	String select_following = "user:" + uid + ":following";
         	String select_follower = "user:" + following + ":follower";
             
-           // info notify
+           // info notify 
         	Notify notifys = new Notify();
         	notifys.set_userid(uib.getUser_id());
         	notifys.set_followingid(Integer.parseInt(following));

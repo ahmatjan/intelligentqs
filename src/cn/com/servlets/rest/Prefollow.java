@@ -24,6 +24,10 @@ import cn.com.util.ChineseAnalyzerUtil;
 import cn.com.util.RUtil;
 /**
  * @author Banama
+ * 
+ * 		if the one have followed by me 
+ * 		POST /prefollow user_id 
+ * 		yes ? return 1 : return 0 
  */
 public class Prefollow extends HttpServlet {
 
