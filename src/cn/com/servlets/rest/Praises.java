@@ -28,7 +28,7 @@ import cn.com.util.RUtil;
  * @author Banama
  * 
  * 		caculate the score of a question (praise and tread)
- * 		POST praises question_id
+ * 		POST /praises question_id
  * 		success ? return <number> : return "0"
  * 
  */

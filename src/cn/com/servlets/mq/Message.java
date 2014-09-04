@@ -57,8 +57,6 @@ public class Message extends HttpServlet{
 				msbean.set_user_id(userInfoBean.getUser_id());
 				if(!msdao.addMessage(msbean)){
 					mark = false;
-				}
-				else{
 					break;
 				}
 			}
@@ -70,8 +68,9 @@ public class Message extends HttpServlet{
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
+				rdb.ltrim(message, 1, 0);
+				
 				out.write(json.toString());
-				rdb.ltrim(message, -1, 0);
 			}
 			else{
 				out.write(0);

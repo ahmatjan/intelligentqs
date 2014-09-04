@@ -24,6 +24,10 @@ import redis.clients.jedis.Jedis;
 import cn.com.util.RUtil;
 /**
  * @author Banama
+ * 
+ * 		tread ( cai ) a answer
+ * 		POST /treadas answerid
+ * 		success ? return "True" : return somethinf other
  */
 public class TreadAS extends HttpServlet {
 

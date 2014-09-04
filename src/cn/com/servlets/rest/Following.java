@@ -30,7 +30,7 @@ import org.json.JSONObject;
  * @author Banama
  * 
  *		the list that someone have followed 
- * 		POST  followings user_id
+ * 		POST /followings user_id
  * 		return a json that the value of 'following' is a id-list
  */
 public class Following extends HttpServlet {

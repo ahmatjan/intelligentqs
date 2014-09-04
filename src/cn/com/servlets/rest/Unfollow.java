@@ -28,6 +28,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 /**
  * @author Banama
+ * 
+ * 		cancle follow a people (the people you have followed)
+ * 		POST /unfollow following (following is the user_id)
+ * 		success ? return 1 : return something other.
  */
 public class Unfollow extends HttpServlet {
 

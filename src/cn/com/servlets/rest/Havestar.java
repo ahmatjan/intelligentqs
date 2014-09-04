@@ -30,7 +30,7 @@ import org.json.JSONObject;
  * @author Banama
  * 	
  * 		how many question some one hava collect
- * 		POST	havestar user_id
+ * 		POST /havestar user_id
  * 		return int(how many question some one hava collect)
  * 
  */

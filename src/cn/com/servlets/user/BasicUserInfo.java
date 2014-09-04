@@ -43,8 +43,6 @@ public class BasicUserInfo extends HttpServlet {
 			try {
 				String select_solve = "userid:" + request.getParameter("user_id") + ":solve";
 				String solves = rdb.hget("solve", select_solve);
-				System.out.print(select_solve);
-				System.out.println(solves);
 				json.put("questions",basicInfo.get_questions());
 				//json.put("solve",basicInfo.get_solve());
 				json.put("solve",solves);

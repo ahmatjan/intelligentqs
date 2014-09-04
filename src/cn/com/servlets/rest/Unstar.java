@@ -24,6 +24,10 @@ import cn.com.util.ChineseAnalyzerUtil;
 import cn.com.util.RUtil;
 /**
  * @author Banama
+ * 
+ * 		cancle star/collect a question
+ * 		POST /unstar question_id
+ * 		success ? return 1 : return something other
  */
 public class Unstar extends HttpServlet {
 

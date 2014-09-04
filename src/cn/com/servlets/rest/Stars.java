@@ -30,7 +30,7 @@ import org.json.JSONObject;
  * @author Banama
  * 
  * 		the questions that someone collected/stared
- * 		POST /stars  rang user_id
+ * 		POST /stars  rank user_id
  * 			Ps: the rank is for paging, for example, one is the first ten
  * 		return a json that the value of list is a question-list
  * 			{

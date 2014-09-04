@@ -28,7 +28,7 @@ import cn.com.mq.Notify;
  * @author Banama
  * 
  * 		follow some one 
- * 		POST  follow followingid (the followingid the user_id of the one you want to follow)
+ * 		POST /follow following (the followingid the user_id of the one you want to follow)
  * 		success ? return 1 : do something(such as 0, 'require login' and so on)
  * 
  */

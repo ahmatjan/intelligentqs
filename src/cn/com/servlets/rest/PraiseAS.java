@@ -29,7 +29,7 @@ import cn.com.util.RUtil;
  * @author Banama
  * 
  * 		praise( zan ) a answer
- * 		POST praise answerid
+ * 		POST /praiseas answerid
  * 		if the event success return "True", or return something other.
  */
 public class PraiseAS extends HttpServlet {

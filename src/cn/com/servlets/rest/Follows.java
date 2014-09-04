@@ -30,7 +30,7 @@ import org.json.JSONObject;
  * @author Banama
  * 
  * 		the number that following and followed
- * 		POST follows user_id
+ * 		POST /follows user_id
  * 		return a json 
  */
 public class Follows extends HttpServlet {

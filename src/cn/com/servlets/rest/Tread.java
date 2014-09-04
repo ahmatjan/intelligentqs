@@ -29,6 +29,7 @@ import cn.com.util.RUtil;
  * 
  * 		tread ( cai ) a question
  * 		POST /tread question_id
+ * 		success ? return "True" : return somethinf other
  * 		
  */
 public class Tread extends HttpServlet {
@@ -63,7 +64,7 @@ public class Tread extends HttpServlet {
         	
            	String mark = rdb.hget("praise", select_praise);
 
-           	
+           	// if no praise an no tread
         	if (mark == null || mark.equals("0")) {
         		// praise notify
         		Notify notifys = new Notify();
@@ -77,12 +78,16 @@ public class Tread extends HttpServlet {
         		qsDao.updateQS_remark(Integer.parseInt(marks), Integer.parseInt(question_id)); 
         		out.write("True");
         	}
+        	
+        	// if treaded
         	else if (mark.equals("-1")) {
         		rdb.hset("praise", select_praise, "0");
         		qsDao.updateQS_remark(qs_mark + 1, Integer.parseInt(question_id));    		
         		rdb.hincrBy("praises", select_praises, 1);
         		out.write("True");
         	}
+        	
+        	// if praised
         	else {
         		// praise notify
         		Notify notifys = new Notify();

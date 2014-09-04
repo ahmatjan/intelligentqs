@@ -28,8 +28,8 @@ import cn.com.mq.Notify;
 /**
  * @author Banama
  * 
- * 		(choose the question_id of question as the best one)
- * 		POST accept question_id 
+ * 		(choose the answer of question as the best one)
+ * 		POST /accept question_id answer_id
  * 		susscess ? return 1 : return 0
  */
 public class Accept extends HttpServlet {
