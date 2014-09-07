@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014-09-05 05:16:54
+-- 生成日期: 2014-09-07 15:55:36
 -- 服务器版本: 5.5.37-0ubuntu0.13.10.1
 -- PHP 版本: 5.5.3-1ubuntu2.3
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `answer` (
   `question_id` int(11) NOT NULL,
   `answer_best` int(11) NOT NULL,
   PRIMARY KEY (`answer_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
 
 --
 -- 转存表中的数据 `answer`
@@ -80,15 +80,11 @@ INSERT INTO `answer` (`answer_id`, `answer_description`, `answer_time`, `answer_
 (37, '竟敢如此地侮辱我，你这是作死滴节奏么???', '2014-7-30-  10:31:28', 0, 1, 31, 0),
 (38, '我能经得起多少诋毁，就能经得起多少赞美。Lumia ——不跟随！', '2014-7-30-  10:33:18', 0, 4, 31, 0),
 (39, '测试', '2014-7-30-  15:17:59', 0, 17, 31, 0),
-(40, 'CSS网页中的相对定位与绝对定位在CSS中有这样的一个指令：(position)，在DreamWeaver中文版中翻译为“定位”，常用的属性有两个：relative(相对)与 absolute(绝对)。有很多朋友对这条指令的用法还是不清楚，这里做一些细致的讲解。position:relative; 表示相对定位，被定位了这个属性的标签在所属的范围内可以进行上下左右的移，这里的移动与padding或是margin所产生的位置变化是不一样的。padding与margin是元素本身的一种边距与填充距离并不是真正的移动，而被定义为relative的元素是真正的移动，这所产生的移动距离是从margin的外围到父级标签内侧之间这一段。position:absolute; 表示绝对定位，如果定义了这个属性的元素，其位置将依据浏览器左上角的0点开始计算，并且是浮动正常元素之上的。那么当你需要某个元素定位在浏览器内容区的某个地方就可以用到这个属性。于是产生了一个问题：现在大家做的网页大部分是居中的，如果我需要这个元素跟着网页中的某个元素位置，不论屏幕的分辨率是多少它的位置始终是针对页内的某个元素的，靠单纯的absolute是不行的。正确的解决方法是：在元素的父级元素定义为position:relative;(这里可以是祖父级，也可以是position:absolute;，多谢谢old9的提出)需要绝对定位的元素设为position:absolute;这样再设定top,right,bottom,left的值就可以了，这样其定位的参照标准就是父级的左上角padding的左上侧。', '2014-7-31-  12:12:7', 2, 4, 32, 0),
+(40, 'CSS网页中的相对定位与绝对定位在CSS中有这样的一个指令：(position)，在DreamWeaver中文版中翻译为“定位”，常用的属性有两个：relative(相对)与 absolute(绝对)。有很多朋友对这条指令的用法还是不清楚，这里做一些细致的讲解。position:relative; 表示相对定位，被定位了这个属性的标签在所属的范围内可以进行上下左右的移，这里的移动与padding或是margin所产生的位置变化是不一样的。padding与margin是元素本身的一种边距与填充距离并不是真正的移动，而被定义为relative的元素是真正的移动，这所产生的移动距离是从margin的外围到父级标签内侧之间这一段。position:absolute; 表示绝对定位，如果定义了这个属性的元素，其位置将依据浏览器左上角的0点开始计算，并且是浮动正常元素之上的。那么当你需要某个元素定位在浏览器内容区的某个地方就可以用到这个属性。于是产生了一个问题：现在大家做的网页大部分是居中的，如果我需要这个元素跟着网页中的某个元素位置，不论屏幕的分辨率是多少它的位置始终是针对页内的某个元素的，靠单纯的absolute是不行的。正确的解决方法是：在元素的父级元素定义为position:relative;(这里可以是祖父级，也可以是position:absolute;，多谢谢old9的提出)需要绝对定位的元素设为position:absolute;这样再设定top,right,bottom,left的值就可以了，这样其定位的参照标准就是父级的左上角padding的左上侧。', '2014-7-31-  12:12:7', 3, 4, 32, 0),
 (41, 'SD ', '2014-8-13-  21:29:20', 1, 1, 32, 0),
 (42, '如果是本地没问题，到BAE上就404，基本上就是因为在BAE上部署的时候报错了。你可以看看部署的时候是不是提示：异常，然后再看看userlog，是不是有对应的错误日志。', '2014-8-26-  18:29:14', 2, 1, 33, 0),
-(43, '直接将从Myeclips中导出的.war文件上传就行。', '2014-8-26-  18:32:51', 0, 1, 33, 0),
-(44, '', '2014-8-31-  11:44:10', -1, 4, 33, 0),
-(45, 'atest ', '2014-9-3-  20:26:18', 0, 1, 32, 0),
-(46, ' test notify', '2014-9-3-  21:8:35', 0, 1, 32, 0),
-(47, ' 12', '2014-9-3-  22:11:8', 0, 1, 33, 0),
-(48, 'ETST', '2014-9-4-  18:45:51', 1, 1, 33, 0);
+(43, '直接将从Myeclips中导出的.war文件上传就行。', '2014-8-26-  18:32:51', 2, 1, 33, 0),
+(44, '', '2014-8-31-  11:44:10', 1, 4, 33, 0);
 
 -- --------------------------------------------------------
 
@@ -103,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `answers_keywords` (
   `answers_keywords_counts` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`answers_keywords_id`),
   KEY `answer_id_keywords` (`answers_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
 
 --
 -- 转存表中的数据 `answers_keywords`
@@ -152,11 +148,7 @@ INSERT INTO `answers_keywords` (`answers_keywords_id`, `answers_id`, `answers_ke
 (40, 41, 'sd,', '1,'),
 (41, 42, '是不是,bae,部署,看看,时候,错误,可以,然后再,提示,基本上,userlog,异常,错了,就是,如果是,因为,日志,对应,404,本地,', '2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'),
 (42, 43, '上传,直接,将从,文件,就行,war,导出,myeclips,', '1,1,1,1,1,1,1,1,'),
-(43, 44, '', ''),
-(44, 45, 'atest,', '1,'),
-(45, 46, 'test,notify,', '1,1,'),
-(46, 47, '12,', '1,'),
-(47, 48, 'etst,', '1,');
+(43, 44, '', '');
 
 -- --------------------------------------------------------
 
@@ -170,7 +162,73 @@ CREATE TABLE IF NOT EXISTS `crawl` (
   `title` varchar(500) COLLATE utf8_bin NOT NULL,
   `url` varchar(500) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=61 ;
+
+--
+-- 转存表中的数据 `crawl`
+--
+
+INSERT INTO `crawl` (`id`, `question_id`, `title`, `url`) VALUES
+(1, 31, '请问乡情爱情还有没有第6部_360问答', 'http://wenda.so.com/q/1404453086726473'),
+(2, 31, 'QQ飞车里的剧情(暴风第6人)怎么没有了!还有请问怎样可以刷级...', 'http://wenda.so.com/q/1371017337066865'),
+(3, 31, '新银~请问~还有第六季吗_虚幻勇士吧_百度贴吧', 'http://tieba.baidu.com/p/2819270102'),
+(4, 31, '药物流产第一天流出胎儿之后就没再流血第六天B超显示宫内有...', 'http://wenda.so.com/q/1366221882069364'),
+(5, 31, '生化危机5还没有结束生化。请问还有第6部? - 已回答 - 搜搜问...', 'http://wenwen.sogou.com/z/q406484337.htm'),
+(6, 31, '请问月经第六天了怎么还有血_好大夫在线', 'http://www.haodf.com/wenda/licunli_g_755197744.htm'),
+(7, 31, '请问我人流第6天,可是还有血流出,量不是很大,一直在吃新生化...', 'http://club.xywy.com/static/2454/1226875.htm'),
+(8, 31, '你好:请问第六城摩卡商业街小平米商铺还有吗?是多在平米的?...', 'http://www.jiwu.com/wenda/3920403.html'),
+(9, 31, '我的月经推迟了7天了,昨天第六天晚上的时候我测试了一下,没...', 'http://wenda.so.com/q/1367946721067379'),
+(10, 31, '《嘻哈四重奏-第五季》结束,请问何时出第六季?_卢正雨吧_百...', 'http://tieba.baidu.com/p/2749074239'),
+(11, 33, '关于java程序在BAE3.0上部署关于java程序在BAE3.0上部署80...', 'http://www.uukkuu.com/v617092905534185612/'),
+(12, 33, '【BAE3.0使用系列】Java Runtime简介_bae吧_百度贴吧', 'http://tieba.baidu.com/p/2574882923'),
+(13, 33, '如何在BAE3.0中部署wordpress_互联网_百度经验', 'http://jingyan.baidu.com/album/fb48e8be5bac1d6e622e14c1.html'),
+(14, 33, '百度BAE2.0 JAVA环境项目部署和调试- using - 开源中国社区', 'http://my.oschina.net/using/blog/167038'),
+(15, 33, '【每日一博】百度BAE JAVA环境项目部署和调试- 看引擎KEN...', 'http://www.kankanews.com/ICkengine/archives/56648.shtml'),
+(16, 33, 'servlet相关jar包位置BAE上部署web应用- Yogurshine - 博客园', 'http://www.cnblogs.com/Yogurshine/p/3171142.html'),
+(17, 33, '【BAE3.0使用系列】Java博客--Dlog4j的移植| BAE技术博客', 'http://godbae.duapp.com/?p=249'),
+(18, 33, '(转)微信公众平台开发之基于百度BAE3.0 的开发环境搭建(采用...', 'http://www.cnblogs.com/ixxonline/p/3659434.html'),
+(19, 33, '百度BAE JAVA环境项目部署和调试-Java-第七城市', 'http://www.th7.cn/Program/java/201310/153446.shtml'),
+(20, 33, '百度开放云平台', 'http://developer.baidu.com/events/bae3'),
+(21, 33, '关于java程序在BAE3.0上部署关于java程序在BAE3.0上部署80...', 'http://www.uukkuu.com/v617092905534185612/'),
+(22, 33, '【BAE3.0使用系列】Java Runtime简介_bae吧_百度贴吧', 'http://tieba.baidu.com/p/2574882923'),
+(23, 33, '如何在BAE3.0中部署wordpress_互联网_百度经验', 'http://jingyan.baidu.com/album/fb48e8be5bac1d6e622e14c1.html'),
+(24, 33, '百度BAE2.0 JAVA环境项目部署和调试- using - 开源中国社区', 'http://my.oschina.net/using/blog/167038'),
+(25, 33, '【每日一博】百度BAE JAVA环境项目部署和调试- 看引擎KEN...', 'http://www.kankanews.com/ICkengine/archives/56648.shtml'),
+(26, 33, 'servlet相关jar包位置BAE上部署web应用- Yogurshine - 博客园', 'http://www.cnblogs.com/Yogurshine/p/3171142.html'),
+(27, 33, '【BAE3.0使用系列】Java博客--Dlog4j的移植| BAE技术博客', 'http://godbae.duapp.com/?p=249'),
+(28, 33, '(转)微信公众平台开发之基于百度BAE3.0 的开发环境搭建(采用...', 'http://www.cnblogs.com/ixxonline/p/3659434.html'),
+(29, 33, '百度BAE JAVA环境项目部署和调试-Java-第七城市', 'http://www.th7.cn/Program/java/201310/153446.shtml'),
+(30, 33, 'Bae3.0计费说明| 岭南六少- 一朵在LAMP架构下挣扎的云', 'http://blog.chedushi.com/archives/7297'),
+(31, 27, '湖南科技大学什么专业最好?_360问答', 'http://wenda.so.com/q/1365838327064957'),
+(32, 27, '湖南科技大学优势专业排名及最好的专业有哪些_大学专业', 'http://www.ccutu.com/gaokao/17290.shtml'),
+(33, 27, '湖南科技大学最好的专业 - 特色专业 - 萝卜侠网 - 高考,志愿,填...', 'http://www.luoboxia.com/best-majors/10534.html'),
+(34, 27, '我的大学-湖南科技大学最好的本科专业是哪个啊', 'http://bbs.rednet.cn/thread-25074484-1-1.html'),
+(35, 27, '湖南科技大学，的重点专业是哪些?', 'http://wenwen.sogou.com/z/q210664149.htm'),
+(36, 27, '湖南科技大学什么专业好?_湖南科技大学吧_百度贴吧', 'http://tieba.baidu.com/p/125493668'),
+(37, 27, '湖南科技大学什么专业最好_2014湖南科技大学的专业怎么样_...', 'http://gaokao.0s.net.cn/tesezhuanye/hnkjdx/'),
+(38, 27, '湖南科技大学里面什么专业比较好_百度知道', 'http://zhidao.baidu.com/question/103809922.html'),
+(39, 27, '湖南科技大学哪个专业好?_百度知道', 'http://zhidao.baidu.com/question/97252518.html'),
+(40, 27, '湖南科技大学有什么专业比较好~~_天涯问答', 'http://wenda.tianya.cn/question/6b05425863e2a44c'),
+(41, 24, '一句话说不清楚,形容事情很复杂 是什么成语', 'http://iask.sina.com.cn/b/f1rGsxouR.html'),
+(42, 24, '求求大家帮帮忙谢谢了:事情是我与邻居之间的矛盾,听起来感觉...', 'http://wenda.so.com/q/1377339787064329'),
+(43, 24, '怎么在中国知网下东西?_firefox吧_百度贴吧', 'http://tieba.baidu.com/p/2083814776'),
+(44, 24, 'V 357 缘嫁首长老公- 请看小说网', 'http://www.qingkan.net/book/yuanjiashouchanglaogong/4694837.html'),
+(45, 24, '如何看待中国学术造假? - 步行街- 虎扑篮球论坛', 'http://bbs.hupu.com/8073776.html'),
+(46, 24, '艺术,一句话说不清楚(《国家美术》杂志,王天德创作访谈) - 《国...', 'http://blog.artintern.net/article/58072'),
+(47, 24, '《网游之我是NPC》第十三章豆豆删号了- 原创首发- 《小说阅...', 'http://www.readnovel.com/novel/12230/13.html'),
+(48, 24, '好想给前男友打电话,可是我不知道第一句话说什么', 'http://wenwen.sogou.com/z/q421755508.htm'),
+(49, 24, '有没有萍乡的朋友?急事相求_李宇春吧_百度贴吧', 'http://tieba.baidu.com/p/488896278'),
+(50, 24, '一句话两句话说不清楚的问题看看吧100分! - 已解决- 搜狗问问', 'http://wenwen.sogou.com/z/q209292169.htm'),
+(51, 36, 'TAG: 检测- 分析测试百科网', 'http://www.antpedia.com/?action-tag-tagname-%E6%A3%80%E6%B5%8B'),
+(52, 36, 'Vlan 测试实战(tag untag pvid vid )_百度文库', 'http://wenku.baidu.com/view/da3be3c608a1284ac85043e8.html'),
+(53, 36, '【安卓龙珠TAG VS游戏测试】完美能玩了我是有好激动!BGM...', 'http://tieba.baidu.com/p/2368565279'),
+(54, 36, 'VLAN 测试实战(TAG UNTAG PVID VID ) - 豆丁网', 'http://www.docin.com/p-392969719.html'),
+(55, 36, '趣味测试TAG标签_Txt电子书下载_一博书库', 'http://www.ebookcn.com/tag/%E8%B6%A3%E5%91%B3%E6%B5%8B%E8%AF%95'),
+(56, 36, '[个人测试] 龙珠TAG VS。_ppsspp吧_百度贴吧', 'http://tieba.baidu.com/p/2374227481'),
+(57, 36, '《剑网三》团队事件监控官方测试TAG--可随意修改资料库', 'http://tag.j3ui.com/10/Buff'),
+(58, 36, 'VLAN 测试实战(TAG UNTAG PVID VID ) - 技术总结- 道客巴巴', 'http://www.doc88.com/p-436727263401.html'),
+(59, 36, '测试tag 临时用- 都市小说- 红袖添香', 'http://novel.hongxiu.com/a/69760/'),
+(60, 36, 'Vlan 测试实战(tag untag pvid vid ) - 豆丁网', 'http://www.docin.com/p-537535966.html');
 
 -- --------------------------------------------------------
 
@@ -187,7 +245,7 @@ CREATE TABLE IF NOT EXISTS `discuss` (
   PRIMARY KEY (`discuss_id`),
   KEY `answer_discuss` (`discuss_answer_id`),
   KEY `user_discuss` (`discuss_user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- 转存表中的数据 `discuss`
@@ -205,7 +263,8 @@ INSERT INTO `discuss` (`discuss_id`, `discuss_content`, `discuss_time`, `discuss
 (16, '我是冒充哦', '2014-07-22 03:57:40', 9, 30),
 (17, '测试你妹啊，不许灌水。', '2014-07-30 07:00:20', 4, 39),
 (18, '我就是用的这个。', '2014-08-26 06:35:21', 4, 43),
-(19, '查看日志就行。', '2014-08-31 10:38:26', 4, 42);
+(19, '查看日志就行。', '2014-08-31 10:38:26', 4, 42),
+(20, '这个问题是你自己写的么？', '2014-09-06 11:04:16', 1, 40);
 
 -- --------------------------------------------------------
 
@@ -218,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `user_id` int(11) NOT NULL,
   `message` varchar(500) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=48 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=65 ;
 
 --
 -- 转存表中的数据 `message`
@@ -271,7 +330,24 @@ INSERT INTO `message` (`id`, `user_id`, `message`) VALUES
 (44, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
 (45, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
 (46, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
-(47, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了');
+(47, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(48, 1, '你的问题<a href=''getDetilQuestion?question_id=33''>关于java程序在BAE3.0上部署</a>被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>回答了'),
+(49, 1, '你的问题<a href=''getDetilQuestion?question_id=33''>关于java程序在BAE3.0上部署</a>被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>回答了'),
+(50, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(51, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(52, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(53, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(54, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(55, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(56, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(57, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(58, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(59, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(60, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(61, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(62, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(63, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了'),
+(64, 1, '你被<a href=''GetPersionInfoServlet?user_id=1''>admin</a>关注了');
 
 -- --------------------------------------------------------
 
@@ -290,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   `question_categories_id` int(11) DEFAULT '0',
   PRIMARY KEY (`question_id`),
   KEY `question` (`question_categories_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- 转存表中的数据 `question`
@@ -298,20 +374,20 @@ CREATE TABLE IF NOT EXISTS `question` (
 
 INSERT INTO `question` (`question_id`, `question_title`, `question_description`, `question_time`, `question_mark`, `question_user_id`, `question_tags`, `question_categories_id`) VALUES
 (1, '这是做什么的？', '这个系统是做什么的？', '2014-05-13', -1, 2, '2', 0),
-(2, 'python', '是中编程语言么？', '2014-05-13', 0, 3, '2,5,8', 0),
+(2, 'python', '是中编程语言么？', '2014-05-13', 0, 3, '2,5,8,46', 0),
 (3, '今天星期几？', '时间', '2014-05-21 08:03:12', 1, 0, '生活', 0),
 (4, '你是不是二货？', '迷惑', '2014-05-21 08:05:19', -1, 0, '娱乐', 0),
-(5, 'SQL语句区分大小写么？', '数据库查询语句区分大小写么？', '2014-05-21 08:06:33', 0, 0, '数据库', 0),
-(7, '大一军训多久？', '湖南科技大学大一新生军训多长时间，严不严？可以不军训么....', '2014-05-21 10:21:43', 0, 0, '新生', 0),
+(5, 'SQL语句区分大小写么？', '数据库查询语句区分大小写么？', '2014-05-21 08:06:33', 0, 0, '55', 0),
+(7, '大一军训多久？', '湖南科技大学大一新生军训多长时间，严不严？可以不军训么....', '2014-05-21 10:21:43', 0, 0, '6', 0),
 (8, '大一可以谈恋爱么？', '大一新生谈恋爱的多不多？科大美女多不多，是南校女生多，还是北校多呀，那个校区女生整体质量比较好？', '2014-05-21 10:28:12', 0, 0, '其它', 0),
-(9, '美食', '湖南科技大学那个食堂的饭比较好吃，那个食堂的最不好吃？', '2014-05-21 11:59:08', 0, 0, '美食', 0),
-(10, '专业课程', '有谁知道大一计算机系有哪些课程?跪求解答！！！', '2014-05-22 12:00:48', 0, 0, '专业课程', 0),
+(9, '美食', '湖南科技大学那个食堂的饭比较好吃，那个食堂的最不好吃？', '2014-05-21 11:59:08', 0, 0, '66', 0),
+(10, '专业课程', '有谁知道大一计算机系有哪些课程?跪求解答！！！', '2014-05-22 12:00:48', 0, 0, '22', 0),
 (11, '系统问题', '为什么我发的答案显示不了？求许永利解释@许永利', '2014-05-22 12:12:17', 0, 0, '许永利', 0),
 (12, '熬夜', '现在都00点13分了，有木有还没有睡的？', '2014-05-22 12:14:16', 0, 0, '困', 0),
 (13, '问答有问题', '为什么每次发表问题后返回的页面中都没有我刚刚题的问题，求王大神解释！！！', '2014-05-22 12:15:44', 0, 0, '问答系统', 0),
-(14, 'html按钮button怎么加超链接', '<input name="注册"  type="button"  id="btn1" title="登注册" value="注册" />怎么让这个点下，转向一个链接？ 晕。。 我不是要提交数据，只是想用按钮当个超链接啊！ ', '2014-05-25 11:07:49', 0, 0, 'HTML', 0),
-(15, '返回值:jQueryjQuery', 'jQuery 的核心功能都是通过这个函数实现的。 jQuery中的一切都基于这个函数，或者说都是在以某种方式使用这个函数。这个函数最基本的用法就是向它传递一个表达式（通常由 CSS 选择器组成），然后根据这个表达式来查找所有匹配的元素。\r\n\r\n默认情况下, 如果没有指定context参数，$()将在当前的 HTML document中查找 DOM 元素；如果指定了 context 参数，如一个 DOM 元素集或 jQuery 对象，那就会在这个 context 中查找。在jQuery 1.3.2以后，其返回的元素顺序等同于在context中出现的先后顺序。\r\n', '2014-05-25 11:30:04', 0, 0, 'jQuery', 0),
-(16, '13124', '32423', '2014-06-15 01:37:41', 0, 0, '543543', 0),
+(14, 'html按钮button怎么加超链接', '<input name="注册"  type="button"  id="btn1" title="登注册" value="注册" />怎么让这个点下，转向一个链接？ 晕。。 我不是要提交数据，只是想用按钮当个超链接啊！ ', '2014-05-25 11:07:49', 0, 0, '56', 0),
+(15, '返回值:jQueryjQuery', 'jQuery 的核心功能都是通过这个函数实现的。 jQuery中的一切都基于这个函数，或者说都是在以某种方式使用这个函数。这个函数最基本的用法就是向它传递一个表达式（通常由 CSS 选择器组成），然后根据这个表达式来查找所有匹配的元素。\r\n\r\n默认情况下, 如果没有指定context参数，$()将在当前的 HTML document中查找 DOM 元素；如果指定了 context 参数，如一个 DOM 元素集或 jQuery 对象，那就会在这个 context 中查找。在jQuery 1.3.2以后，其返回的元素顺序等同于在context中出现的先后顺序。\r\n', '2014-05-25 11:30:04', 0, 0, '56', 0),
+(16, '13124', '32423', '2014-06-15 01:37:41', 0, 0, '1', 0),
 (19, '求GTASA里面的DATA文件 不要装MOD的', '还有我添加了个双枪WEAPON.DOT文件  开枪为什么会弹出', '2014-06-28 02:47:59', 0, 0, '', 0),
 (20, 'input元素hidden属性和text属性的取值问题', '两个input元素，一个hidden属性，一个text属性，名字都叫name的话，提交到表单的值是hidden的还是text的\r\n是jsp的，两个同名input，属性均为text，但是设置一个display：“”\r\n一个display：none；显示出来的input值是有的，不显示的input的值是空，交到后台，得不到值，加上一个同名hidden就能取到了，就想知道同名元素怎么取值的', '2014-06-28 03:12:11', 0, 0, '', 0),
 (21, 'input元素hidden属性和text属性的取值问题', '两个input元素，一个hidden属性，一个text属性，名字都叫name的话，提交到表单的值是hidden的还是text的\r\n是jsp的，两个同名input，属性均为text，但是设置一个display：“”\r\n一个display：none；显示出来的input值是有的，不显示的input的值是空，交到后台，得不到值，加上一个同名hidden就能取到了，就想知道同名元素怎么取值的', '2014-06-28 03:14:35', 0, 0, '', 0),
@@ -324,9 +400,11 @@ INSERT INTO `question` (`question_id`, `question_title`, `question_description`,
 (29, '计算机专业下个学期的课程设计是做什么，做多久啊？', '如题，请大声告诉我一下，感激不尽！！！', '2014-07-14 02:58:28', -1, 7, '课程设计', 0),
 (30, '智能问答平台功能更新', '湖南科技大学智能问答平台功能更新说明：\r\n1、系统安全方面注册和登录增加验证码功能；\r\n2、用户的注册成功邮箱提醒和密码邮箱验证密码找回。', '2014-07-24 10:43:52', 2, 1, '', 0),
 (31, '请问还有没有第六个人在！！', '哈哈哈哈哈哈哈哈哈哈，我是来打酱油的！！！', '2014-07-28 08:51:48', 1, 18, '酱油', 0),
-(32, 'CSS绝对定位与相对定位的区别？', 'CSS绝对定位与相对定位的区别？', '2014-07-31 12:11:34', -1, 4, '网页设计', 0),
-(33, '关于java程序在BAE3.0上部署', '是这样，原来用BAE2.0的时候，创建完程序，直接将从Myeclips中导出的.war文件上传就行，但是现在改成BAE3.0之后，就放在SVN里面发布。我将一个能够正常运行的java程序的.war文件发布之后，点击查看页面，出来404错误。。这是为什么。', '2014-08-26 06:20:00', 1, 1, 'BAE3.0', 0),
-(34, '', '', '2014-09-01 10:34:44', 0, 1, '', 0);
+(32, 'CSS绝对定位与相对定位的区别？', 'CSS绝对定位与相对定位的区别？', '2014-07-31 12:11:34', 1, 4, '网页设计', 0),
+(33, '关于java程序在BAE3.0上部署', '是这样，原来用BAE2.0的时候，创建完程序，直接将从Myeclips中导出的.war文件上传就行，但是现在改成BAE3.0之后，就放在SVN里面发布。我将一个能够正常运行的java程序的.war文件发布之后，点击查看页面，出来404错误。。这是为什么。', '2014-08-26 06:20:00', 4, 1, '39', 0),
+(34, 's', 's', '2014-09-07 09:05:53', 0, 1, 'b', 0),
+(35, '', '', '2014-09-07 09:16:15', 0, 1, '', 0),
+(36, '测试tag', 'python javascript', '2014-09-07 11:36:22', 0, 1, '46,47', 0);
 
 -- --------------------------------------------------------
 
@@ -341,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `questions_keywords` (
   `questions_keywords_counts` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`questions_keywords_id`),
   KEY `questions_keywords` (`questions_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
 -- 转存表中的数据 `questions_keywords`
@@ -377,7 +455,9 @@ INSERT INTO `questions_keywords` (`questions_keywords_id`, `questions_id`, `ques
 (29, 1, '做什么,系统,这是,', '2,1,1,'),
 (30, 32, '定位,区别,css,', '4,2,2,'),
 (31, 33, '程序,war,文件,之后,java,bae3.0,发布,bae2.0,点击,放在,改成,这是,就行,部署,能够,这样,正常,错误,上传,为什么,', '3,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,'),
-(32, 34, '', '');
+(32, 34, 'ss,', '1,'),
+(33, 35, '', ''),
+(34, 36, 'python,测试,tag,javascript,', '1,1,1,1,');
 
 -- --------------------------------------------------------
 
@@ -400,12 +480,28 @@ CREATE TABLE IF NOT EXISTS `question_categories` (
 --
 
 CREATE TABLE IF NOT EXISTS `tags_categories` (
-  `tags_categories_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tags_categories_id` int(11) NOT NULL,
   `tags_categories_name` varchar(20) NOT NULL,
   `tags_categories_description` varchar(200) NOT NULL,
   `last_categories_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`tags_categories_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `tags_categories`
+--
+
+INSERT INTO `tags_categories` (`tags_categories_id`, `tags_categories_name`, `tags_categories_description`, `last_categories_id`) VALUES
+(1, '我是新生', '作为一名新生对于校园的种种疑惑，在这里为你解答。', 0),
+(2, '考证专区', '大学考证五花八门，你有不懂我来回答。', 0),
+(3, '专业知识', '专业方面的疑惑或许这里有你需要的答案哦！', 0),
+(4, '工作离校', '大四离校、三方协议、工作实习、这里有你想要。', 0),
+(5, 'IT领域', '为计算机专业特色定制的编程语言版块。', 0),
+(6, '科大周边', '科大周边，吃喝玩乐统统搞定。', 0),
+(7, '学校后勤', ' 学校后勤方面的疑问，也可以在这里得到解决哦。', 0),
+(8, '学长学姐', '学霸经验，学渣奋斗史，看屌丝如何逆袭高富帅。', 0),
+(9, '校园活动', '社团竞选，学生会，晚会，比赛应有尽有。', 0),
+(10, '考研攻略', '选你所爱，爱你所选。考研辅导，给你想要的。', 0);
 
 -- --------------------------------------------------------
 
@@ -417,25 +513,108 @@ CREATE TABLE IF NOT EXISTS `tags_info` (
   `tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(20) NOT NULL,
   `tags_categories_id` varchar(11) DEFAULT '0',
+  `tags_description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`tag_id`),
   KEY `tags_info` (`tags_categories_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=97 ;
 
 --
 -- 转存表中的数据 `tags_info`
 --
 
-INSERT INTO `tags_info` (`tag_id`, `tag_name`, `tags_categories_id`) VALUES
-(2, 'C++', '0'),
-(4, 'java', '0'),
-(5, 'python', '0'),
-(6, 'mysql', '0'),
-(7, 'http', '0'),
-(8, 'linux', '0'),
-(11, '无', '0'),
-(12, 'CET-6', '0'),
-(13, '堕落街', '0'),
-(14, 'CET-2', '0');
+INSERT INTO `tags_info` (`tag_id`, `tag_name`, `tags_categories_id`, `tags_description`) VALUES
+(1, '迎新', '1', NULL),
+(2, '报到', '1', NULL),
+(3, '住宿', '1', NULL),
+(4, '入学教育', '1', NULL),
+(5, '社团竞选', '1', NULL),
+(6, '军训', '1', NULL),
+(7, '学生会', '1', NULL),
+(8, '校历', '1', NULL),
+(9, '新生规划', '1', NULL),
+(10, '英语考证', '2', NULL),
+(11, '会计资格证', '2', NULL),
+(12, '计算机证书', '2', NULL),
+(13, '教师资格证', '2', NULL),
+(14, '导游资格证', '2', NULL),
+(15, '普通话考试', '2', NULL),
+(16, '经济学类', '3', NULL),
+(17, '管理学类', '3', NULL),
+(18, '土建类', '3', NULL),
+(19, '文学类', '3', NULL),
+(20, '农学类', '3', NULL),
+(21, '教育学类', '3', NULL),
+(22, '计算机类', '3', NULL),
+(23, '能源与材料类', '3', NULL),
+(24, '历史学类', '3', NULL),
+(25, '法学类', '3', NULL),
+(26, '电气电子类', '3', NULL),
+(27, '生化与药品类', '3', NULL),
+(28, '传媒与艺术类', '3', NULL),
+(29, '实习', '4', NULL),
+(30, '工作', '4', NULL),
+(31, '就业信息', '4', NULL),
+(32, '三方协议', '4', NULL),
+(33, '数字离校', '4', NULL),
+(34, '劳动合同', '4', NULL),
+(35, '薪资待遇', '4', NULL),
+(36, '毕业相关', '4', NULL),
+(37, '校友', '4', NULL),
+(38, '培训', '4', NULL),
+(39, 'java', '5', NULL),
+(40, 'php', '5', NULL),
+(41, 'c', '5', NULL),
+(42, 'c++', '5', NULL),
+(43, 'c#', '5', NULL),
+(44, '.net', '5', NULL),
+(45, 'asp', '5', NULL),
+(46, 'python', '5', NULL),
+(47, 'javascript', '5', NULL),
+(48, 'objective-c', '5', NULL),
+(49, 'node.js', '5', NULL),
+(50, '软件破解', '5', NULL),
+(51, 'mobil OS', '5', NULL),
+(52, 'PC OS', '5', NULL),
+(53, '手机APP', '5', NULL),
+(55, 'DataBase', '5', NULL),
+(56, '其它语言', '5', NULL),
+(57, 'IDE', '5', NULL),
+(58, 'PS', '5', NULL),
+(59, '游戏影音', '5', NULL),
+(60, '游戏办公', '5', NULL),
+(64, '其它', '5', NULL),
+(65, '网页前端', '5', NULL),
+(66, '美食', '6', NULL),
+(67, '娱乐', '6', NULL),
+(68, '景点', '6', NULL),
+(69, '活动', '6', NULL),
+(70, '打折优惠', '6', NULL),
+(71, '爱心公益', '6', NULL),
+(72, '公交路线', '6', NULL),
+(73, '基础设施', '7', NULL),
+(74, '保修', '7', NULL),
+(75, '建议', '7', NULL),
+(76, '咨询', '7', NULL),
+(77, '基础设施', '7', NULL),
+(78, '保修', '7', NULL),
+(79, '建议', '7', NULL),
+(80, '咨询', '7', NULL),
+(81, '其它', '7', NULL),
+(82, '二手市场', '8', NULL),
+(83, '考试攻略', '8', NULL),
+(84, '选修推荐', '8', NULL),
+(85, '经验分享', '8', NULL),
+(86, '其它相关', '8', NULL),
+(87, '社团活动', '9', NULL),
+(88, '素质拓展', '9', NULL),
+(89, '俱乐部', '9', NULL),
+(90, '文艺晚会', '9', NULL),
+(91, '热门推荐', '9', NULL),
+(92, '前期准备', '10', NULL),
+(93, '考研必备', '10', NULL),
+(94, '培训推荐', '10', NULL),
+(95, '相关资料', '10', NULL),
+(96, '录取信息', '1', NULL);
 
 -- --------------------------------------------------------
 
