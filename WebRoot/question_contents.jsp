@@ -39,6 +39,7 @@
 <script src="static/style/wy.js"></script>
 <script src="dist/js/bootstrap.js"></script>
 <script src="js/question/qs_con.js"></script>
+<script src="js/question/crawl.js"></script>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
@@ -722,7 +723,19 @@
 						<hr class="hr-aside">
 					</div>
 				</div>
-				<!-- end of similar-question -->
+				<!-- end of net-question -->
+				
+				<div class="row similar-question">
+					<div class="col-lg-12">
+						<h4>网络问题</h4>
+					</div>
+					<div class="col-lg-12 related-list">
+						<ul class="list-unstyled" id="net_question">
+						</ul>
+						<hr class="hr-aside">
+					</div>
+				</div>
+				<!-- end of net-question -->
 			</div>
 			<!-- right-->
 

@@ -14,7 +14,7 @@ import cn.com.util.DBUtil;
 
 /**
  * @author Friday
- * @date 2014-5-13 ÏÂÎç5:17:25
+ * @date 2014-5-13 ï¿½ï¿½ï¿½ï¿½5:17:25
  */
 public class QuestionDaoImp implements QuestionDaoInf {
 
@@ -24,7 +24,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		db = new DBUtil();
 	}
 
-	// ¸ù¾İidµÃµ½ÎÊÌâĞÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½idï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public QuestionBean getQuestionByQuestionId(int question_id) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -53,7 +53,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return qb;
 	}
 
-	// ¸ù¾İ±êÎÊÌâÌâÄ¿µÃµ½ÎÊÌâĞÅÏ¢
+	// ï¿½ï¿½ï¿½İ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public List<QuestionBean> getQuestionByQuestionName(String question_title) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -72,8 +72,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 					qb = new QuestionBean();
 					qb.setQuestion_id(rs.getInt("question_id"));
 					qb.setQuestion_title(rs.getString("question_title"));
-					qb.setQuestion_description(rs
-							.getString("question_description"));
+					qb.setQuestion_description(rs.getString("question_description"));
 					qb.setQuestion_time(rs.getString("question_time"));
 					qb.setQuestion_user_id(rs.getInt("question_user_id"));
 					qb.setQuestion_mark(rs.getInt("question_mark"));
@@ -91,7 +90,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return list;
 	}
 
-	// ¸ù¾İ±êÎÊÌâÄÚÈİµÃµ½ÎÊÌâĞÅÏ¢
+	// ï¿½ï¿½ï¿½İ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public List<QuestionBean> getQuestionByQuestionDescription(
 			String question_description) {
 		Connection conn = db.getConn();
@@ -129,7 +128,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return list;
 	}
 
-	// ĞÂÔöÎÊÌâĞÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public boolean addQuestion(QuestionBean questionBean) {
 		// TODO Auto-generated method stub
 		boolean bool = false;
@@ -158,7 +157,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return bool;
 	}
 
-	// É¾³ıÎÊÌâĞÅÏ¢
+	// É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public boolean deleteQuestion(int question_id) {
 		boolean bool = false;
 		Connection conn = db.getConn();
@@ -180,7 +179,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return bool;
 	}
 
-	// ĞŞ¸ÄÎÊÌâĞÅÏ¢
+	// ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public boolean updateQuestion(QuestionBean questionBean) {
 		boolean bool = false;
 		Connection conn = db.getConn();
@@ -208,7 +207,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return bool;
 	}
 
-	// Í³¼ÆÎÊÌâ×ÜÊı
+	// Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int getContOfQuestion() {
 		int count = 0;
 		Connection conn = db.getConn();
@@ -232,7 +231,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return count;
 	}
 
-	// ¸ü¾ßÌáÎÊÕßIDµÃµ½¸ÃÓÃ»§ÌáÎÊµÄËùÓĞĞÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½Ãµï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public int getContOfQuestionByUserId(int question_user_id) {
 		int count = 0;
 		Connection conn = db.getConn();
@@ -257,7 +256,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return count;
 	}
 
-	// »ñµÃÈÈÃÅÎÊÌâ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<QuestionBean> getHotQuestions() {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -293,7 +292,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return list;
 	}
 
-	// »ñµÃËùÓĞÎÊÌâ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<QuestionBean> getAllQuestions(int row, int countPage) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -301,7 +300,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		List<QuestionBean> list = null;
 		QuestionBean qb = null;
 		String sql = "select * from question order by question_id desc limit ?,? ";
-		// ÓÃÒ»´Î£¬ÏµÍ³·¢²¼ºó²»ÊÊÓÃÏÂÃæµÄSQLÓï¾ä
+		// ï¿½ï¿½Ò»ï¿½Î£ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½
 		// String sql = "select * from question order by question_id desc";
 		try {
 			pst = conn.prepareStatement(sql);
@@ -333,7 +332,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return list;
 	}
 
-	// ¸ù¾İÌáÎÊÕßIDµÃµ½ÎÊÌâ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<QuestionBean> getQuestionByUserId(int userId, int row,
 			int countPage) {
 		Connection conn = db.getConn();
@@ -373,7 +372,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return list;
 	}
 
-	// ËÑË÷»ñµÃÈÈÃÅĞÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public List<QuestionBean> getHotQuestionsBySearch(String context) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;
@@ -411,7 +410,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return list;
 	}
 
-	// ¸ù¾İÎÊÌâÄÚÈİµÃµ½ÎÊÌâĞÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public QuestionBean getQuestionByQuestionByDescription(
 			String question_description) {
 		Connection conn = db.getConn();
@@ -445,7 +444,7 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		return qb;
 	}
 
-	// ¸ù¾İÎÊÌâ±êÌâµÃµ½ÎÊÌâĞÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public boolean getQuestionByQuestionByTitle(String question_title) {
 		Connection conn = db.getConn();
 		PreparedStatement pst = null;

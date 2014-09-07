@@ -19,7 +19,7 @@ import java.io.IOException;
 
 /**
  * Date: 12-12-4
- * Time: ÏÂÎç4:36
+ * Time: ï¿½ï¿½ï¿½ï¿½4:36
  */
 public class QQLoginRedirectServlet extends HttpServlet {
 
@@ -41,9 +41,9 @@ public class QQLoginRedirectServlet extends HttpServlet {
 
 
             if (accessTokenObj.getAccessToken().equals("")) {
-//                ÎÒÃÇµÄÍøÕ¾±»CSRF¹¥»÷ÁË»òÕßÓÃ»§È¡ÏûÁËÊÚÈ¨
-//                ×öÒ»Ð©Êý¾ÝÍ³¼Æ¹¤×÷
-                System.out.print("Ã»ÓÐ»ñÈ¡µ½ÏìÓ¦²ÎÊý");
+//                ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½Õ¾ï¿½ï¿½CSRFï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½Ã»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨
+//                ï¿½ï¿½Ò»Ð©ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ¹ï¿½ï¿½ï¿½
+                System.out.print("Ã»ï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½");
             } else {
                 accessToken = accessTokenObj.getAccessToken();
                 tokenExpireIn = accessTokenObj.getExpireIn();
@@ -51,16 +51,16 @@ public class QQLoginRedirectServlet extends HttpServlet {
                 request.getSession().setAttribute("demo_access_token", accessToken);
                 request.getSession().setAttribute("demo_token_expirein", String.valueOf(tokenExpireIn));
 
-                // ÀûÓÃ»ñÈ¡µ½µÄaccessToken È¥»ñÈ¡µ±Ç°ÓÃµÄopenid -------- start
+                // ï¿½ï¿½ï¿½Ã»ï¿½È¡ï¿½ï¿½ï¿½ï¿½accessToken È¥ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½Ãµï¿½openid -------- start
                 OpenID openIDObj =  new OpenID(accessToken);
                 openID = openIDObj.getUserOpenID();
 
-                System.out.println("»¶Ó­Äã£¬´úºÅÎª " + openID + " µÄÓÃ»§!");
+                System.out.println("ï¿½ï¿½Ó­ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½Îª " + openID + " ï¿½ï¿½ï¿½Ã»ï¿½!");
                 request.getSession().setAttribute("demo_openid", openID);
-                // ÀûÓÃ»ñÈ¡µ½µÄaccessToken È¥»ñÈ¡µ±Ç°ÓÃ»§µÄopenid --------- end
+                // ï¿½ï¿½ï¿½Ã»ï¿½È¡ï¿½ï¿½ï¿½ï¿½accessToken È¥ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½Ã»ï¿½ï¿½ï¿½openid --------- end
 
 
-                System.out.println("<p> start -----------------------------------ÀûÓÃ»ñÈ¡µ½µÄaccessToken,openid È¥»ñÈ¡ÓÃ»§ÔÚQzoneµÄêÇ³ÆµÈÐÅÏ¢ ---------------------------- start </p>");
+                System.out.println("<p> start -----------------------------------ï¿½ï¿½ï¿½Ã»ï¿½È¡ï¿½ï¿½ï¿½ï¿½accessToken,openid È¥ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Qzoneï¿½ï¿½ï¿½Ç³Æµï¿½ï¿½ï¿½Ï¢ ---------------------------- start </p>");
                 UserInfo qzoneUserInfo = new UserInfo(accessToken, openID);
                 UserInfoBean qqUserInfoBean = qzoneUserInfo.getUserInfo();
                 System.out.println("<br/>");
@@ -71,10 +71,10 @@ public class QQLoginRedirectServlet extends HttpServlet {
                     request.setAttribute("userName", userName);
         			request.setAttribute("userPassword", userPassword);
         			System.out.println(userPassword);
-        			//ÅÐ¶Ï¸ÃÕËºÅÊÇ·ñÒÑ°ó¶¨
+        			//ï¿½Ð¶Ï¸ï¿½ï¿½Ëºï¿½ï¿½Ç·ï¿½ï¿½Ñ°ï¿½
         			UserInfoDaoImp userDaoImp = new UserInfoDaoImp();
         			cn.com.beans.UserInfoBean userInfoBean = new cn.com.beans.UserInfoBean();
-        			//Èç¹ûÒÑ¾­°ó¶¨
+        			//ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½
         			if(userDaoImp.validateByUserNameAndUserPassword(userName, userPassword)){
         				userInfoBean = userDaoImp.getUserInfoByUserName(userName);
         				HttpSession session = request.getSession();
@@ -87,10 +87,10 @@ public class QQLoginRedirectServlet extends HttpServlet {
         				return;
         			}
                 } else {
-                    System.out.println("ºÜ±§Ç¸£¬ÎÒÃÇÃ»ÄÜÕýÈ·»ñÈ¡µ½ÄúµÄÐÅÏ¢£¬Ô­ÒòÊÇ£º " + qqUserInfoBean.getMsg());
+                    System.out.println("ï¿½Ü±ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ô­ï¿½ï¿½ï¿½Ç£ï¿½ " + qqUserInfoBean.getMsg());
                 }
             }
-        } catch (QQConnectException | ServletException e) {
+        } catch (Exception e) {
         }
     }
 }

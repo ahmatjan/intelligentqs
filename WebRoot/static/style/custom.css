@@ -97,6 +97,12 @@
 	line-height: 2.5;
 }
 
+.mark-ask{
+	margin-right:6px;
+	margin-top:4px;
+	float:left;
+}
+
 .border-0 {
 	border: 0px;
 }

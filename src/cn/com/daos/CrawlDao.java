@@ -1,13 +1,17 @@
 package cn.com.daos;
 
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import cn.com.beans.AnswerBean;
-import cn.com.beans.CrawlBean;
+import cn.com.beans.QuestionBean;
 import cn.com.util.DBUtil;
+
+import cn.com.beans.CrawlBean;
 
 public class CrawlDao {
 private  DBUtil db;
@@ -40,28 +44,33 @@ private  DBUtil db;
 		return bool;			
 	}
 	
-	public CrawlBean getCrawlBeanByQuestionid(int question_id){
-		CrawlBean crawlbean = null;
+	public List<CrawlBean> getCrawlBeanByQuestionid(int question_id){
 		Connection con = db.getConn();
 		PreparedStatement pst = null;
 		ResultSet rs = null;
+		CrawlBean crawlbean = null;
+		List<CrawlBean> list = null;
 		String sql= "select * from crawl where question_id = ?";
+		
 		try {
 			pst = con.prepareStatement(sql);
 			pst.setInt(1, question_id);
 			rs = pst.executeQuery();
-			while (rs.next()) {
-				crawlbean = new CrawlBean();
-				crawlbean.set_question_id(question_id);
-				crawlbean.set_title(rs.getString("title"));
-				crawlbean.set_url(rs.getString("url"));
+			if (rs!=null){
+				list = new ArrayList<CrawlBean>();
+				while (rs.next()) {
+					crawlbean = new CrawlBean();
+					crawlbean.set_question_id(question_id);
+					crawlbean.set_title(rs.getString("title"));
+					crawlbean.set_url(rs.getString("url"));
+					list.add(crawlbean);
+				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			db.free(rs, pst, con);
 		}
-		return crawlbean;				
+		return list;				
 	}
 }

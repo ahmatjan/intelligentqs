@@ -19,8 +19,11 @@
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <script src="./static/style/wy.js"></script> 
-    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+   <!-- <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script> -->
+    <script src="js/jquery-1.7.1.js"></script>
     <script src="./dist/js/bootstrap.js"></script>
+    <script src="js/question/simple-taginput.js"></script>
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
@@ -216,31 +219,43 @@
                     </a>
                   </div>
 
-                  <h4>问题标签（至少 1 个）</h4>
+                  <h4>问题标签（至少 1 个）</h4>                
+                  
                   <hr class="hr-header">
 
-                  <div class="row">
+					<div class="row">
+						<div class="col-lg-12" id="tags"></div>
+				  </div>
+				  <br>
+                  <div class="row fix-top">
 					<div class="col-lg-12">
+						
+					
 						<div class="input-group">
-						  <input type="text" class="form-control" name="question_tags">
-						    <div class="input-group-btn">
-						      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-						      <ul class="dropdown-menu pull-right">
-						 <c:forEach items="${tagsInfoList }" var="tagList" begin="0" step="1" varStatus="class">
-						        <li><a href="#">${tagList.tags_name }</a></li>
-						</c:forEach>
+						  <input type="text" class="form-control" name="question_tags" data-role="simple-input" autocomplete="off">
+						    
+						  <span class="input-group-btn">
+						    <button class="btn btn-default" type="button" onclick="tagbutton()">添加</button>
+						    <script type="text/javascript">
+						    
+						    </script>
+						  </span>
+						  
+						 	 
+						</div>
+					</div><!-- /.col-lg-12-->
+					
+						<div class="col-lg-12">
+							<div class="input-group-btn">
+						      <ul class="dropdown-menu pull-left" id="tag-button">
 						      </ul>
 						    </div><!-- /btn-group -->
-						  <span class="input-group-btn">
-						    <button class="btn btn-default" type="button">添加</button>
-						  </span>
-						</div><!-- /input-group -->
-					</div><!-- /.col-lg-12-->
-                  </div><!-- /.row -->
+                   		</div><!-- /.col-lg-12-->
+                   </div>
 
                   <div class="row">
                   	<div class="col-lg-3"></div>
-                  	<div class="col-lg-6 ask-btn">
+                  	<div class="col-lg-6 ask-btn btn">
                   		<a href="#" type="button" class="btn btn-primary btn-lg btn-block" onclick="document.form.submit();">提出问题</a>
                   	</div>
                   </div>
@@ -292,6 +307,6 @@
         <p>Power by hnust_qa current version  1.0 </p>
       </div>
     </div>
-
+<script src="js/question/searchtag.js"></script>
   </body>
 </html>

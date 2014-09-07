@@ -478,4 +478,26 @@
     <url-pattern>/getMessage</url-pattern>
   </servlet-mapping>
   
+  <!-- crawl questions -->
+  <servlet>
+    <description></description>
+    <servlet-name>netquestions</servlet-name>
+    <servlet-class>cn.com.servlets.question.NetQuestions</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>netquestions</servlet-name>
+    <url-pattern>/netquestions</url-pattern>
+  </servlet-mapping>
+    
+  <!-- ajax tag -->
+  <servlet>
+    <description></description>
+    <servlet-name>searchtag</servlet-name>
+    <servlet-class>cn.com.servlets.rest.AjaxTag</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchtag</servlet-name>
+    <url-pattern>/searchtag</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
