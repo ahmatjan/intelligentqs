@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Pattern;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -36,71 +37,113 @@ public class SearchQuestionServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String context = request.getParameter("context");
-		System.out.println("ÄúÊäÈëµÄÄÚÈÝÎª£º"+context);
-		if (context == null) {
+		
+		if(context == null||context.equals("")){
 			request.getRequestDispatcher("index").forward(request, response);
+			return;
 		}
+	
+		System.out.println("You input words is "+context);
 		QuestionDaoImp questionDaoImp = new QuestionDaoImp();
 		AnswerDaoImp answerDaoImp = new AnswerDaoImp();
 		UserInfoDaoImp userInfoDaoImp = new UserInfoDaoImp();
-		// µÃµ½ËùÓÐÎÊÌâÏêÏ¸ÐÅÏ¢ÔÚÖ÷Ò³ÏÔÊ¾
+		// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ê¾
 		List<QuestionAllInfoBean> listAllQuestions = new ArrayList<QuestionAllInfoBean>();
+
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½Æ¥ï¿½ï¿½
+		Pattern pattern = Pattern.compile("[0-9]*");
+		TagsInfoDaoImp tagsInfoDaoImp = new TagsInfoDaoImp();
 
 		QuestionAllInfoBean questionAllInfoBean = null;
 		QuestionBean questionBean = new QuestionBean();
 
-		
-		// ¶Ôµ±Ç°ÎÊÌâ·Ö´Ê´¦Àí
+		// ï¿½Ôµï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ö´Ê´ï¿½ï¿½ï¿½
 		ChineseAnalyzerUtil chineseAnalyzerUtil = new ChineseAnalyzerUtil();
-		// µÃµ½ËÑË÷Æ¥ÅäµÄÎÊÌâ************************
+		// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½************************
 		QuestionsKeywordsDaoImp questionKeyDao = new QuestionsKeywordsDaoImp();
 		QuestionsKeywordsBean questionsKeywordsBean = new QuestionsKeywordsBean();
-		List<String> listKeyWords = chineseAnalyzerUtil.getSearchKeyWords(context);
+		List<String> listKeyWords = chineseAnalyzerUtil
+				.getSearchKeyWords(context);
 
-		/* ¸ù¾Ýµ±Ç°ÎÊÌâ½á¹ûÈ¥Æ¥ÅäËùÓÐÎÊÌâ·Ö´Ê */
+		/* ï¿½ï¿½ï¿½Ýµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ */
 
-		// ·â×°ËùÓÐÆ¥ÅäµÃµ½µÄÎÊÌâID
+		// ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
 		List<Integer> listQuestionId = new ArrayList<Integer>();
-		// ¸ù¾Ýµ±Ç°ÎÊÌâ½á¹ûÈ¥Æ¥ÅäËùÓÐÎÊÌâ·Ö´Ê
+		// ï¿½ï¿½ï¿½Ýµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½
 		List<QuestionsKeywordsBean> listTemp = new ArrayList<QuestionsKeywordsBean>();
-		// Ñ­»·±éÀúËÑË÷µÄÄÚÈÝ
+		// Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		StringBuffer tempKeywords = new StringBuffer();
-		//°´ÕÕËÑË÷ÊäÈëµÄË³Ðò´æÈë
-		for(int i = 0;i <listKeyWords.size() ;i++){
-			tempKeywords.append(listKeyWords.get(i)+"%");
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½
+		for (int i = 0; i < listKeyWords.size(); i++) {
+			tempKeywords.append(listKeyWords.get(i) + "%");
 		}
-		//¸ù¾ÝËÑË÷µÄ·Ö´Ê½á¹ûÈ¥Æ¥Åä
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·Ö´Ê½ï¿½ï¿½È¥Æ¥ï¿½ï¿½
 		System.out.println(tempKeywords);
-//		listTemp = questionKeyDao
-//				.getQuestionsKeywordsByKeyWords(tempKeywords.toString());
-//		for (int i = 0; i < listTemp.size(); i++) {
-//			listQuestionId.add(listTemp.get(i).getQuestion_id());
-//
-//		}
-//		// ¸ù¾ÝµÃµ½µÄÎÊÌâID¼¯ºÏµÃµ½ËùÓÐÎÊÌâºóÈ¥²éÕÒÎÊÌâÐÅÏ¢
+		// listTemp = questionKeyDao
+		// .getQuestionsKeywordsByKeyWords(tempKeywords.toString());
+		// for (int i = 0; i < listTemp.size(); i++) {
+		// listQuestionId.add(listTemp.get(i).getQuestion_id());
+		//
+		// }
+		// // ï¿½ï¿½ï¿½ÝµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ÏµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		List<QuestionBean> questionKeyList = new ArrayList<QuestionBean>();
-		questionKeyList = questionDaoImp.getQuestionByQuestionName(tempKeywords.toString());
-//		// È¥³ýÖØ¸´µÄID
-//		listQuestionId = this.removeDuplicateWithOrder(listQuestionId);
-//		for (int i = 0; i < listQuestionId.size(); i++) {
-//			questionKeyList.add(questionDaoImp
-//					.getQuestionByQuestionId(listQuestionId.get(i)));
-//		}
+		questionKeyList = questionDaoImp.getQuestionByQuestionName(tempKeywords
+				.toString());
+		// // È¥ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ID
+		// listQuestionId = this.removeDuplicateWithOrder(listQuestionId);
+		// for (int i = 0; i < listQuestionId.size(); i++) {
+		// questionKeyList.add(questionDaoImp
+		// .getQuestionByQuestionId(listQuestionId.get(i)));
+		// }
 
 		System.out.println("Search keywords:" + tempKeywords);
 		System.out.println("Result total:" + questionKeyList.size());
 
-		
-//		List<QuestionBean> listAllQuestion =
-//		questionDaoImp.getQuestionByQuestionName(context);
-		 
-		// ´¦ÀíµÃµ½µÄËùÓÐÎÊÌâÐÅÏ¢
+		// List<QuestionBean> listAllQuestion =
+		// questionDaoImp.getQuestionByQuestionName(context);
+
+		// ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		for (int i = 0; i < questionKeyList.size(); i++) {
 			questionAllInfoBean = new QuestionAllInfoBean();
 			questionBean = questionKeyList.get(i);
-			if(questionBean.getQuestion_description().length() > 100){
-				questionBean.setQuestion_description(questionBean.getQuestion_description().substring(0, 100)+"...");
+			if (questionBean.getQuestion_description().length() > 100) {
+				questionBean.setQuestion_description(questionBean
+						.getQuestion_description().substring(0, 100) + "...");
 			}
+			// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Ç©
+			String tagsId[] = null;
+			// System.out.println(questionBean.getQuestion_tags());
+			if (questionBean.getQuestion_tags() == null
+					|| questionBean.getQuestion_tags().equals("")) {
+				// ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Îªï¿½Þ£ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½Ó¦ï¿½Ã²ï¿½ï¿½ï¿½0Îªï¿½Þ±ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½11Ó¦ï¿½Ã¿ï¿½ï¿½Ô¸ï¿½Îª0
+				questionBean.setQuestion_tags("ï¿½ï¿½ï¿½ï¿½");
+			} else {
+				if (questionBean.getQuestion_tags() != null
+						&& questionBean.getQuestion_tags().indexOf(",") == -1
+						&& pattern.matcher(questionBean.getQuestion_tags())
+								.matches()) {
+					String tagsStr = tagsInfoDaoImp.getTagsInfoByTagsId(
+							Integer.parseInt(questionBean.getQuestion_tags()))
+							.getTags_name();
+					questionBean.setQuestion_tags(tagsStr);
+				} else {
+					if (questionBean.getQuestion_tags().indexOf(",") != -1) {
+						tagsId = questionBean.getQuestion_tags().split(",");
+						StringBuffer tagStrBuffer = new StringBuffer();
+						for (int i1 = 0; i1 < tagsId.length; i1++) {
+							int tagsIdInt = Integer.parseInt(tagsId[i1]);
+							String tagsStr = tagsInfoDaoImp
+									.getTagsInfoByTagsId(tagsIdInt)
+									.getTags_name()
+									+ " ";
+							tagStrBuffer.append(tagsStr);
+						}
+						// ï¿½ï¿½ï¿½Ã±ï¿½Ç©Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+						questionBean.setQuestion_tags(tagStrBuffer.toString());
+					}
+				}
+			}
+
 			String userName = userInfoDaoImp.getUserInfoByUserId(
 					questionBean.getQuestion_user_id()).getUser_name();
 			int countOfAnswer = answerDaoImp.getContOfAnswer(questionBean
@@ -109,22 +152,21 @@ public class SearchQuestionServlet extends HttpServlet {
 			questionAllInfoBean.setQuestionUserName(userName);
 			questionAllInfoBean.setCountOfAnswers(countOfAnswer);
 			questionAllInfoBean.setVpOfQuestion(50);
-			questionAllInfoBean.setBestAnswer("ÔÝÎÞ");
+			questionAllInfoBean.setBestAnswer("ï¿½ï¿½ï¿½ï¿½");
 			questionAllInfoBean.setQuestionBean(questionBean);
 			listAllQuestions.add(questionAllInfoBean);
 		}
 
-		
-		// *****************°üÎ§µÄ´úÂë¿ÉÒÔÉ¾³ýÓÃGetHotServlet½â¾ö**********************
+		// *****************ï¿½ï¿½Î§ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½GetHotServletï¿½ï¿½ï¿½**********************
 		// QuestionDaoImp questionDaoImp = new QuestionDaoImp();
-		// »ñµÃÈÈÃÅÎÊÌâÏêÏ¸ÐÅÏ¢ÏÔÊ¾ÔÚÖ÷Ò³
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ò³
 		List<QuestionAllInfoBean> listHotQuestions = new ArrayList<QuestionAllInfoBean>();
 
 		// QuestionAllInfoBean questionAllInfoBean = null;
 		// questionBean = new QuestionBean();
 		// AnswerDaoImp answerDaoImp = new AnswerDaoImp();
 
-		// »ñµÃÈÈÃÅÎÊÌâÐÅÏ¢£¨°üÀ¨ÓÃ»§Ãû£¬±êÇ©£¬»Ø´ðÊýµÈµÈ£©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ÈµÈ£ï¿½
 		List<QuestionBean> listHotQuestion = questionDaoImp
 				.getHotQuestionsBySearch(tempKeywords.toString());
 
@@ -135,13 +177,44 @@ public class SearchQuestionServlet extends HttpServlet {
 		} else {
 			len = 10;
 		}
-		// ´¦ÀíµÃµ½µÄËùÓÐÈÈÃÅÎÊÌâÐÅÏ¢
+		// ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		for (int i = 0; i < len; i++) {
 			questionAllInfoBean = new QuestionAllInfoBean();
 			questionBean = listHotQuestion.get(i);
-			if(questionBean.getQuestion_description().length() > 100){
-				questionBean.setQuestion_description(questionBean.getQuestion_description().substring(0, 100)+"...");
+			// ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Ç©
+			String tagsId[] = null;
+			// System.out.println(questionBean.getQuestion_tags());
+			if (questionBean.getQuestion_tags() == null
+					|| questionBean.getQuestion_tags().equals("")) {
+				// ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Îªï¿½Þ£ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½Ó¦ï¿½Ã²ï¿½ï¿½ï¿½0Îªï¿½Þ±ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½11Ó¦ï¿½Ã¿ï¿½ï¿½Ô¸ï¿½Îª0
+				questionBean.setQuestion_tags("ï¿½ï¿½ï¿½ï¿½");
+			} else {
+				if (questionBean.getQuestion_tags() != null
+						&& questionBean.getQuestion_tags().indexOf(",") == -1
+						&& pattern.matcher(questionBean.getQuestion_tags())
+								.matches()) {
+					String tagsStr = tagsInfoDaoImp.getTagsInfoByTagsId(
+							Integer.parseInt(questionBean.getQuestion_tags()))
+							.getTags_name();
+					questionBean.setQuestion_tags(tagsStr);
+				} else {
+					if (questionBean.getQuestion_tags().indexOf(",") != -1) {
+						tagsId = questionBean.getQuestion_tags().split(",");
+						StringBuffer tagStrBuffer = new StringBuffer();
+						for (int i1 = 0; i1 < tagsId.length; i1++) {
+							int tagsIdInt = Integer.parseInt(tagsId[i1]);
+							String tagsStr = tagsInfoDaoImp
+									.getTagsInfoByTagsId(tagsIdInt)
+									.getTags_name()
+									+ " ";
+							tagStrBuffer.append(tagsStr);
+						}
+						// ï¿½ï¿½ï¿½Ã±ï¿½Ç©Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+						questionBean.setQuestion_tags(tagStrBuffer.toString());
+					}
+				}
 			}
+
 			String userName = userInfoDaoImp.getUserInfoByUserId(
 					questionBean.getQuestion_user_id()).getUser_name();
 			int countOfAnswer = answerDaoImp.getContOfAnswer(questionBean
@@ -150,11 +223,11 @@ public class SearchQuestionServlet extends HttpServlet {
 			questionAllInfoBean.setQuestionUserName(userName);
 			questionAllInfoBean.setCountOfAnswers(countOfAnswer);
 			questionAllInfoBean.setVpOfQuestion(50);
-			questionAllInfoBean.setBestAnswer("ÔÝÎÞ");
+			questionAllInfoBean.setBestAnswer("ï¿½ï¿½ï¿½ï¿½");
 			questionAllInfoBean.setQuestionBean(questionBean);
 			listHotQuestions.add(questionAllInfoBean);
 		}
-		
+
 		request.setAttribute("searchKeyWords", context);
 		request.setAttribute("listHotQuestions", listHotQuestions);
 		// ************************************************
@@ -162,16 +235,16 @@ public class SearchQuestionServlet extends HttpServlet {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-//	// È¥³ýÖØ¸´µÄÎÊÌâID
-//	public static List removeDuplicateWithOrder(List list) {
-//		Set set = new HashSet();
-//		List newList = new ArrayList();
-//		for (Iterator iter = list.iterator(); iter.hasNext();) {
-//			Object element = iter.next();
-//			if (set.add(element))
-//				newList.add(element);
-//		}
-//		return newList;
-//	}
+	// // È¥ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+	// public static List removeDuplicateWithOrder(List list) {
+	// Set set = new HashSet();
+	// List newList = new ArrayList();
+	// for (Iterator iter = list.iterator(); iter.hasNext();) {
+	// Object element = iter.next();
+	// if (set.add(element))
+	// newList.add(element);
+	// }
+	// return newList;
+	// }
 
 }

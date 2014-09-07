@@ -82,7 +82,7 @@
             <div class="col-lg-3">
               <ul class="nav navbar-nav navbar-left">
                 <li><a href="index">主页</a></li>
-                <li><a href="category.jsp">发现</a></li>
+                <li><a href="initCategory">发现</a></li>
               </ul>
             </div>
 
@@ -291,6 +291,7 @@
 							<div class="panel-body"
 								style="font-size: 14px; line-height: 25px; font-style: inherit; padding: 0px;">
 								<ul>
+									<li>发现功能已经上线，一大波新功能正在来袭；</li>
 									<li>赞，踩功能及人人网官方认证主页已上线；</li>
 									<li>问题搜索优化：基于问题的多分词匹配搜索；</li>
 									<li>用户的注册成功邮箱提醒和邮箱验证密码找回;</li>
@@ -299,7 +300,7 @@
 							</div>
 							<div
 								style="text-align: right; background-color: white; margin-bottom: 5px;">
-								<font color=" #3276b1;">2014年8月14日<br>——湖南科技大学智能问答平台团队
+								<font color=" #3276b1;">2014年9月6日<br>——湖南科技大学智能问答平台团队
 								</font>
 							</div>
 						</div>

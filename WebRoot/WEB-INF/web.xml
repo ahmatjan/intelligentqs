@@ -500,4 +500,26 @@
     <url-pattern>/searchtag</url-pattern>
   </servlet-mapping>
   
+  <!-- tag && cartgory -->
+  <servlet>
+    <description></description>
+    <display-name>InitCartgoryServlet</display-name>
+    <servlet-name>InitCartgoryServlet</servlet-name>
+    <servlet-class>cn.com.servlets.category.InitCartgoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitCartgoryServlet</servlet-name>
+    <url-pattern>/initCategory</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetDetailTagsServlet</display-name>
+    <servlet-name>GetDetailTagsServlet</servlet-name>
+    <servlet-class>cn.com.servlets.category.GetDetailTagsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDetailTagsServlet</servlet-name>
+    <url-pattern>/getTagsDetail</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

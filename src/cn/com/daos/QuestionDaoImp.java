@@ -497,5 +497,70 @@ public class QuestionDaoImp implements QuestionDaoInf {
 		}
 		return "True";
 	}
+	
+	//���������ǩid�õ�������Ϣ
+			public List<QuestionBean> getQuestionByQuestionByTags(String tags_id) {
+				Connection conn = db.getConn();
+				List<QuestionBean> list = new ArrayList<QuestionBean>();
+				PreparedStatement pst = null;
+				ResultSet rs = null;
+				String sql = "select * from question where question_tags = ? order by question_id desc";
+				try {
+					pst = conn.prepareStatement(sql);
+					pst.setString(1, tags_id);
+					rs = pst.executeQuery();
+					if (rs != null) {
+						while (rs.next()) {
+							QuestionBean qb = new QuestionBean();
+							 qb.setQuestion_id(rs.getInt("question_id"));
+							 qb.setQuestion_title(rs.getString("question_title"));
+							 qb.setQuestion_description(rs.getString("question_description"));
+							 qb.setQuestion_time(rs.getString("question_time"));
+							 qb.setQuestion_user_id(rs.getInt("question_user_id"));
+							 qb.setQuestion_mark(rs.getInt("question_mark"));
+							 qb.setQuestion_tags(rs.getString("question_tags"));
+							 list.add(qb);
+						}
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} finally {
+					db.free(rs, pst, conn);
+				}
+				return list;
+			}
+	
+	public List<QuestionBean> getHotQuestionByQuestionByTags(String tags_id) {
+		Connection conn = db.getConn();
+		List<QuestionBean> list = new ArrayList<QuestionBean>();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "select * from question where question_tags = ? order by question_mark desc";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, tags_id);
+			rs = pst.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					QuestionBean qb = new QuestionBean();
+					 qb.setQuestion_id(rs.getInt("question_id"));
+					 qb.setQuestion_title(rs.getString("question_title"));
+					 qb.setQuestion_description(rs.getString("question_description"));
+					 qb.setQuestion_time(rs.getString("question_time"));
+					 qb.setQuestion_user_id(rs.getInt("question_user_id"));
+					 qb.setQuestion_mark(rs.getInt("question_mark"));
+					 qb.setQuestion_tags(rs.getString("question_tags"));
+					 list.add(qb);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.free(rs, pst, conn);
+		}
+		return list;
+	}
 
 }

@@ -29,7 +29,7 @@ public class AjaxTag extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		String tagSinnpt = request.getParameter("tag_sinnpt").toLowerCase();
 		
-		String regex = "^" + tagSinnpt + "+";
+		String regex = tagSinnpt + "+";
 		ArrayList<String> tagList = new ArrayList<String>(rdb.hkeys("tag"));
 		ArrayList tags = new ArrayList();
 		

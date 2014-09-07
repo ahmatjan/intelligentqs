@@ -26,7 +26,7 @@ import cn.com.util.ChineseAnalyzerUtil;
 
 /**
  * @author Xianxiaofei
- * @date 2014-5-13 ÏÂÎç5:06:38
+ * @date 2014-5-13 ï¿½ï¿½ï¿½ï¿½5:06:38
  */
 public class AskQuestionServlet extends HttpServlet {
 
@@ -47,26 +47,26 @@ public class AskQuestionServlet extends HttpServlet {
 		try{
 			question_title = request.getParameter("question_title");
 		}catch(Exception e){
-			System.out.println("¸ÃÎÊÌâ±êÌâÓĞ´í£¡");
-			request.setAttribute("Msg", "ÎÊÌâÌá½»Ê§°Ü£¬´íÎóÔ­Òò£º¸ÃÎÊÌâ±êÌâÓĞÎó!");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½");
+			request.setAttribute("Msg", "ï¿½ï¿½ï¿½ï¿½ï¿½á½»Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ò£º¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
 			request.getRequestDispatcher("question_ask.jsp").forward(request, response);
 			return;
 		}
 		
 		String question_description = request
 				.getParameter("question_description");
-		String question_tags = request.getParameter("question_tags");
+		String question_tags = request.getParameter("question_tag");
 		
 		QuestionDaoImp questionDao = new QuestionDaoImp();
 		if(questionDao.getQuestionByQuestionByTitle(question_title)){
-			System.out.println("¸ÃÎÊÌâÒÑ´æÔÚ£¡");
-			request.setAttribute("Msg", "ÎÊÌâÌá½»Ê§°Ü£¬´íÎóÔ­Òò£º¸ÃÎÊÌâÒÑ´æÔÚ!");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½Ú£ï¿½");
+			request.setAttribute("Msg", "ï¿½ï¿½ï¿½ï¿½ï¿½á½»Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ò£º¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½!");
 			request.getRequestDispatcher("question_ask.jsp").forward(request, response);
 			return;
 		}
-		//µÇÂ¼ºóÊ¹ÓÃ×¢ÊÍµÄÓï¾ä
+		//ï¿½ï¿½Â¼ï¿½ï¿½Ê¹ï¿½ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½ï¿½
 		int question_user_id = (uib.getUser_id());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//ÉèÖÃÈÕÆÚ¸ñÊ½
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½Ê½
 		String question_time = sdf.format(new Date());
 		int question_mark = 0;
 		QuestionBean questionBean = new QuestionBean();
@@ -76,7 +76,7 @@ public class AskQuestionServlet extends HttpServlet {
 		questionBean.setQuestion_user_id(question_user_id);
 		questionBean.setQuestion_time(question_time);
 		questionBean.setQuestion_mark(question_mark);
-		//ÎÊÌâ·ÖÀàÄ¬ÈÏÎª0
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Îª0
 		questionBean.setQuestion_categories_id(0);
 		
 		if(questionDao.addQuestion(questionBean)){
@@ -84,7 +84,7 @@ public class AskQuestionServlet extends HttpServlet {
 			QuestionBean questionBean1 = new QuestionBean();
 			questionBean1 = questionDao.getQuestionByQuestionByDescription(question_description);
 			
-			//¶Ôµ±Ç°ÎÊÌâ·Ö´Ê´¦Àí
+			//ï¿½Ôµï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ö´Ê´ï¿½ï¿½ï¿½
 			ChineseAnalyzerUtil chineseAnalyzerUtil = new ChineseAnalyzerUtil();
 			StringBuffer questionContext = new StringBuffer(questionBean1.getQuestion_description()+questionBean1.getQuestion_title());
 			StringBuffer questionContext2 = new StringBuffer();
@@ -96,7 +96,7 @@ public class AskQuestionServlet extends HttpServlet {
 			QuestionsKeywordsBean questionKeywords = new QuestionsKeywordsBean();
 			
 			questionKeywords.setQuestion_id(questionId);
-			//È¡·Ö´ÊÆµÂÊ×î¸ßµÄÇ°20
+			//È¡ï¿½Ö´ï¿½Æµï¿½ï¿½ï¿½ï¿½ßµï¿½Ç°20
 			for (int i1 = 0; i1 < 20 && i1 < map.size(); i1++) {
 				Map.Entry<String, Integer> wordFrenEntry = map.get(i1);
 				questionContext2.append(wordFrenEntry.getKey()+",");
@@ -105,11 +105,11 @@ public class AskQuestionServlet extends HttpServlet {
 			questionKeywords.setQuesitons_keywords_topN(questionContext2.toString());
 			questionKeywords.setQuestions_keywords_counts(countTopN.toString());
 			
-			//´æÈëÊı¾İ¿âÖĞ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½
 			QuestionsKeywordsDaoImp questionsKeywordsDaoImp = new QuestionsKeywordsDaoImp();
 			
 			if(questionsKeywordsDaoImp.addQuestionsKeywordsBean(questionKeywords)){
-				System.out.println("ĞÂÔöÎÊÌâ·Ö´Ê´¦Àí³É¹¦£¡");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Ê´ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
 			}
 			
 			request.getRequestDispatcher("index").forward(request, response);

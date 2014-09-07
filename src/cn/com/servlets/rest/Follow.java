@@ -24,6 +24,8 @@ import cn.com.util.ChineseAnalyzerUtil;
 import cn.com.util.RUtil;
 
 import cn.com.mq.Notify;
+
+import cn.com.servlets.category.UpdateRedisTag;
 /**
  * @author Banama
  * 
@@ -45,6 +47,7 @@ public class Follow extends HttpServlet {
 		
 		RUtil redis = new RUtil();
 		Jedis rdb = redis.con();
+
 		
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();

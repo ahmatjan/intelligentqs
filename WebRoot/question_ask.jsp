@@ -233,7 +233,7 @@
 					
 						<div class="input-group">
 						  <input type="text" class="form-control" name="question_tags" data-role="simple-input" autocomplete="off">
-						    
+						  <input type="hidden" class="form-control" name="question_tag" data-role="simple-input" autocomplete="off">
 						  <span class="input-group-btn">
 						    <button class="btn btn-default" type="button" onclick="tagbutton()">添加</button>
 						    <script type="text/javascript">
@@ -257,6 +257,7 @@
                   	<div class="col-lg-3"></div>
                   	<div class="col-lg-6 ask-btn btn">
                   		<a href="#" type="button" class="btn btn-primary btn-lg btn-block" onclick="document.form.submit();">提出问题</a>
+                  		
                   	</div>
                   </div>
 

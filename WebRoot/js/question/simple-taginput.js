@@ -61,7 +61,21 @@
 			$("#tags").html(html);
 	  }
 	  $("#tag-button").parent().removeClass("open");
-  }
+	  $("input[name='question_tags']").attr("value", "")
+	  
+	  var tagsid = '';
+	  offer  = new Array();
+		$("#tags span").each(function(){
+			tagsid = tagsid + ',' + $(this).attr("value");
+		})
+		for(var i=0; i < tagsid.split(",").length; i++){
+			if(i%2 != 0){
+				offer.push(tagsid.split(",")[i])
+			}
+		}
+		console.log(offer)
+		$("input[name='question_tag']").attr("value", offer.toString())
+	  }
 
   function keySearch(keywords){
 	  if(keywords == ""){
