@@ -32,6 +32,7 @@
 <script src="./dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="js/question/index.js"></script>
 <script type="text/javascript" src="js/question/person.js"></script>
+<script type="text/javascript" src="js/esl.js"></script>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
@@ -40,7 +41,7 @@
 </head>
 
 <body>
-		<div class="container header-bg">
+	<div class="container header-bg">
       <nav class="navbar navbar-default header-border header-height" role="navigation">
         
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -112,7 +113,7 @@
 					if (request.getParameter("user_id") == null) {
 					%>
 					<!-- person-->
-					<div class="col-md-7">
+					<div class="col-md-6">
 						<div class="row fix-margin-top">
 							 <div class="col-md-4"><a hreaf="/GetPersionInfoServlet?user_id=<%=uib.getUser_id() %>">
                             	<img src="./static/image/git.png" alt="" class="info-img img-thumbnail"></a>
@@ -134,6 +135,12 @@
 								</div>
 							</div>
 						</div>
+					</div>
+					
+					<div class="col-md-6">
+						<div id="echarttag" style="height: 200px; width:400px; border: 1px solid #ccc; padding: 10px;">
+						</div>
+						<script type="text/javascript" src="js/question/echart-tag-question.js"></script>
 					</div>
 					<%
 						} else {
