@@ -522,4 +522,92 @@
     <url-pattern>/getTagsDetail</url-pattern>
   </servlet-mapping>
   
+ <!--  ======================================================
+  ======================================================
+  ====================================================== -->
+  
+  <!-- 手机端处理servlet -->
+	<servlet-mapping>
+		<servlet-name>DisscussQuestionMobileServlet</servlet-name>
+		<url-pattern>/disscussQuestionMobile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>DisscussQuestionMobileServlet</servlet-name>
+		<servlet-class>cn.com.mservlets.index.DisscussQuestionServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginMobileServlet</servlet-name>
+		<url-pattern>/loginMobileServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LoginMobileServlet</servlet-name>
+		<servlet-class>cn.com.mservlets.user.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AddAnswerInfoMobileServlet</servlet-name>
+		<url-pattern>/addAnswerInfoMobile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddAnswerInfoMobileServlet</servlet-name>
+		<servlet-class>cn.com.mservlets.answer.AddAnswerInfoServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AskQuestionMobileServlet</servlet-name>
+		<url-pattern>/askQuestionMobileServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AskQuestionMobileServlet</servlet-name>
+		<servlet-class>cn.com.mservlets.question.AskQuestionServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GetDetilQuestionMobile</servlet-name>
+		<url-pattern>/getDetilQuestionMobile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetDetilQuestionMobile</servlet-name>
+		<servlet-class>cn.com.mservlets.question.GetDetilQuestion</servlet-class>
+	</servlet>
+
+	<servlet>
+		<description></description>
+		<display-name>AddDiscussMobileServlet</display-name>
+		<servlet-name>AddDiscussMobileServlet</servlet-name>
+		<servlet-class>cn.com.mservlets.discuss.AddDiscussServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddDiscussMobileServlet</servlet-name>
+		<url-pattern>/AddDiscussMobileServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>starMobile</servlet-name>
+		<servlet-class>cn.com.mservlets.rest.Star</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>starMobile</servlet-name>
+		<url-pattern>/starMobile</url-pattern>
+	</servlet-mapping>
+	<!-- 赞问题 -->
+	<servlet>
+		<servlet-name>prepraiseMobile</servlet-name>
+		<servlet-class>cn.com.mservlets.rest.Prepraise</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>prepraiseMobile</servlet-name>
+		<url-pattern>/prepraiseMobile</url-pattern>
+	</servlet-mapping>
+	<!-- 赞答案 -->
+	<servlet>
+		<servlet-name>praiseasMobile</servlet-name>
+		<servlet-class>cn.com.mservlets.rest.PraiseAS</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>praiseasMobile</servlet-name>
+		<url-pattern>/praiseasMobile</url-pattern>
+	</servlet-mapping>
+  
 </web-app>
