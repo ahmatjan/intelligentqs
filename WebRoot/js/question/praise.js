@@ -117,7 +117,7 @@ $(document).ready(function() {
 		});
 	});
 
-});
+}); 
 
 function praiseas(value){
 	$.post('praiseas', {'answerid': value}, function(data) {
@@ -131,16 +131,16 @@ function praiseas(value){
 				
 				if($(select_id).parent().attr("value") == 1){
 					$(select_id).parent().attr("value", 0);
-					$(select_id).parent().next().html("<span class=' glyphicon glyphicon-thumbs-up'></span>已赞");
+					$(select_id).parent().next().html("<span class=' glyphicon glyphicon-thumbs-up'></span>赞");
 				}
 				else if($(select_id).parent().attr("value") == -1){
 					$(select_id).parent().attr("value", 1);
-					$(select_id).parent().next().html("<span class=' glyphicon glyphicon-thumbs-up'></span>赞");
-					$(select_id).parent().next().next().html("<span class=' glyphicon glyphicon-thumbs-down'></span>已踩");
+					$(select_id).parent().next().html("<span class=' glyphicon glyphicon-thumbs-up'></span>已赞");
+					$(select_id).parent().next().next().html("<span class=' glyphicon glyphicon-thumbs-down'></span>踩");
 				}
 				else {
 					$(select_id).parent().attr("value", 1);
-					$(select_id).parent().next().html("<span class=' glyphicon glyphicon-thumbs-up'></span>赞");
+					$(select_id).parent().next().html("<span class=' glyphicon glyphicon-thumbs-up'></span>已赞");
 				}
 				$(select_id).html(data);
 			});
