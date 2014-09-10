@@ -65,7 +65,7 @@ public class PraiseAS extends HttpServlet {
             AnswerBean ans = ansDao.getAnswerByAnswerId(answer_id);
             int ans_mark = ans.getAnswer_mark();
         	
-           	String mark = (String) rdb.hget("praiseas", select_praiseas);
+           String mark = (String) rdb.hget("praiseas", select_praiseas);
            	
           	//if no praise and no tread
         	if (mark == null || mark.equals("0")) {

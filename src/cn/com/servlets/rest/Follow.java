@@ -47,6 +47,9 @@ public class Follow extends HttpServlet {
 		
 		RUtil redis = new RUtil();
 		Jedis rdb = redis.con();
+		
+		UpdateRedisTag tx = new UpdateRedisTag();
+		tx.verify();
 
 		
 		response.setContentType("text/html");

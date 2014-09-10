@@ -12,7 +12,6 @@ $(document).ready(function() {
 	
 	// question praises
 	$.post('praises', {'question_id': question_id}, function(data) {
-			
 		praises.html(data)
 	});
 	
@@ -21,18 +20,22 @@ $(document).ready(function() {
 		$.post('praisesas', {'answerid' : answerid}, function(data) {
 			var select_id = "#" + answerid;
 			console.log(answerid);
+			
 			$(select_id).html(data);
-			if(data == 1){
-				$(select_id).parent().attr("value", 1);
-				$(select_id).parent().next().html("<span class=' glyphicon glyphicon-thumbs-up'></span>已赞");
-			}
-			else if(data == -1){
-				$(select_id).parent().attr("value", -1);
-				$(select_id).parent().next().next().html("<span class=' glyphicon glyphicon-thumbs-down'></span>已踩");
-			}
-			else{
-				$(select_id).parent().attr("value", 0);
-			}
+			$.post('prepraiseas', {'answerid' : answerid}, function(datas) {
+				console.log(datas); 
+				if(datas == 1){
+					$(select_id).parent().attr("value", 1);
+					$(select_id).parent().next().html("<span class=' glyphicon glyphicon-thumbs-up'></span>已赞");
+				}
+				else if(datas == -1){
+					$(select_id).parent().attr("value", -1);
+					$(select_id).parent().next().next().html("<span class=' glyphicon glyphicon-thumbs-down'></span>已踩");
+				}
+				else{
+					$(select_id).parent().attr("value", 0);
+				}
+			})
 		});
 	});
 	
@@ -121,6 +124,7 @@ $(document).ready(function() {
 
 function praiseas(value){
 	$.post('praiseas', {'answerid': value}, function(data) {
+
 		if (data == "False") {
 			console.log("praised"); 
 		}

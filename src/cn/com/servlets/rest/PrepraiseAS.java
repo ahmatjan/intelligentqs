@@ -59,7 +59,9 @@ public class PrepraiseAS extends HttpServlet {
         	String select_praisesas = "answerid:" + answerid;
         	
             int answer_id = Integer.parseInt(answerid.split("_")[1]);	
+            System.out.println("answerid" + select_praiseas);
            	String mark = (String) rdb.hget("praiseas", select_praiseas);
+            System.out.println("mark" + mark);
         	if (mark == null || mark.equals("0")) {
         		out.write(0);
         	}
