@@ -56,15 +56,15 @@ public class Prepraise extends HttpServlet {
         	String select_praise = "userid:" + uib.getUser_id() + ":questionid:" + question_id;
         	
         	//hget�������Ϊkey��hash��field��Ӧ��value
-           	String mark = (String) rdb.hget("praise", select_praise);
+           String mark = (String) rdb.hget("praise", select_praise);
         	if (mark == null || mark.equals("0")) {
-        		out.println(0);
+        		out.write(0);
         	}
         	else if (mark.equals("-1")) {
-        		out.println(-1);
+        		out.write(-1);
         	}
         	else {
-        		out.println(1);
+        		out.write(1);
         	}
         }
         

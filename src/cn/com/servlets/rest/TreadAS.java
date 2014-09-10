@@ -72,7 +72,7 @@ public class TreadAS extends HttpServlet {
                 rdb.hset("praiseas", select_praiseas, "-1");
                 rdb.hincrBy("praisesas", select_praisesas, -2);
                 String marks = (String) rdb.hget("praisesas", select_praisesas);
-        		ansDao.updateAns_remark(Integer.parseInt(marks), answer_id); 
+        		  ansDao.updateAns_remark(Integer.parseInt(marks), answer_id); 
                 out.write("True");
             }
             else if (mark.equals("-1")) {
