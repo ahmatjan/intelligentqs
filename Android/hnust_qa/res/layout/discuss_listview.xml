@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/discuss_avatar"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/git"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="5dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/discuss_username"
+                android:textSize="15sp"
+                android:text="username"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/discuss_time"
+                android:textColor="#AAA"
+                android:textSize="15sp"
+                android:text="2014-8-6"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/discuss_summary"
+            android:textSize="15sp"
+            android:textColor="@color/gray_text"
+            android:text="这是评论这是评论这是评论这是评论这是评论这是评论"/>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/zan"
+                android:id="@+id/discuss_zan_image"
+                android:layout_alignBottom="@+id/discuss_zan_number"
+                android:layout_toLeftOf="@+id/discuss_zan_number" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#AAA"
+                android:id="@+id/discuss_zan_number"
+                android:textSize="14sp"
+                android:text="10"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/zan" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#AAA"
+                android:textSize="14sp"
+                android:id="@+id/zan"
+                android:text="赞"
+
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

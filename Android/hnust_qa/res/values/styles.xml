@@ -1,0 +1,40 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="questionStyle">
+        <item name="android:windowTitleBackgroundStyle">@style/TitleBackground</item>
+        <item name="android:windowTitleStyle">@style/TitleTextColor</item>
+        <item name="android:windowTitleSize">25dip</item>
+    </style>
+
+    <style name="TitleBackground">
+        <item name="android:background">@color/topbar</item>
+    </style>
+
+    <style name="TitleTextColor">
+        <item name="android:textColor">@color/topbartext</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="anim_popupwindow">
+        <item name="android:windowEnterAnimation">@anim/popu_in</item>
+        <item name="android:windowExitAnimation">@anim/popu_out</item>
+    </style>
+
+    <style name="popTheme" parent="@android:style/TextAppearance">
+        <item name="android:background">@null</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+</resources>

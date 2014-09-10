@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/question_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:text="testtesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/question_portrait"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_launcher" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="7dp">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:id="@+id/answer_count"
+            android:background="@color/answer_count_bg"
+            android:layout_alignParentLeft="true"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:text="2"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_text"
+            android:id="@+id/answer_summary"
+            android:layout_marginLeft="45dp"
+            android:textSize="15sp"
+            android:text="湖南科技大学智能问答平台功能更新说明:1、系统安全方面注册和登录增加验证码功能；2、用户的注册成功邮箱提醒和密码邮箱验证密码找回。"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

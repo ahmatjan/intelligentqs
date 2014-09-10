@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.slidinglayer.SlidingLayer
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:slidingLayer="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/slidingLayer12"
+    android:layout_width="@dimen/slidinglayer_width"
+    android:layout_height="match_parent"
+    slidingLayer:shadowDrawable="@drawable/sidebar_shadow"
+    slidingLayer:shadowWidth="@dimen/shadow_width"
+    slidingLayer:offsetWidth="@dimen/slidingmenu_offset"
+    slidingLayer:stickTo="left"
+    slidingLayer:closeOnTapEnabled="true">
+
+</com.slidinglayer.SlidingLayer>

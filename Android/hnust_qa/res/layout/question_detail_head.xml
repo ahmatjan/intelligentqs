@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:adjustViewBounds="true"
+    android:scaleType="centerCrop"
+    android:layout_marginTop="10dp"
+    android:background="@color/detail_other_bg">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_portrait_layout"
+        android:orientation="vertical"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/detail_portrait"
+            android:src="@drawable/git"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_username"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="名字"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/detail_portrait_layout"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_title"
+            android:textSize="19sp"
+            android:text="testesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestt"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_summary"
+            android:textColor="@color/blackText"
+            android:textSize="15sp"
+            android:text="testtesttesttesttesttesttesttesttesttesttesttesttesttestttesttesttesttesttesttesttestttesttesttesttesttesttesttestttesttesttesttesttesttesttestttesttesttestesttestesttestesttestesttestesttestesttestesttesttesttesttest"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/comment"
+        android:background="#fff1f1f1">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_weight="10"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="45dp"
+                android:layout_height="24dp"
+                android:id="@+id/add_watch"
+                android:background="@drawable/bu_state"
+                android:textColor="@color/topbartext"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:textSize="15sp"
+                android:text="收藏"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="#ffb7bdbe" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_weight="10"
+            android:gravity="center">
+
+
+            <Button
+                android:layout_width="45dp"
+                android:layout_height="24dp"
+                android:id="@+id/add_anwser"
+                android:background="@color/topbar"
+                android:textColor="@color/topbartext"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="15sp"
+                android:text="回答"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

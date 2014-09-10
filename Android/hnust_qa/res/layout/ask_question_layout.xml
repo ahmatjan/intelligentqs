@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<!--     <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/topbar"
+        >
+
+        <Button
+            android:id="@+id/topqa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@color/topbar"
+            android:textColor="@color/topbartext"
+            android:text="提问" />
+
+    </RelativeLayout> -->
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_ask_title"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:hint="用一句话说清楚你的问题"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_ask_description"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:hint="为此问题提供一些描述以便更好的解答吧"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_ask_label"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:hint="为它添加一个标签吧"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/ask_button"
+        android:background="@drawable/login_button"
+        android:text="提  交"
+        android:textColor="@color/slidingBackground"/>
+
+</LinearLayout>

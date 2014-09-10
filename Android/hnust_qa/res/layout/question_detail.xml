@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff">
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/topBar"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/topbar">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/topqa"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:background="@color/topbar"-->
+            <!--android:textColor="@color/topbartext"-->
+            <!--android:text="问题" />-->
+
+    <!--</RelativeLayout>-->
+
+
+<!--   <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_portrait_layout"
+            android:orientation="vertical"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/detail_portrait"
+                android:src="@drawable/git"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_username"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="名字"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/detail_portrait_layout">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_title"
+                android:textSize="18sp"
+                android:text="testesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestt"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_summary"
+                android:textColor="@color/answer_summary_bg"
+                android:textSize="15sp"
+                android:text="testtesttesttesttesttesttesttesttesttesttesttesttesttestttesttesttesttesttesttesttestttesttesttesttesttesttesttestttesttesttesttesttesttesttestttesttesttestesttestesttestesttestesttestesttestesttestesttesttesttesttest"
+                android:layout_marginBottom="10dp"/>
+
+         </LinearLayout>
+
+    </RelativeLayout>-->
+
+<!--    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="@color/detail_bg"/>-->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/viewGroup_listView">
+
+
+    </LinearLayout>
+
+<!--    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_list"
+        android:layout_weight="1000"
+        android:layout_marginLeft="5dp"/>-->
+
+<!--    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_comment1"
+            android:layout_toLeftOf="@+id/detail_button" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评论"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/detail_button" />
+    </RelativeLayout>-->
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/pop_bg" >
+
+    <Button
+        android:id="@+id/agree"
+        style="@style/popTheme"
+        android:layout_weight="1"
+        android:text="@string/pop_agree" />
+
+    <TextView
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:background="#4D4D4D" />
+
+    <Button
+         android:id="@+id/opposition"
+        style="@style/popTheme"
+        android:layout_weight="1"
+        android:text="@string/pop_disagree" />
+
+    <TextView
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:background="#4D4D4D" />
+
+    <Button
+         android:id="@+id/comments"
+        style="@style/popTheme"
+        android:layout_weight="1"
+        android:text="@string/pop_discuss" />
+
+</LinearLayout>

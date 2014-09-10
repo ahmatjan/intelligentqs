@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="topbar">#0086F0</color>
+    <color name="mainBackground">#ffffffff</color>
+
+    <color name="slidingBackground">#ffFFFFFF</color>
+
+    <color name="topbartext">#ffffff</color>
+    <color name="blackText">#000000</color>
+    
+    <color name="answer_count_bg">#1799FF</color>
+
+    <color name="answer_comment_count_bg">#ad1897ff</color>
+    
+    <color name="answer_summary_bg">#aaaaaa</color>
+
+    <color name="detail_bg">#ffd7d7d7</color>
+
+    <color name="detail_other_bg">#FFFFFF</color>
+    
+    <color name="gray_text">#666</color>
+
+    <color name="gray_name">#555555</color>
+    
+    <color name="star">#F3F3F3</color>
+    <color name="unstar">#ff30da22</color>
+</resources>
