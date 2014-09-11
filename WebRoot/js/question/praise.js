@@ -19,16 +19,20 @@ $(document).ready(function() {
 	answerlist.forEach(function(answerid) {
 		$.post('praisesas', {'answerid' : answerid}, function(data) {
 			var select_id = "#" + answerid;
-			console.log(answerid);
-			
 			$(select_id).html(data);
-			$.post('prepraiseas', {'answerid' : answerid}, function(datas) {
-				console.log(datas); 
-				if(datas == 1){
+		});
+	});
+	
+	answerlist.forEach(function(answerid){
+		$.post('prepraiseas', {'answerid' : answerid}, function(data) {
+				console.log(answerid);
+				console.log(data); 
+				var select_id = "#" + answerid;
+				if(data == 1){
 					$(select_id).parent().attr("value", 1);
 					$(select_id).parent().next().html("<span class=' glyphicon glyphicon-thumbs-up'></span>已赞");
 				}
-				else if(datas == -1){
+				else if(data == -1){
 					$(select_id).parent().attr("value", -1);
 					$(select_id).parent().next().next().html("<span class=' glyphicon glyphicon-thumbs-down'></span>已踩");
 				}
@@ -36,8 +40,7 @@ $(document).ready(function() {
 					$(select_id).parent().attr("value", 0);
 				}
 			})
-		});
-	});
+	})
 	
 	//prepraise
 	$.post('prepraise',{'question_id': question_id}, function(data) {
