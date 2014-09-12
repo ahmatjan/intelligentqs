@@ -383,16 +383,16 @@
 									<!--start-->
 									<div class="col-lg-1">
 										<button type="button" class="btn btn-primary btn-block btn-lg">
-											<span id="answer_${answer.answerBean.answer_id}">0</span>
+											<span id="answer_hot_${hotAnswer.answerBean.answer_id}">0</span>
 										</button>
 										<button type="button" class="btn btn-default btn-block btn-sm"
 											onclick="praiseas(this.value)"
-											value="answer_${answer.answerBean.answer_id}">
+											value="answer_hot_${hotAnswer.answerBean.answer_id}">
 											<span class=" glyphicon glyphicon-thumbs-up"></span>赞
 										</button>
 										<button type="button" class="btn btn-default btn-block btn-sm"
 											onclick="treadas(this.value)"
-											value="answer_${answer.answerBean.answer_id}">
+											value="answer_hot_${hotAnswer.answerBean.answer_id}">
 											<span class=" glyphicon glyphicon-thumbs-down"></span>踩
 										</button>
 									</div>

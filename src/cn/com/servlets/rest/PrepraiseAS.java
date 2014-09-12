@@ -54,22 +54,28 @@ public class PrepraiseAS extends HttpServlet {
         	out.write("require login");
         }
         else {              
-        	String answerid = request.getParameter("answerid");
-        	String select_praiseas = "userid:" + uib.getUser_id() + ":answerid:" + answerid;
-        	String select_praisesas = "answerid:" + answerid;
+        	String answerids = request.getParameter("answerid");
+        	String answerid = "";
         	
-            int answer_id = Integer.parseInt(answerid.split("_")[1]);	
-            System.out.println("answerid" + select_praiseas);
-           	String mark = (String) rdb.hget("praiseas", select_praiseas);
-            System.out.println("mark" + mark);
+        	if (answerids.split("_")[1] == "hot"){
+        		answerid = answerids.split("_")[0] + "_" + answerids.split("_")[2];
+        	}
+        	else{
+        		answerid = answerids;
+        	}
+        	System.out.print("~~" + answerid);
+        	String select_praiseas = "userid:" + uib.getUser_id() + ":answerid:" + answerid;
+        	System.out.println("se-----" + select_praiseas);
+           String mark = (String) rdb.hget("praiseas", select_praiseas);
+            System.out.println("mark-" + mark);
         	if (mark == null || mark.equals("0")) {
-        		out.write(0);
+        		out.write("0");
         	}
         	else if (mark.equals("-1")) {
-        		out.write(-1);
+        		out.write("-1");
         	}
         	else {
-        		out.write(1);
+        		out.write("1");
         	}
         }
         

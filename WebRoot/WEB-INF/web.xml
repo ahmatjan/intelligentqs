@@ -392,7 +392,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>prepraiseas</servlet-name>
-    <servlet-class>cn.com.servlets.rest.Preprepraise</servlet-class>
+    <servlet-class>cn.com.servlets.rest.PrepraiseAS</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>prepraiseas</servlet-name>
