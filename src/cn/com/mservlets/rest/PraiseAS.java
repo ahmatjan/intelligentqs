@@ -60,7 +60,7 @@ public class PraiseAS extends HttpServlet {
         	String select_praisesas = "answerid:" + answerid;
         	System.out.println("answerid:"+answerid);
             AnswerDaoImp ansDao = new AnswerDaoImp();
-            int answer_id = Integer.parseInt(answerid);
+            int answer_id = Integer.parseInt(answerid.split("_")[1]);
             System.out.println(answer_id);
             AnswerBean ans = ansDao.getAnswerByAnswerId(answer_id);
             int ans_mark = ans.getAnswer_mark();

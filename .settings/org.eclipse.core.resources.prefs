@@ -2,3 +2,4 @@ eclipse.preferences.version=1
 encoding//WebRoot/login.jsp=UTF-8
 encoding//WebRoot/userLogin.jsp=UTF-8
 encoding//src/cn/com/servlets/index/IndexServlet.java=gbk
+encoding//src/cn/com/util/DBUtil.java=UTF-8
